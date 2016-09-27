@@ -14,9 +14,14 @@
     
 }
 
+.wrap{
+    
+    max-width: 390px;
+}
+
 header{
     
-    width: 100%;
+    width: 480px;
     position: fixed;
     background-color: #1565C0;
     height: 50px;
@@ -31,7 +36,7 @@ header .logo{
     
     font-size: 30px;
     color: white;
-    position: fixed;
+    position: absolute;
     left: 50%;
     width: 200px;
     margin-left: -100px;
@@ -43,7 +48,7 @@ header .logo{
 header button.settings{
     
     display: block;
-    position: fixed;
+    position: absolute;
     left: 100%;
     width: 50px;
     height: 50px;
@@ -57,7 +62,7 @@ header button.settings{
 header button.back-screen{
 
     display: block;
-    position: fixed;
+    position: absolute;
     left: 0;
     width: 50px;
     height: 50px;
@@ -71,7 +76,7 @@ header button.back-screen{
 
 .page{
     
-    width: 100%;
+    width: 390px;
     height: auto;
     margin-top: 50px;
     
@@ -87,8 +92,8 @@ header button.back-screen{
 
 .page .group{
     
-    width: 180px;
-    margin: 0 0 40px 40px;
+    width: 165px;
+    margin: 0 0 20px 20px;
     height: 180px;
     background-color: #1E88E5;
     display: inline-block;
@@ -122,7 +127,7 @@ header button.back-screen{
     transform: rotate(45deg);
     border: 0;
     font-size: 30px;
-    margin: -20px 0px 0px 160px;
+    margin: -10px 0px 0px 135px;
     
 }
 
