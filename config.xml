@@ -16,4 +16,9 @@
     <icon src="imgs/icon/mdpi.png" density="mdpi" />
     <icon src="imgs/icon/hdpi.png" density="hdpi" />
     <icon src="imgs/icon/xhdpi.png" density="xhdpi" />
+    
+    <splash src="imgs/splash/hdpi.png" density="port-hdpi"/>
+    <splash src="imgs/splash/mdpi.png" density="port-mdpi"/>
+    <splash src="imgs/splash/xhdpi.png" density="port-xhdpi"/>
+    
 </widget>
