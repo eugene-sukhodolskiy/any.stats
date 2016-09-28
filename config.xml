@@ -21,4 +21,6 @@
     <splash src="imgs/splash/mdpi.png" density="port-mdpi"/>
     <splash src="imgs/splash/xhdpi.png" density="port-xhdpi"/>
     
+    <plugin name="br.com.paveisitemas.splashscreen" spec="2.1.1" source="pgb" />
+    
 </widget>
