@@ -12,11 +12,15 @@ Nav.events.close.settings = function(param){
 
 Nav.events.open.groups = function(param){
     
+    $('[data-back]').css('display','none');
+    
     $('#groups').css({'display': 'block'});
     
 }
 
 Nav.events.close.groups = function(param){
+    
+    $('[data-back]').css('display','block');
     
     Nav.hiddenAll();
     

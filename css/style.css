@@ -167,6 +167,12 @@ header button.back-screen{
     display: none;
 }
 
+[data-back]{
+    
+    display: none;
+    
+}
+
 
 /*    */
 
