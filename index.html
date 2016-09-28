@@ -6,6 +6,7 @@
     <meta name="viewport" content="max-width=480, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/add.new.study.css">
+    <link rel="stylesheet" type="text/css" href="css/settings.css">
     
     <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="js/database.js"></script>
@@ -111,32 +112,86 @@
           
           <div class="form-group">
               <label for="studyName">Name</label>
-              <input type="text" id="studyName" name="studyName">
+              <div class="form-wrap">
+                  <input type="text" id="studyName" name="studyName">
+              </div>
           </div>
           
           <div class="form-group">
               <label for="studyUnit">Unit</label>
-              <input type="text" id="studyUnit" name="studyUnit">
+              <div class="form-wrap">
+                  <input type="text" id="studyUnit" name="studyUnit">
+              </div>
           </div>
           
           <div class="form-group">
               <label for="telegramNotif">Telegram notification</label>
-              <input type="checkbox" id="telegramNotif" name="telegramNotif">
+              <div class="form-wrap">
+                  <input type="checkbox" id="telegramNotif" name="telegramNotif">
+              </div>
           </div>
           
           <div class="form-group">
               <label for="emailNotif">E-mail notification</label>
-              <input type="checkbox" id="emailNotif" name="emailNotif">
+              <div class="form-wrap">
+                  <input type="checkbox" id="emailNotif" name="emailNotif">
+              </div>
           </div>
           
           <div class="form-group">
-              <label for="periodicity">Periodicity of notif.</label>
-              <select id="periodicity" name="pereodicity">
-                  <option value="everyday">Every day</option>
-                  <option value="everyweek">Every week</option>
-                  <option value="everymonth">Every month</option>
-                  <option value="everyyear">Every year</option>
-              </select>
+              <label for="periodicity">Periodicity of notification</label>
+              
+              <div class="form-wrap">
+                  <select id="periodicity" name="pereodicity">
+                      <option value="everyday">Every day</option>
+                      <option value="everyweek">Every week</option>
+                      <option value="everymonth">Every month</option>
+                      <option value="everyyear">Every year</option>
+                  </select>
+              </div>
+          </div>
+          
+          <div class="ok-wrap">
+              <button class="ok">OK</button>
+          </div>
+          
+      </section>
+      
+      
+      
+      <section class="page" id="settings">
+          
+          <h1 class="page-name">Settings</h1>
+          
+          <div class="form-group">
+              <label for="studyUnit">Unit</label>
+              <div class="form-wrap">
+                  <input type="text" id="studyUnit" name="studyUnit">
+              </div>
+          </div>
+          
+          <div class="form-group">
+              <label for="telegramNotif">Telegram notification</label>
+              <div class="form-wrap">
+                  <input type="checkbox" id="telegramNotif" name="telegramNotif">
+              </div>
+          </div>
+          
+          <div class="form-group">
+              <label for="periodicity">Periodicity of notification</label>
+
+              <div class="form-wrap">
+                  <select id="periodicity" name="pereodicity">
+                      <option value="everyday">Every day</option>
+                      <option value="everyweek">Every week</option>
+                      <option value="everymonth">Every month</option>
+                      <option value="everyyear">Every year</option>
+                  </select>
+              </div>
+          </div>
+          
+          <div class="ok-wrap">
+              <button class="ok">OK</button>
           </div>
           
       </section>
