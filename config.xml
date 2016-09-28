@@ -24,6 +24,7 @@
     <plugin name="br.com.paveisitemas.splashscreen" spec="2.1.1" source="pgb" />
     
     <preference name="SplashScreenDelay" value="1000" />
+    <preference name="SplashScreenBackgroundColor" value="white" />
     <preference name="SplashMaintainAspectRatio" value="true" />
     
 </widget>
