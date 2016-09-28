@@ -26,5 +26,6 @@
     <preference name="SplashScreenDelay" value="1000" />
     <preference name="SplashScreenBackgroundColor" value="white" />
     <preference name="SplashMaintainAspectRatio" value="true" />
+    <preference name="FadeSplashScreenDuration" value="1"/>
     
 </widget>
