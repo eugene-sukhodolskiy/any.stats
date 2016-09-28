@@ -29,5 +29,8 @@
     <preference name="SplashMaintainAspectRatio" value="true" />
     <preference name="FadeSplashScreenDuration" value="1"/>
 -->
+   
+    <gap:plugin name="com.phonegap.plugin.statusbar" />
+    <preference name="StatusBarBackgroundColor" value="#1565C0" />
     
 </widget>
