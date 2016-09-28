@@ -30,7 +30,7 @@
     <preference name="FadeSplashScreenDuration" value="1"/>
 -->
    
-    <gap:plugin name="com.phonegap.plugin.statusbar" />
+    <plugin name="com.phonegap.plugin.statusbar" spec="1.1.0" source="pgb" />
     <preference name="StatusBarBackgroundColor" value="#1565C0" />
     
 </widget>
