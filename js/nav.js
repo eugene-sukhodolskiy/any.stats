@@ -53,6 +53,8 @@ var Nav = {
             
         }
         
+        return true;
+        
     },
     
     back: function(){
@@ -74,6 +76,8 @@ var Nav = {
         delete this.history.param[i + 1];
         
         this.goTo(this.history.page[i],this.history.param[i],true);
+        
+        return true;
         
     },
     
@@ -99,7 +103,11 @@ var Nav = {
         
         document.addEventListener("backbutton", function(){
             
-            Nav.back();
+            if(Nav.back() == false){
+                
+                navigator.app.exitApp();
+                
+            }
             
         }, true);
         
