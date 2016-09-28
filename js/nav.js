@@ -83,7 +83,8 @@ var Nav = {
     
     init: function(){
         
-        this.goTo(this.begin.page,this.begin.param);
+        if(this.currentPage == "")
+            this.goTo(this.begin.page,this.begin.param);
         
         $('[data-page]').click(function(){
             
@@ -116,6 +117,16 @@ var Nav = {
     hiddenAll: function(){
         
         $('section.page').css('display','none');
+        
+    },
+    
+    reload: function(){
+        
+        if(this.currentPage != "" && this.events.close[this.currentPage] != "undefined")
+            this.events.close[this.currentPage](this.currentParam);
+
+        if(this.events.open[this.currentPage] != "undefined")
+            this.events.open[this.currentPage](this.currentParam);
         
     }
     

@@ -7,7 +7,7 @@ var DB = {
     errs: [],
     
     failedConnect: function(){
-        Console.log("FAILED CONNECT!");
+        console.log("FAILED CONNECT!");
     },
     
     open: function(name,ver,size){
@@ -28,7 +28,7 @@ var DB = {
         
         for(var i=0;i<funcs.length;i++){
             
-            funcs[i](this.connect);
+            this.connect.transaction(funcs[i]);
             
         }
         
@@ -38,9 +38,6 @@ var DB = {
     
 }
 
-DB.open("Name","0.1",9000000);
-//DB.createTables();
-
 
 var tables = [
     
@@ -48,7 +45,9 @@ var tables = [
     
     function(connect){
         
-        connect.executeSql("CREATE TABLE groups (id REAL UNIQUE, name TEXT, timestamp REAL)",[],null,function(connect,err){
+        connect.executeSql("CREATE TABLE IF NOT EXISTS groups (id INTEGER PRIMARY KEY ASC, name TEXT, timestamp REAL, count REAL)",[],null,function(connect,err){
+            
+            console.log(err);
             
             DB.errs[DB.errs.length] = err;
             
@@ -60,7 +59,7 @@ var tables = [
     
     function(connect){
 
-        connect.executeSql("CREATE TABLE units (id REAL UNIQUE, name TEXT, timestamp REAL, id_group REAL)",[],null,function(connect,err){
+        connect.executeSql("CREATE TABLE IF NOT EXISTS entry (id INTEGER PRIMARY KEY ASC, id_study REAL, timestamp REAL, value REAL)",[],null,function(connect,err){
 
             DB.errs[DB.errs.length] = err;
 
@@ -70,7 +69,7 @@ var tables = [
     
     function(connect){
 
-        connect.executeSql("CREATE TABLE entries (id REAL UNIQUE, id_unit REAL, timestamp REAL, value REAL )",[],null,function(connect,err){
+        connect.executeSql("CREATE TABLE IF NOT EXISTS study (id INTEGER PRIMARY KEY ASC, id_group REAL, timestamp REAL, name TEXT, unit TEXT, telegramNotif REAL, emailNotif REAL, repiodicityNotif REAL)",[],null,function(connect,err){
 
             DB.errs[DB.errs.length] = err;
 
@@ -80,7 +79,7 @@ var tables = [
     
     function(connect){
 
-        connect.executeSql("CREATE TABLE settings (id REAL UNIQUE, name, timestamp REAL, value REAL )",[],null,function(connect,err){
+        connect.executeSql("CREATE TABLE IF NOT EXISTS settings (id INTEGER PRIMARY KEY ASC, name TEXT, timestamp REAL, value TEXT )",[],null,function(connect,err){
 
             DB.errs[DB.errs.length] = err;
 
