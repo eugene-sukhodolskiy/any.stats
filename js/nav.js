@@ -99,8 +99,6 @@ var Nav = {
         
         document.addEventListener("backbutton", function(){
             
-            Console.log('BACKBUTTON');
-            
             Nav.back();
             
         }, true);
