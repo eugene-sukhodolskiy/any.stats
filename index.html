@@ -10,6 +10,9 @@
     
     <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="js/database.js"></script>
+    <script type="text/javascript" src="js/nav.js"></script>
+    <script type="text/javascript" src="js/events.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
 </head>
 <body>
   
@@ -17,11 +20,11 @@
    
    <header>
      
-      <button class="back-screen"></button>
+      <button class="back-screen" data-back="true"></button>
        
       <div class="logo">Any.Stats</div>
        
-      <button class="settings"></button>
+      <button class="settings" data-page="settings" data-param="true"></button>
        
    </header>
     
@@ -121,6 +124,19 @@
               <label for="studyUnit">Unit</label>
               <div class="form-wrap">
                   <input type="text" id="studyUnit" name="studyUnit">
+              </div>
+          </div>
+          
+          <div class="form-group">
+              <label for="togroup">Add to group</label>
+
+              <div class="form-wrap">
+                  <select id="togroup" name="togroup">
+                      <option value="group1">group1</option>
+                      <option value="group2">group2</option>
+                      <option value="group3">group3</option>
+                      <option value="group4">group4</option>
+                  </select>
               </div>
           </div>
           
