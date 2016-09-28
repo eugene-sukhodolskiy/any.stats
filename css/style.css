@@ -21,14 +21,15 @@
 
 header{
     
-    width: 390px;
+    width: 393px;
     position: fixed;
     background-color: #1565C0;
-    height: 50px;
+    height: 55px;
     top: 0;
     left: 0;
     z-index: 100;
     box-shadow: 0 0 2px black;
+    padding-top: 5px;
    
 }
 
@@ -41,7 +42,7 @@ header .logo{
     width: 200px;
     margin-left: -100px;
     text-align: center;
-    top: 6px;
+    margin-top: 6px;
     
 }
 
@@ -148,6 +149,34 @@ header button.back-screen{
 
 #groups{
     display: none;
+}
+
+#study{
+    display: none;
+}
+
+
+/*    */
+
+input[type="text"]{
+    
+    border: 0;
+    border-bottom: 1px solid grey;
+    padding: 5px 0;
+    font-size: 20px;
+    
+}
+
+.form-group{
+    
+    margin-left: 20px;
+    margin-top: 30px;
+}
+
+label{
+    
+    font-size: 20px;
+    
 }
 
 

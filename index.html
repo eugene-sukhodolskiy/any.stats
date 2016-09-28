@@ -5,6 +5,7 @@
     <title>Stats.info</title>
     <meta name="viewport" content="max-width=480, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/add.new.study.css">
     
     <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="js/database.js"></script>
@@ -101,6 +102,43 @@
 
           <div class="nav-btn" data-del="group"></div>
 
+      </section>
+      
+      
+      <section class="page" id="addnewstudy">
+         
+         <h1 class="page-name">Add new study</h1>
+          
+          <div class="form-group">
+              <label for="studyName">Name</label>
+              <input type="text" id="studyName" name="studyName">
+          </div>
+          
+          <div class="form-group">
+              <label for="studyUnit">Unit</label>
+              <input type="text" id="studyUnit" name="studyUnit">
+          </div>
+          
+          <div class="form-group">
+              <label for="telegramNotif">Telegram notification</label>
+              <input type="checkbox" id="telegramNotif" name="telegramNotif">
+          </div>
+          
+          <div class="form-group">
+              <label for="emailNotif">E-mail notification</label>
+              <input type="checkbox" id="emailNotif" name="emailNotif">
+          </div>
+          
+          <div class="form-group">
+              <label for="periodicity">Periodicity of notif.</label>
+              <select id="periodicity" name="pereodicity">
+                  <option value="everyday">Every day</option>
+                  <option value="everyweek">Every week</option>
+                  <option value="everymonth">Every month</option>
+                  <option value="everyyear">Every year</option>
+              </select>
+          </div>
+          
       </section>
     
     </div>
