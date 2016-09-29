@@ -77,9 +77,14 @@ header button.back-screen{
 
 .page{
     
+    opacity: 0;
     width: 100%;
     height: auto;
     margin-top: 50px;
+    transition-duration: .2s;
+    position: absolute;
+    top: auto;
+    left: auto;
     
 }
 

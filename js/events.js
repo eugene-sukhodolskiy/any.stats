@@ -2,13 +2,13 @@
 
 Nav.events.open.settings = function(param){
     
-    $('#settings').css('display','block');
+    showPage('settings');
     
 }
 
 Nav.events.close.settings = function(param){
     
-    Nav.hiddenAll();
+    hiddenPage();
     
 }
 
@@ -23,7 +23,7 @@ Nav.events.open.groups = function(param){
        
         connect.executeSql("SELECT * FROM groups",[],function(connect,res){
             
-            console.log(res);
+//            console.log(res);
             
             var html = '';
             
@@ -41,7 +41,7 @@ Nav.events.open.groups = function(param){
             
             $('#groups .container').html(html);
             
-            $('#groups').css({'display': 'block'});
+            showPage('groups');
             
             Funcs.init('#groups .container');
             
@@ -57,7 +57,7 @@ Nav.events.close.groups = function(param){
     
     $('[data-back]').css('display','block');
     
-    Nav.hiddenAll();
+    hiddenPage();
     
 }
 
@@ -65,13 +65,13 @@ Nav.events.close.groups = function(param){
 
 Nav.events.open.addnewgroup = function(param){
 
-    $('#addnewgroup').css({'display': 'block'});
+    showPage('addnewgroup');
 
 }
 
 Nav.events.close.addnewgroup = function(param){
 
-    Nav.hiddenAll();
+    hiddenPage();
 
 }
 
@@ -83,7 +83,7 @@ Nav.events.open.study = function(param){
 
         connect.executeSql("SELECT * FROM study WHERE id_group=?",[param],function(connect,res){
 
-            console.log(res);
+//            console.log(res);
 
             var html = '';
 
@@ -101,7 +101,7 @@ Nav.events.open.study = function(param){
 
             $('#study .container').html(html);
 
-            $('#study').css({'display': 'block'});
+            showPage('study');
             
             $('#study [data-new="study"]').attr('data-param',param);
 
@@ -118,22 +118,26 @@ Nav.events.open.study = function(param){
 
 Nav.events.close.study = function(param){
 
-    Nav.hiddenAll();
+    hiddenPage();
 
 }
 
 // Add new study //
 
 Nav.events.open.addnewstudy = function(param){
+    
+    // param is id //
 
-    $('#addnewstudy').css('display','block');
+    showPage('addnewstudy');
+    
+    $('#addnewstudy [data-func="saveNewStudy"]').attr('data-param',param);
 
 }
 
 
 Nav.events.close.addnewstudy = function(param){
 
-    Nav.hiddenAll();
+    hiddenPage();
 
 }
 

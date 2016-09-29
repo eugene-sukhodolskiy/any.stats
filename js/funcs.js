@@ -73,6 +73,26 @@ Funcs.do.delStudy = function(id){
     
 }
 
+function showPage(page){
+    
+    $('#' + page).css({'display': 'block'});
+    
+    setTimeout(function(){ 
+        
+        $('#' + page).css('opacity', 1);
+        
+    },10);
+    
+}
+
+function hiddenPage(){
+    
+    $('.page').css({'opacity': 0});
+    
+    Nav.hiddenAll();
+    
+}
+
 
 
 
