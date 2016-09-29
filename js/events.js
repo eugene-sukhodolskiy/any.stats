@@ -29,11 +29,11 @@ Nav.events.open.groups = function(param){
             
             for(var i=0;i<res.rows.length;i++){
                 
-                html += '<div class="nav-btn" data-id="' + res.rows[i].id + '">';
+                html += '<div class="nav-btn" data-id="' + res.rows.item(i).id + '">';
                 
-                html += '<button class="nav-btn-del" data-func="delGroup" data-param="' + res.rows[i].id + '">+</button>';
+                html += '<button class="nav-btn-del" data-func="delGroup" data-param="' + res.rows.item(i).id + '">+</button>';
 
-                html += '<div class="name">' + res.rows[i].name + '</div>';
+                html += '<div class="name">' + res.rows.item(i).name + '</div>';
 
                 html += '</div>';
                 
