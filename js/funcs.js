@@ -31,7 +31,7 @@ Funcs.do.saveNewGroup = function(param){
 
     DB.connect.transaction(function(connect){
         
-        connect.executeSql("INSERT INTO groups (id,name,timestamp) VALUES (NULL,?,?)",[name,Date.now()], function(res){
+        connect.executeSql("INSERT INTO groups (id,name,timestamp) VALUES (NULL,?,?)",[name,new Date().getTime()], function(res){
             
             Nav.back();
             
@@ -72,6 +72,42 @@ Funcs.do.delStudy = function(id){
     });
     
 }
+
+Funcs.do.saveNewStudy = function(id){
+    
+    var name = $('#studyName').prop('value');
+    
+    var unit = $('#studyUnit').prop('value');
+    
+    var telegramNotif = ($('#telegramNotif').prop('checked')) ? 1 : 0;
+
+    var emailNotif = ($('#emailNotif').prop('checked')) ? 1 : 0;
+    
+    var period = $('#periodicity').prop('value');
+    
+    DB.connect.transaction(function(connect){
+        
+        connect.executeSql('INSERT INTO study (id_group,name,unit,telegramNotif,emailNotif,repiodicityNotif,timestamp) VALUES (?,?,?,?,?,?,?)',[id,name,unit,telegramNotif,emailNotif,period,new Date().getTime()],function(connect,res){
+            
+            Nav.back();
+            
+        },function(connect,err){
+            
+            console.log(err);
+            
+        });
+        
+    });
+    
+    
+}
+
+
+
+
+
+
+// system funcs //
 
 function showPage(page){
     
