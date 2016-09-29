@@ -53,6 +53,8 @@ var Nav = {
             
         }
         
+        console.log('Nav.goTo('+page+')');
+        
         return true;
         
     },
@@ -77,7 +79,49 @@ var Nav = {
         
         this.goTo(this.history.page[i],this.history.param[i],true);
         
+        console.log('Nav.back()');
+        
         return true;
+        
+    },
+    
+    initPages: function(container){
+        
+        container = container || "";
+        
+        $(container + ' [data-page]').click(function(){
+
+            var page = $(this).attr('data-page');
+
+            var param = $(this).attr('data-param');
+
+            Nav.goTo(page, param);
+
+        });
+        
+        console.log('Nav.initPages()');
+        
+    },
+    
+    initBackbtn: function(){
+        
+        $('[data-back]').click(function(){
+
+            Nav.back();
+
+        });
+
+        document.addEventListener("backbutton", function(){
+
+            if(Nav.back() == false){
+
+                navigator.app.exitApp();
+
+            }
+
+        }, true);
+        
+        console.log('Nav.initBackbtn()');
         
     },
     
@@ -86,41 +130,25 @@ var Nav = {
         if(this.currentPage == "")
             this.goTo(this.begin.page,this.begin.param);
         
-        $('[data-page]').click(function(){
-            
-            var page = $(this).attr('data-page');
-            
-            var param = $(this).attr('data-param');
-            
-            Nav.goTo(page, param);
-            
-        });
+        this.initPages();
         
-        $('[data-back]').click(function(){
-            
-            Nav.back();
-            
-        });
+        this.initBackbtn();
         
-        document.addEventListener("backbutton", function(){
-            
-            if(Nav.back() == false){
-                
-                navigator.app.exitApp();
-                
-            }
-            
-        }, true);
+        console.log('Nav.init()');
         
     },
     
     hiddenAll: function(){
+        
+        console.log('Nav.hiddenAll()');
         
         $('section.page').css('display','none');
         
     },
     
     reload: function(){
+        
+        console.log('Nav.reload()');
         
         if(this.currentPage != "" && this.events.close[this.currentPage] != "undefined")
             this.events.close[this.currentPage](this.currentParam);

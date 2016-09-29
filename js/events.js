@@ -45,7 +45,7 @@ Nav.events.open.groups = function(param){
             
             Funcs.init('#groups .container');
             
-            Nav.init();
+            Nav.initPages('#groups');
             
         });
         
@@ -105,9 +105,9 @@ Nav.events.open.study = function(param){
             
             $('#study [data-new="study"]').attr('data-param',param);
 
-            Funcs.init('#groups .container');
+            Funcs.init('#study .container');
 
-            Nav.init();
+            Nav.initPages('#study');
 
         });
 
