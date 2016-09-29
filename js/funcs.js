@@ -59,6 +59,20 @@ Funcs.do.delGroup = function(id){
     
 }
 
+Funcs.do.delStudy = function(id){
+    
+    DB.connect.transaction(function(connect){
+
+        connect.executeSql("DELETE FROM study WHERE id=?",[id], function(res){
+
+            Nav.reload();
+
+        });
+
+    });
+    
+}
+
 
 
 
