@@ -95,6 +95,13 @@ header button.back-screen{
     
 }
 
+.page-name small{
+    
+    font-size: 17px;
+    color: grey;
+    
+}
+
 .page .nav-btn{
     
     width: 165px;

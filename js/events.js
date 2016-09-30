@@ -89,7 +89,7 @@ Nav.events.open.study = function(param){
 
             for(var i=0;i<res.rows.length;i++){
 
-                html += '<div class="nav-btn" data-page="stats" data-param="' + res.rows.item(i).id + '">';
+                html += '<div class="nav-btn" data-page="showStats" data-param="' + res.rows.item(i).id + '">';
 
                 html += '<button class="nav-btn-del" data-func="delStudy" data-param="' + res.rows.item(i).id + '">+</button>';
 
@@ -139,6 +139,70 @@ Nav.events.close.addnewstudy = function(param){
 
     hiddenPage();
 
+}
+
+// addStat //
+
+Nav.events.open.addStat = function(param){
+    
+    DB.connect.transaction(function(connect){
+        
+        connect.executeSql("SELECT `name` FROM `study` WHERE `id`=?",[param],function(connect,res){
+            $('#addStat .page-name small').html('"'+res.rows.item(0).name+'"');
+        });
+        
+    });
+    
+    $('[data-func="saveStat"]').attr('data-param',param);
+    
+    showPage('addStat');
+    
+}
+
+Nav.events.close.addStat = function(param){
+
+    hiddenPage();
+
+}
+
+
+// showStats //
+
+Nav.events.open.showStats = function(id_study){
+    
+    DB.connect.transaction(function(c){
+        
+        c.executeSql("SELECT * FROM entry WHERE id_study=?",[id_study],function(c,res){
+            
+            c.executeSql("SELECT name FROM study WHERE id=?",[id_study],function(c,res){
+                
+                $("#showStats .page-name").html(res.rows.item(0).name);
+                
+                showPage('showStats');
+                
+            });
+            
+            
+            
+            console.log(res);
+            
+            
+            
+            
+        }, function(c,err){
+            
+            console.log(err);
+            
+        });
+        
+    });
+    
+}
+
+Nav.events.close.showStats = function(){
+    
+    hiddenPage();
+    
 }
 
 

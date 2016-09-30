@@ -27,6 +27,14 @@ Funcs.do.saveNewGroup = function(param){
     
     var name = $('#groupName').prop('value');
     
+    if(name == ''){
+        
+        $('#groupName').css('border-color','red');
+        
+        return false;
+        
+    }
+    
     $('#groupName').prop('value','');
 
     DB.connect.transaction(function(connect){
@@ -85,6 +93,22 @@ Funcs.do.saveNewStudy = function(id){
     
     var period = $('#periodicity').prop('value');
     
+    if(name == ''){
+        
+        $('#studyName').css('border-color','red'); 
+        
+        return false;
+        
+    }
+    
+    if(unit == ''){
+
+        $('#studyUnit').css('border-color','red'); 
+        
+        return false;
+
+    }
+    
     DB.connect.transaction(function(connect){
         
         connect.executeSql('INSERT INTO study (id_group,name,unit,telegramNotif,emailNotif,repiodicityNotif,timestamp) VALUES (?,?,?,?,?,?,?)',[id,name,unit,telegramNotif,emailNotif,period,new Date().getTime()],function(connect,res){
@@ -102,12 +126,52 @@ Funcs.do.saveNewStudy = function(id){
     
 }
 
+Funcs.do.saveStat = function(id){
+    
+    var amount = parseInt($('#amount').prop('value'));
+    
+    if(isNaN(amount)){
+        
+        $('#amount').css('border-color','red');
+        
+        return false;
+        
+    }
+    
+    DB.connect.transaction(function(connect){
+        
+        connect.executeSql("INSERT INTO entry (value,id_study,timestamp) VALUES (?,?,?)",[amount,id,new Date().getTime()], function(connect, res){
+            
+            Nav.back();
+            
+        }, function(connect, err){
+            
+            console.log(err);
+            
+        });
+        
+    });
+    
+}
 
 
 
 
 
 // system funcs //
+
+function inpFocus(){
+    
+    $('input[type="text"]').focus(function(){
+        $(this).css('border-color', 'black');
+    });
+    
+}
+
+
+
+
+// vis/hid //
 
 function showPage(page){
     
