@@ -1,3 +1,5 @@
+var graph = {};
+
 $(document).ready(function(){
     
     DB.open("Test5","0.1",9000000);
@@ -12,5 +14,7 @@ $(document).ready(function(){
     Funcs.init();
     
     inpFocus();
+    
+    graph = getGraph({"canvas": 'main-canvas',"size": 10});
     
 });

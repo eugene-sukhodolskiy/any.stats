@@ -170,9 +170,13 @@ Nav.events.close.addStat = function(param){
 
 Nav.events.open.showStats = function(id_study){
     
+    $('[data-page="addStat"]').attr('data-param',id_study);
+    
+    graph.clear();
+    
     DB.connect.transaction(function(c){
         
-        c.executeSql("SELECT * FROM entry WHERE id_study=?",[id_study],function(c,res){
+        c.executeSql("SELECT * FROM entry WHERE id_study=? ORDER BY timestamp DESC",[id_study],function(c,res){
             
             c.executeSql("SELECT name FROM study WHERE id=?",[id_study],function(c,res){
                 
@@ -182,11 +186,80 @@ Nav.events.open.showStats = function(id_study){
                 
             });
             
-            
-            
             console.log(res);
             
+            var points = [];
             
+            var ft;
+            
+            var sum = 0;
+            
+            var time = 60000;
+            
+            var flag = 1;
+            
+            var n = 1;
+            
+            for(var i=0;i<res.rows.length;i++){
+                
+                flag = 0;
+                
+                if(sum == 0){
+                    
+                    sum = res.rows.item(i).value;
+                    
+                    ft = res.rows.item(i).timestamp;
+                    
+                    continue;
+                    
+                }
+                
+                if(ft - res.rows.item(i).timestamp <= time){
+                    
+                    sum += res.rows.item(i).value;
+                    
+                }else{
+                    
+                    var p = [n++, sum, ft];
+                    
+                    points[points.length] = p;
+                    
+                    sum = res.rows.item(i).value;
+                    
+                    ft = res.rows.item(i).timestamp;
+                    
+                    flag = 1;
+                    
+                }
+                
+            }
+            
+            if(flag == 0){
+                
+                var p = [n, sum, ft];
+
+                points[points.length] = p;
+                
+            }
+            
+            console.log(points);
+            
+            var max = 0;
+            
+            for(var i=0;i<points.length;i++){
+                
+                if(points[i][1] > max)
+                    max = points[i][1];
+                
+            }
+            
+            var height = parseInt($('#main-canvas').attr('height'));
+            
+            graph.sizeY = (height - height / 3) / max;
+            
+            graph.set([points]);
+            
+            graph.draw();
             
             
         }, function(c,err){
