@@ -251,6 +251,18 @@ Nav.events.open.showStats = function(id_study){
                 if(points[i][1] > max)
                     max = points[i][1];
                 
+                var d = new Date(points[i][2]);
+                
+                points[i][3] = d.getFullYear();
+                
+                points[i][3] += '/' + d.getMonth();
+                
+                points[i][3] += '/' + d.getDay() + ' ';
+                
+                points[i][3] += d.getHours();
+                
+                points[i][3] += ':' + d.getMinutes();
+                
             }
             
             var height = parseInt($('#main-canvas').attr('height'));

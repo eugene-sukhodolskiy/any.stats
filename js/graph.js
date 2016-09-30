@@ -71,7 +71,14 @@ function getGraph(param){
                         ctx[n].moveTo(x,y);
 
                     ctx[n].fillRect(x-3,y-3,6,6);
+                    
                     ctx[n].fillText(this.data[n][i][1], x - 6, y - 10);
+                    
+                    ctx[n].fillStyle = 'black';
+                    
+                    ctx[n].fillText(this.data[n][i][3], x - 20, height - 20);
+                    
+                    ctx[n].fillStyle = this.colors[n];
 
                 }
 
