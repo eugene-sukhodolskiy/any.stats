@@ -72,13 +72,39 @@ function getGraph(param){
 
                     ctx[n].fillRect(x-3,y-3,6,6);
                     
+                    
+                    // value
+                    
                     ctx[n].fillText(this.data[n][i][1], x - 6, y - 10);
+                    
+                    
+                    // date
                     
                     ctx[n].fillStyle = 'black';
                     
                     ctx[n].fillText(this.data[n][i][3], x - 20, height - 20);
                     
                     ctx[n].fillStyle = this.colors[n];
+                    
+                    
+                    
+                    // percent
+                    
+//                    if(i != this.data[n].length - 1){
+//                        
+//                        var x2 = parseInt(this.data[n][i+1][0] * this.sizeX);
+//
+//                        var y2 = parseInt(this.data[n][i+1][1] * this.sizeY + 20);
+//                        
+//                        var small = (this.data[n][i+1][1] < this.data[n][i][1]) ? this.data[n][i+1][1] : this.data[n][i][1];
+//                        
+//                        var big = (this.data[n][i+1][1] < this.data[n][i][1]) ? this.data[n][i][1] : this.data[n][i+1][1];
+//                        
+//                        var per = 100 - parseInt(small / big * 100);
+//                        
+//                        ctx[n].fillText(per + '%', x - ((x - x2) / 2), y - ((y2 - y) / 2));
+//                        
+//                    }
 
                 }
 
