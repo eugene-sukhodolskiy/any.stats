@@ -59,7 +59,7 @@ function getGraph(param){
 
                 ctx[n].beginPath();
                 
-                ctx[n].font = 'normal 18px sans-serif';
+                ctx[n].font = 'normal 20px sans-serif';
 
                 for(var i=0;i<this.data[n].length;i++){
 
@@ -88,7 +88,7 @@ function getGraph(param){
                     
                     ctx[n].fillStyle = 'black';
                     
-                    ctx[n].fillText(this.data[n][i][3], x - 20, height - 20);
+                    ctx[n].fillText(this.data[n][i][3], x - 50, height - 20);
                     
                     ctx[n].fillStyle = this.colors[n];
                     

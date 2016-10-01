@@ -235,7 +235,7 @@ button.ok{
     
     width: 390px;
     height: 430px;
-    overflow-x: scroll;
+    overflow-x: auto;
     
 }
 
