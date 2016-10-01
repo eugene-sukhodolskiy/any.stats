@@ -10,13 +10,17 @@ function getGraph(param){
 
         sizeY: param.size,
         
-        sizeX: 80,
+        sizeX: 120,
 
         colors: ['red','blue','green','grey','orange','black'],
 
         set: function(content){
 
             this.data = content;
+            
+            var w = this.sizeX * this.data[0].length + 200;
+            
+            $('#' + this.canvas).attr('width',w).css('width',(w / 2) + 'px');
 
         },
         
@@ -54,6 +58,8 @@ function getGraph(param){
                 ctx[n].fillStyle = this.colors[n];
 
                 ctx[n].beginPath();
+                
+                ctx[n].font = 'normal 18px sans-serif';
 
                 for(var i=0;i<this.data[n].length;i++){
 
@@ -70,12 +76,12 @@ function getGraph(param){
                     else
                         ctx[n].moveTo(x,y);
 
-                    ctx[n].fillRect(x-3,y-3,6,6);
+                    ctx[n].fillRect(x-6,y-6,12,12);
                     
                     
                     // value
                     
-                    ctx[n].fillText(this.data[n][i][1], x - 6, y - 10);
+                    ctx[n].fillText(this.data[n][i][1], x - 12, y - 20);
                     
                     
                     // date
