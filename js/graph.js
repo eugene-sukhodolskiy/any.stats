@@ -10,7 +10,7 @@ function getGraph(param){
 
         sizeY: param.size,
         
-        sizeX: 120,
+        sizeX: 180,
 
         colors: ['red','blue','green','grey','orange','black'],
 
