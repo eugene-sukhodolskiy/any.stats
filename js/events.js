@@ -31,11 +31,17 @@ Nav.events.open.groups = function(param){
                 
                 html += '<div class="nav-btn" data-page="study" data-param="' + res.rows.item(i).id + '">';
                 
-                html += '<button class="nav-btn-del" data-func="delGroup" data-param="' + res.rows.item(i).id + '">+</button>';
+                html += '<div class="no-click"></div>';
+                
+                html += '<button class="nav-btn-del" data-func="sQuestionDelGroup" data-param="' + res.rows.item(i).id + '"></button>';
+                
+                html += '<div class="askDel"><button data-func="delGroup" data-param="' + res.rows.item(i).id + '" class="yes"></button> <button data-func="hQuestionDelGroup" data-param="true" class="no"></button>';
+                
+                html += '<span>Deleted?</span></div>';
 
                 html += '<div class="name">' + res.rows.item(i).name + '</div>';
 
-                html += '</div>';
+                html += '</div> ';
                 
             }
             
@@ -90,8 +96,10 @@ Nav.events.open.study = function(param){
             for(var i=0;i<res.rows.length;i++){
 
                 html += '<div class="nav-btn" data-page="showStats" data-param="' + res.rows.item(i).id + '">';
+                
+                html += '<div class="no-click"></div>';
 
-                html += '<button class="nav-btn-del" data-func="delStudy" data-param="' + res.rows.item(i).id + '">+</button>';
+                html += '<button class="nav-btn-del" data-func="delStudy" data-param="' + res.rows.item(i).id + '"><span>+</span></button>';
 
                 html += '<div class="name">' + res.rows.item(i).name + '</div>';
 
@@ -186,15 +194,14 @@ Nav.events.open.showStats = function(id_study){
                 
             });
             
-            console.log(res);
-            
+
             var points = [];
             
             var ft;
             
             var sum = 0;
             
-            var time = 60000;
+            var time = parseInt($('#showStats select[name="period"]').prop('value'));
             
             var flag = 1;
             
@@ -267,7 +274,7 @@ Nav.events.open.showStats = function(id_study){
             
             var height = parseInt($('#main-canvas').attr('height'));
             
-            graph.sizeY = (height - height / 3) / max;
+            graph.sizeY = (height - height / 4) / max;
             
             graph.set([points]);
             

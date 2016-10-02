@@ -20,6 +20,8 @@ function getGraph(param){
             
             var w = this.sizeX * this.data[0].length + 200;
             
+            if(w < 420) w = 420;
+            
             $('#' + this.canvas).attr('width',w).css('width',(w / 2) + 'px');
 
         },
@@ -50,26 +52,45 @@ function getGraph(param){
                 ctx[n] = document.getElementById(this.canvas);
 
                 var height = parseInt($('#'+this.canvas).attr('height'));
+                
+                var width = parseInt($('#'+this.canvas).attr('width'));
 
                 ctx[n] = ctx[n].getContext('2d');
-
-                ctx[n].strokeStyle = this.colors[n];
-
-                ctx[n].fillStyle = this.colors[n];
-
+                
+                
+                
+                // downline (mark)
+                
                 ctx[n].beginPath();
                 
+                ctx[n].strokeStyle = 'black';
+
+                ctx[n].fillStyle = 'black';
+                
+                ctx[n].moveTo(0,height - 45);
+                
+                ctx[n].lineTo(width,height - 45);
+                
+                ctx[n].stroke();
+                
+                // end downline
+                
                 ctx[n].font = 'normal 20px sans-serif';
+                
 
                 for(var i=0;i<this.data[n].length;i++){
 
                     var x = parseInt(this.data[n][i][0] * this.sizeX);
 
-                    var y = parseInt(this.data[n][i][1] * this.sizeY + 20);
+                    var y = parseInt(this.data[n][i][1] * this.sizeY  + 70);
 
                     y = height - y;
 
 //                    console.log(x+':'+y);
+                    
+                    ctx[n].strokeStyle = this.colors[n];
+
+                    ctx[n].fillStyle = this.colors[n];
 
                     if(i)
                         ctx[n].lineTo(x,y);
@@ -83,12 +104,17 @@ function getGraph(param){
                     
                     ctx[n].fillText(this.data[n][i][1], x - 12, y - 20);
                     
+                    // mark
+                    
+                    ctx[n].fillText('|', x-2, height - 50);
+                    
                     
                     // date
                     
                     ctx[n].fillStyle = 'black';
                     
-                    ctx[n].fillText(this.data[n][i][3], x - 50, height - 20);
+                    ctx[n].fillText(this.data[n][i][3], x - 70, height - 20);
+                    
                     
                     ctx[n].fillStyle = this.colors[n];
                     
@@ -111,6 +137,7 @@ function getGraph(param){
 //                        ctx[n].fillText(per + '%', x - ((x - x2) / 2), y - ((y2 - y) / 2));
 //                        
 //                    }
+                    
 
                 }
 

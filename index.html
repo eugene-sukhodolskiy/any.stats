@@ -35,45 +35,14 @@
        
        <h1 class="page-name">Groups</h1>
         
-        <div class="container">
+        <div class="container"></div>
         
-            <div class="nav-btn" data-id="1">
-
-                <button class="nav-btn-del" data-id="1">+</button>
-
-                <div class="name">Life (2)</div>
-
-            </div>
-
-            <div class="nav-btn" data-id="1">
-
-                <button class="nav-btn-del" data-id="1">+</button>
-
-                <div class="name">Weather (1)</div>
-
-            </div>
-
-            <div class="nav-btn" data-id="1">
-
-                <button class="nav-btn-del" data-id="1">+</button>
-
-                <div class="name">Sports (0)</div>
-
-            </div>
-
-            <div class="nav-btn" data-id="1">
-
-                <button class="nav-btn-del" data-id="1">+</button>
-
-                <div class="name">Scool (3)</div>
-
-            </div>
-        
+        <div class="nav-btn" data-new="group" data-page="addnewgroup" data-param="true">
         </div>
         
-        <div class="nav-btn" data-new="group" data-page="addnewgroup" data-param="true"></div>
-        
-        <div class="nav-btn" data-del="group"></div>
+        <div class="nav-btn" data-del="group" data-func="showDelBtn" data-param="groups">
+            <button class="nav-btn-del"></button>
+        </div>
         
         
     </section>
@@ -113,9 +82,11 @@
           </div>
 
 
-          <div class="nav-btn" data-new="study" data-page="addnewstudy" data-param="true"></div>
+          <div class="nav-btn" data-new="study" data-page="addnewstudy" data-param="true">
+              <div class="no-click"></div>
+          </div>
 
-          <div class="nav-btn" data-del="study"></div>
+          <div class="nav-btn" data-del="study"><div class="no-click"></div></div>
 
       </section>
       
@@ -254,6 +225,14 @@
           
           <h1 class="page-name">STATS</h1>
           
+          <div class="search">
+             
+              <input type="text" name="search" placeholder="Search on date">
+              
+              <button data-func="search"></button>
+              
+          </div>
+          
           <div class="canvas-container">
              
               <canvas id="main-canvas" height="800"></canvas>
@@ -261,6 +240,15 @@
           </div>
           
           <div class="nav-btn" data-new="stat" data-page="addStat" data-param="true"></div>
+          <select name="period">
+              
+              <option value="600000" selected data-func="setPeriod" data-param="true">Minute</option>
+              <option value="3600000" data-func="setPeriod" data-param="true">Hour</option>
+              <option value="86400000" data-func="setPeriod" data-param="true">Day</option>
+              <option value="2592000000" data-func="setPeriod" data-param="true">Month</option>
+              <option value="31536000000" data-func="setPeriod" data-param="true">Year</option>
+              
+          </select>
           
       </section>
     

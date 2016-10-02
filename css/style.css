@@ -106,12 +106,17 @@ header button.back-screen{
     
     width: 165px;
     margin: 0 0 20px 20px;
-    height: 180px;
-    background-color: #1E88E5;
+    height: 120px;
     display: inline-block;
     transition-duration: .3s;
     vertical-align: top;
     
+}
+
+.page .container .nav-btn{
+
+    background-color: #1E88E5;
+
 }
 
 .nav-btn .name{
@@ -120,7 +125,20 @@ header button.back-screen{
     text-align: center;
     font-size: 25px;
     color: white;
-    margin-top: 75px;
+    margin-top: 45px;
+    transition-duration: .3s;
+    
+}
+
+.page .no-click{
+    
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    left: auto;
+    top: auto;
+    z-index: 2;
+    display: none;
     
 }
 
@@ -130,26 +148,88 @@ header button.back-screen{
     left: auto;
     top: auto;
     display: block;
-    width: 40px;
-    height: 40px;
-    background: #E53935;
-    color: white;
-    border-radius: 100%;
+    width: 165px;
+    height: 120px;
+    background-image: url(../imgs/delete.png);
+    background-size: 20px auto;
+    background-position: 135px 10px;
+    background-repeat: no-repeat;
+    background-color: transparent;
     transition-duration: .3s;
-    transform: rotate(45deg);
     border: 0;
-    font-size: 30px;
-    margin: -10px 0px 0px 135px;
+    opacity: 0;
+    display: none;
     
 }
+
+.page .nav-btn .askDel{
+    
+    position: absolute;
+    left: auto;
+    top: auto;
+    display: block;
+    width: 165px;
+    height: 120px;
+    background: transparent;
+    transition-duration: .3s;
+    border: 0;
+    font-size: 20px;
+    text-align: center;
+    color: white;
+    opacity: 0;
+    display: none;
+    z-index: 3;
+    
+}
+
+.page .nav-btn .askDel .yes,
+.page .nav-btn .askDel .no{
+    
+    background-image: url('../imgs/check.png');
+    background-size: 80% auto;
+    background-repeat: no-repeat;
+    background-position: center center;
+    display: block;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: auto;
+    top: auto;
+    margin: 0px 0px 0px 0px;
+    border: 0;
+    background-color: transparent;
+    
+}
+
+.page [data-del] .nav-btn-del{
+    
+    background-image: url('../imgs/close.png');
+    
+}
+
+.page .nav-btn .askDel .no{
+
+    background-image: url('../imgs/close.png');
+
+    margin: 0px 0px 0px 125px;
+
+}
+
+.page .nav-btn .askDel span{
+    font-size: 16px;
+    margin-top: 15px;
+    display: block;
+}
+
+
 
 [data-new],
 [data-del]{
     
     background: url('../imgs/plus.png') no-repeat;
     background-position: center center;
-    background-color: #E0E0E0 !important;
-    background-size: 30% 30%;
+    background-color: #E0E0E0;
+    background-size: 30% auto;
     
 }
 

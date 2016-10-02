@@ -17,4 +17,10 @@ $(document).ready(function(){
     
     graph = getGraph({"canvas": 'main-canvas',"size": 10});
     
+    $('#showStats select[name="period"]').change(function(){
+        
+        Nav.reload();
+        
+    });
+    
 });

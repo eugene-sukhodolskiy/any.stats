@@ -12,7 +12,7 @@ var Funcs = {
             
             var param = $(this).attr('data-param');
             
-            Funcs.do[funcname](param);
+            Funcs.do[funcname](param,this);
             
         });
         
@@ -23,7 +23,7 @@ var Funcs = {
 
 Funcs.do.saveNewGroup = function(param){
     
-    console.log('hell');
+//    console.log('hell');
     
     var name = $('#groupName').prop('value');
     
@@ -53,13 +53,115 @@ Funcs.do.saveNewGroup = function(param){
     
 }
 
+Funcs.do.showDelBtn = function(page){
+    
+    page = '#' + page;
+    
+    $(page + ' .container .nav-btn').css('background','#E53935').unbind();
+    
+    $('[data-page]').unbind();
+        
+    $(page + ' .nav-btn-del').css('display','block');
+    
+    setTimeout(function(){
+        
+        $(page + ' .nav-btn-del').css('opacity','1');
+        
+    },1);
+    
+    $(page + ' [data-func="showDelBtn"]').css('background-color','#ccc').attr('data-func','hiddenDelBtn');
+    
+}
+
+Funcs.do.hiddenDelBtn = function(page){
+    
+    page = '#' + page;
+
+    $(page + ' .container .nav-btn').css('background','#1E88E5');
+    
+    Nav.initPages();
+    
+    $(page + ' .nav-btn-del').css('opacity','0');
+
+    setTimeout(function(){
+        
+        $(page + ' .nav-btn-del').css('display','none');
+
+    },200);
+    
+    $(page + ' [data-func="hiddenDelBtn"]').css('background-color','#E0E0E0').attr('data-func','showDelBtn');
+    
+    var el = $('.page .no:visible',0);
+    
+    Funcs.do.hQuestionDelGroup(true,el);
+    
+}
+
+Funcs.do.sQuestionDelGroup = function(id,t){
+    
+    $('#groups .container .nav-btn').attr('data-flag','animation');
+    
+    $(t).parent().removeAttr('data-flag');
+    
+    $('#groups .container [data-flag="animation"]').css('opacity','.5');
+    
+    $(t).parent().find('.name').css({'margin-top': '65px','opacity': '.6','font-size': '18px'});
+    
+    var askDel = $(t).parent().find('.askDel');
+    
+    $(askDel).css('display','block');
+    
+    setTimeout(function(){
+        
+        $(askDel).css('opacity',1);
+        
+    },1);
+    
+    $('.page .no-click').css('display','block');
+    
+    $(t).parent().find('.nav-btn-del').css('opacity',0);
+    
+}
+
+Funcs.do.hQuestionDelGroup = function(id,t){
+
+    $('#groups .container [data-flag="animation"]').css('opacity','1').removeAttr('data-flag');
+    
+    $(t).parent().parent().find('.name').removeAttr('style');
+
+    var askDel = $(t).parent().parent().find('.askDel');
+
+    $(askDel).css('opacity',0);
+
+    setTimeout(function(){
+
+        $(askDel).css('display','none');
+
+    },200);
+    
+    $('.page .no-click').css('display','none');
+    
+    $(t).parent().parent().find('.nav-btn-del').css('opacity',1);
+
+}
+
 Funcs.do.delGroup = function(id){
     
     DB.connect.transaction(function(connect){
 
         connect.executeSql("DELETE FROM groups WHERE id=?",[id], function(res){
 
-            Nav.reload();
+            var el = $('.page .no:visible',0);
+
+            Funcs.do.hQuestionDelGroup(true,el);
+            
+            $('#groups .container [data-param="' + id + '"]').css('opacity','0');
+            
+            setTimeout(function(){
+                
+                $('#groups .container [data-param="' + id + '"]').css('display','none');
+                
+            },200);
 
         });
 
@@ -153,6 +255,8 @@ Funcs.do.saveStat = function(id){
     });
     
 }
+
+
 
 
 
