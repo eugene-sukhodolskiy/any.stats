@@ -34,5 +34,6 @@
     <preference name="StatusBarBackgroundColor" value="#1565C0" />
     
     <plugin name="com.badrit.backbutton" spec="0.1.0" source="pgb" />
+    <activity hardwareAccelerated="true" />
     
 </widget>
