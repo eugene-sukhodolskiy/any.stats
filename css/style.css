@@ -81,7 +81,7 @@ header button.back-screen{
     width: 100%;
     height: auto;
     margin-top: 50px;
-    transition-duration: .3s;
+    -webkit-transition-duration: .3s;
     position: absolute;
     top: auto;
     left: auto;
@@ -108,7 +108,7 @@ header button.back-screen{
     margin: 0 0 20px 20px;
     height: 120px;
     display: inline-block;
-    transition-duration: .3s;
+    -webkit-transition-duration: .3s;
     vertical-align: top;
     
 }
@@ -126,7 +126,7 @@ header button.back-screen{
     font-size: 25px;
     color: white;
     margin-top: 45px;
-    transition-duration: .3s;
+    -webkit-transition-duration: .3s;
     
 }
 
@@ -155,7 +155,7 @@ header button.back-screen{
     background-position: 135px 10px;
     background-repeat: no-repeat;
     background-color: transparent;
-    transition-duration: .3s;
+    -webkit-transition-duration: .3s;
     border: 0;
     opacity: 0;
     display: none;
@@ -171,7 +171,7 @@ header button.back-screen{
     width: 165px;
     height: 120px;
     background: transparent;
-    transition-duration: .3s;
+    -webkit-transition-duration: .3s;
     border: 0;
     font-size: 20px;
     text-align: center;
@@ -331,7 +331,7 @@ button.ok{
     width: inherit;
     height: 10%;
     background-color: #1976D2;
-    transition-duration: .3s;
+    -webkit-transition-duration: .3s;
     opacity: 0;
     top: 60px;
     left: 0;
