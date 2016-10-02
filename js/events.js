@@ -33,9 +33,9 @@ Nav.events.open.groups = function(param){
                 
                 html += '<div class="no-click"></div>';
                 
-                html += '<button class="nav-btn-del" data-func="sQuestionDelGroup" data-param="' + res.rows.item(i).id + '"></button>';
+                html += '<button class="nav-btn-del" data-func="sQuestionDelGroups" data-param="' + res.rows.item(i).id + '"></button>';
                 
-                html += '<div class="askDel"><button data-func="delGroup" data-param="' + res.rows.item(i).id + '" class="yes"></button> <button data-func="hQuestionDelGroup" data-param="true" class="no"></button>';
+                html += '<div class="askDel"><button data-func="delGroup" data-param="' + res.rows.item(i).id + '" class="yes"></button> <button data-func="hQuestionDelGroups" data-param="true" class="no"></button>';
                 
                 html += '<span>Deleted?</span></div>';
 
@@ -98,8 +98,12 @@ Nav.events.open.study = function(param){
                 html += '<div class="nav-btn" data-page="showStats" data-param="' + res.rows.item(i).id + '">';
                 
                 html += '<div class="no-click"></div>';
+                
+                html += '<button class="nav-btn-del" data-func="sQuestionDelStudy" data-param="' + res.rows.item(i).id + '"></button>';
 
-                html += '<button class="nav-btn-del" data-func="delStudy" data-param="' + res.rows.item(i).id + '"><span>+</span></button>';
+                html += '<div class="askDel"><button data-func="delStudy" data-param="' + res.rows.item(i).id + '" class="yes"></button> <button data-func="hQuestionDelStudy" data-param="true" class="no"></button>';
+
+                html += '<span>Deleted?</span></div>';
 
                 html += '<div class="name">' + res.rows.item(i).name + '</div>';
 

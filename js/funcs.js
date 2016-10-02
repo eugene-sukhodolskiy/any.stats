@@ -22,9 +22,7 @@ var Funcs = {
 
 
 Funcs.do.saveNewGroup = function(param){
-    
-//    console.log('hell');
-    
+        
     var name = $('#groupName').prop('value');
     
     if(name == ''){
@@ -93,76 +91,69 @@ Funcs.do.hiddenDelBtn = function(page){
     
     var el = $('.page .no:visible',0);
     
-    Funcs.do.hQuestionDelGroup(true,el);
+    
+    var str = (new String(page)).split('#')[1];
+
+    var letter = (new String(str[0])).toUpperCase();
+
+    str = str.split(str[0])[1];
+    
+    var funcname = 'hQuestionDel' + letter + str;
+    
+    console.log(funcname);
+    
+    Funcs.do[funcname](true,el);
     
 }
 
-Funcs.do.sQuestionDelGroup = function(id,t){
+Funcs.do.sQuestionDelGroups = function(id,t){
     
-    $('#groups .container .nav-btn').attr('data-flag','animation');
-    
-    $(t).parent().removeAttr('data-flag');
-    
-    $('#groups .container [data-flag="animation"]').css('opacity','.5');
-    
-    $(t).parent().find('.name').css({'margin-top': '65px','opacity': '.6','font-size': '18px'});
-    
-    var askDel = $(t).parent().find('.askDel');
-    
-    $(askDel).css('display','block');
-    
-    setTimeout(function(){
-        
-        $(askDel).css('opacity',1);
-        
-    },1);
-    
-    $('.page .no-click').css('display','block');
-    
-    $(t).parent().find('.nav-btn-del').css('opacity',0);
+    sQuestionDel(id,t,'#groups');
     
 }
 
-Funcs.do.hQuestionDelGroup = function(id,t){
+Funcs.do.hQuestionDelGroups = function(id,t){
 
-    $('#groups .container [data-flag="animation"]').css('opacity','1').removeAttr('data-flag');
-    
-    $(t).parent().parent().find('.name').removeAttr('style');
-
-    var askDel = $(t).parent().parent().find('.askDel');
-
-    $(askDel).css('opacity',0);
-
-    setTimeout(function(){
-
-        $(askDel).css('display','none');
-
-    },200);
-    
-    $('.page .no-click').css('display','none');
-    
-    $(t).parent().parent().find('.nav-btn-del').css('opacity',1);
+    hQuestionDel(id,t,'#groups');
 
 }
+
+Funcs.do.sQuestionDelStudy = function(id,t){
+
+    sQuestionDel(id,t,'#study');
+
+}
+
+Funcs.do.hQuestionDelStudy = function(id,t){
+
+    hQuestionDel(id,t,'#study');
+
+}
+
 
 Funcs.do.delGroup = function(id){
     
     DB.connect.transaction(function(connect){
 
-        connect.executeSql("DELETE FROM groups WHERE id=?",[id], function(res){
-
-            var el = $('.page .no:visible',0);
-
-            Funcs.do.hQuestionDelGroup(true,el);
+        connect.executeSql("SELECT id FROM study WHERE id_group=?",[id], function(c,res){
             
-            $('#groups .container [data-param="' + id + '"]').css('opacity','0');
+            for(var i=0;i<res.rows.length;i++){
+                
+                studyDelFromDB(res.rows.item(i).id);
+                
+            }
             
-            setTimeout(function(){
+            
+            c.executeSql("DELETE FROM groups WHERE id=?",[id],function(c,res){
                 
-                $('#groups .container [data-param="' + id + '"]').css('display','none');
+                delFromHTML(id,'#groups');
                 
-            },200);
+            });
 
+        }, function(c,err){
+            
+            console.log(err);
+            
         });
 
     });
@@ -171,15 +162,9 @@ Funcs.do.delGroup = function(id){
 
 Funcs.do.delStudy = function(id){
     
-    DB.connect.transaction(function(connect){
-
-        connect.executeSql("DELETE FROM study WHERE id=?",[id], function(res){
-
-            Nav.reload();
-
-        });
-
-    });
+    studyDelFromDB(id);
+    
+    delFromHTML(id,'#study');
     
 }
 
@@ -258,44 +243,6 @@ Funcs.do.saveStat = function(id){
 
 
 
-
-
-
-
-// system funcs //
-
-function inpFocus(){
-    
-    $('input[type="text"]').focus(function(){
-        $(this).css('border-color', 'black');
-    });
-    
-}
-
-
-
-
-// vis/hid //
-
-function showPage(page){
-    
-    $('#' + page).css({'display': 'block'});
-    
-    setTimeout(function(){ 
-        
-        $('#' + page).css('opacity', 1);
-        
-    },10);
-    
-}
-
-function hiddenPage(){
-    
-    $('.page').css({'opacity': 0});
-    
-    Nav.hiddenAll();
-    
-}
 
 
 

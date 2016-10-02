@@ -95,8 +95,6 @@ var Nav = {
 
             var param = $(this).attr('data-param');
             
-            console.log('fuck');
-
             Nav.goTo(page, param);
 
         });

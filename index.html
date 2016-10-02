@@ -10,6 +10,7 @@
     
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
     <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="js/lib.js"></script>
     <script type="text/javascript" src="js/database.js"></script>
     <script type="text/javascript" src="js/graph.js"></script>
     <script type="text/javascript" src="js/nav.js"></script>
@@ -53,40 +54,16 @@
 
           <h1 class="page-name">Study</h1>
           
-          <div class="container">
-
-              <div class="nav-btn" data-id="1">
-
-                  <button class="nav-btn-del" data-id="1">+</button>
-
-                  <div class="name">Bla</div>
-
-              </div>
-
-              <div class="nav-btn" data-id="2">
-
-                  <button class="nav-btn-del" data-id="2">+</button>
-
-                  <div class="name">aNY Bla</div>
-
-              </div>
-
-              <div class="nav-btn" data-id="3">
-
-                  <button class="nav-btn-del" data-id="3">+</button>
-
-                  <div class="name">Fuck the bla</div>
-
-              </div>
-              
-          </div>
+          <div class="container"></div>
 
 
           <div class="nav-btn" data-new="study" data-page="addnewstudy" data-param="true">
-              <div class="no-click"></div>
+              
           </div>
 
-          <div class="nav-btn" data-del="study"><div class="no-click"></div></div>
+          <div class="nav-btn" data-del="study" data-func="showDelBtn" data-param="study">
+              <button class="nav-btn-del"></button>
+          </div>
 
       </section>
       
