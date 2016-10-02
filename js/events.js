@@ -37,7 +37,7 @@ Nav.events.open.groups = function(param){
                 
                 html += '<div class="askDel"><button data-func="delGroup" data-param="' + res.rows.item(i).id + '" class="yes"></button> <button data-func="hQuestionDelGroups" data-param="true" class="no"></button>';
                 
-                html += '<span>Deleted?</span></div>';
+                html += '<span>Delete?</span></div>';
 
                 html += '<div class="name">' + res.rows.item(i).name + '</div>';
 
@@ -85,6 +85,20 @@ Nav.events.close.addnewgroup = function(param){
 
 Nav.events.open.study = function(param){
     
+    // show .page-name
+    
+    DB.connect.transaction(function(c){
+        
+        c.executeSql("SELECT name FROM groups WHERE id=?",[param],function(c,res){
+            
+            $('#study .page-name').html(res.rows.item(0).name).attr('data-id',param);
+            
+        });
+        
+    })
+    
+    
+    
     DB.connect.transaction(function(connect){
 
         connect.executeSql("SELECT * FROM study WHERE id_group=?",[param],function(connect,res){
@@ -103,11 +117,11 @@ Nav.events.open.study = function(param){
 
                 html += '<div class="askDel"><button data-func="delStudy" data-param="' + res.rows.item(i).id + '" class="yes"></button> <button data-func="hQuestionDelStudy" data-param="true" class="no"></button>';
 
-                html += '<span>Deleted?</span></div>';
+                html += '<span>Delete?</span></div>';
 
                 html += '<div class="name">' + res.rows.item(i).name + '</div>';
 
-                html += '</div>';
+                html += '</div> ';
 
             }
 
@@ -129,6 +143,8 @@ Nav.events.open.study = function(param){
 
 
 Nav.events.close.study = function(param){
+    
+    Funcs.do.closeEditName('study');
 
     hiddenPage();
 
@@ -192,7 +208,7 @@ Nav.events.open.showStats = function(id_study){
             
             c.executeSql("SELECT name FROM study WHERE id=?",[id_study],function(c,res){
                 
-                $("#showStats .page-name").html(res.rows.item(0).name);
+                $("#showStats .page-name").html(res.rows.item(0).name).attr('data-id',id_study);
                 
                 showPage('showStats');
                 
@@ -296,6 +312,8 @@ Nav.events.open.showStats = function(id_study){
 }
 
 Nav.events.close.showStats = function(){
+    
+    Funcs.do.closeEditName('showStats');
     
     hiddenPage();
     
