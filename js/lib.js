@@ -89,6 +89,33 @@ function studyDelFromDB(id){
 
 }
 
+function getCount(res,i){
+
+    i = i || 0;
+
+    DB.connect.transaction(function(c){
+
+        c.executeSql('SELECT COUNT(*) FROM study WHERE id_group=?',[res.rows.item(i).id],function(c,r){
+
+            console.log(r.rows.item(0)['COUNT(*)']);
+
+
+            var str = '(' + r.rows.item(0)['COUNT(*)'] + ')';
+
+            $('#groups .nav-btn[data-param="'+res.rows.item(i++).id+'"] span.count').html(str);
+
+            if(i < res.rows.length){
+
+                getCount(res,i);
+
+            }
+
+        });
+
+    });
+
+}
+
 
 
 // system funcs //

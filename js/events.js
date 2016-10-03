@@ -39,13 +39,22 @@ Nav.events.open.groups = function(param){
                 
                 html += '<span>Delete?</span></div>';
 
-                html += '<div class="name">' + res.rows.item(i).name + '</div>';
+                html += '<div class="name">' + res.rows.item(i).name + ' <span class="count"></span>';
+                
+                
 
-                html += '</div> ';
+                html += '</div></div> ';
                 
             }
             
             $('#groups .container').html(html);
+                
+//            var id = res.rows.item(i).id;
+
+//            console.log(' id: '+id);
+
+            getCount(res);
+
             
             showPage('groups');
             
@@ -58,6 +67,8 @@ Nav.events.open.groups = function(param){
     });
     
 }
+
+
 
 Nav.events.close.groups = function(param){
     
