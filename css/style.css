@@ -21,7 +21,7 @@
 
 header{
     
-    width: 393px;
+    width: 360px;
     position: fixed;
     background-color: #1565C0;
     height: 55px;
@@ -78,7 +78,7 @@ header button.back-screen{
 .page{
     
     opacity: 0;
-    width: 100%;
+    width: 360px;
     height: auto;
     margin-top: 50px;
     -webkit-transition-duration: .3s;
@@ -105,8 +105,8 @@ header button.back-screen{
 
 .page .nav-btn{
     
-    width: 165px;
-    margin: 0 0 20px 20px;
+    width: 155px;
+    margin: 0 0 15px 15px;
     height: 120px;
     display: inline-block;
     -webkit-transition-duration: .3s;
@@ -124,7 +124,7 @@ header button.back-screen{
     
     width: inherit;
     text-align: center;
-    font-size: 25px;
+    font-size: 22px;
     color: white;
     margin-top: 45px;
     -webkit-transition-duration: .3s;
@@ -149,11 +149,11 @@ header button.back-screen{
     left: auto;
     top: auto;
     display: block;
-    width: 165px;
+    width: 155px;
     height: 120px;
     background-image: url(../imgs/delete.png);
     background-size: 20px auto;
-    background-position: 135px 10px;
+    background-position: 125px 10px;
     background-repeat: no-repeat;
     background-color: transparent;
     -webkit-transition-duration: .3s;
@@ -169,7 +169,7 @@ header button.back-screen{
     left: auto;
     top: auto;
     display: block;
-    width: 165px;
+    width: 155px;
     height: 120px;
     background: transparent;
     -webkit-transition-duration: .3s;
@@ -212,7 +212,7 @@ header button.back-screen{
 
     background-image: url('../imgs/close.png');
 
-    margin: 0px 0px 0px 125px;
+    margin: 0px 0px 0px 115px;
 
 }
 
@@ -314,7 +314,7 @@ button.ok{
 
 .canvas-container{
     
-    width: 390px;
+    width: 360px;
     height: 430px;
     overflow-x: auto;
     
@@ -344,7 +344,7 @@ button.ok{
     
     margin: 20px 0 0 20px;
     padding-left: 5px;
-    width: 300px !important;
+    width: 270px !important;
     box-shadow: 0 0 3px grey;
     border: 0;
     
