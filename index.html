@@ -97,17 +97,19 @@
           </div>
           
           <div class="form-group">
-              <label for="telegramNotif">Telegram notification</label>
               <div class="form-wrap">
-                  <input type="checkbox" id="telegramNotif" name="telegramNotif">
+                  <input type="checkbox" data-func="checkOn" data-param="Checkbox" id="telegramNotif" name="telegramNotif">
               </div>
+              <label for="telegramNotif">Telegram notification</label>
+              <div class="current-value" data-func="showInput" data-default="No checkboxed">No checkboxed</div>
           </div>
           
           <div class="form-group">
-              <label for="emailNotif">E-mail notification</label>
               <div class="form-wrap">
-                  <input type="checkbox" id="emailNotif" name="emailNotif">
+                  <input type="checkbox" data-func="checkOn" data-param="Checkbox" id="emailNotif" name="emailNotif">
               </div>
+              <label for="emailNotif">E-mail notification</label>
+              <div class="current-value" data-func="showInput" data-default="No checkboxed">No checkboxed</div>
           </div>
           
           <div class="form-group">

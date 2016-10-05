@@ -342,6 +342,12 @@ Funcs.do.showInput = function(p,t){
 
 }
 
+Funcs.do.checkOn = function(p,t){
+    
+    checkOn(p,t);
+    
+}
+
 
 
 

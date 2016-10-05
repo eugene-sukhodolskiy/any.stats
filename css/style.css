@@ -331,6 +331,54 @@ header button.back-screen{
     
 }
 
+.form-group .form-wrap input[type="checkbox"]{
+    
+    width: 25px;
+    height: 25px;
+    border: 0;
+    position: absolute;
+    left: 310px;
+    margin-top: 10px;
+    top: auto;
+    
+}
+
+.form-group .form-wrap input[type="checkbox"]:before{
+    
+    content: '';
+    display: block;
+    width: 30px;
+    height: 30px;
+    background: url('../imgs/checkbox-blank-outline.png') no-repeat;
+    background-size: 100% auto;
+    background-color: #eee;
+    
+}
+
+.form-group .form-wrap input[type="checkbox"]:after{
+    
+    content: '';
+    display: block;
+    width: 40px;
+    height: 40px;
+    background: url(../imgs/check-blue.png) no-repeat;
+    background-size: 100% auto;
+    background-color: transparent;
+    position: absolute;
+    margin-left: 20px;
+    margin-top: -38px;
+    opacity: 0;
+    transition-duration: .2s;
+    
+}
+
+.form-group .form-wrap input[type="checkbox"].check:after{
+
+    opacity: 1;
+    margin-left: 0;
+
+}
+
 button.ok{
     
     width: 100px;

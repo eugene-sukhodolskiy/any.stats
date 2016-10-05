@@ -165,6 +165,32 @@ function hiddenInput(t){
     
 }
 
+function checkOn(p,t){
+    
+    if($(t).prop('checked') == true){
+        
+        $(t).addClass('check');
+        
+        $(t).parent().parent().find('.current-value').html(p);
+        
+    }else{
+        
+        checkOff(p,t);
+        
+    }
+    
+}
+
+function checkOff(p,t){
+
+    $(t).removeClass('check');
+    
+    var cval = $(t).parent().parent().find('.current-value');
+    
+    $(cval).html($(cval).attr('data-default'));
+
+}
+
 
 
 // vis/hid //
