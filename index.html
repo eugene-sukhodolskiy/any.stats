@@ -5,7 +5,6 @@
     <title>Stats.info</title>
     <meta name="viewport" content="width=400, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/add.new.study.css">
     <link rel="stylesheet" type="text/css" href="css/settings.css">
     
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
@@ -82,7 +81,7 @@
           
           <div class="form-group">
               <div class="form-wrap input">
-                  <input type="text" id="studyName" name="studyName">
+                  <input type="text" id="studyName" name="studyName" placeholder="Study name">
               </div>
               <label for="studyName" data-func="showInput">Study name:</label>
               <div class="current-value" data-func="showInput" data-default="Empty">Empty</div>
@@ -90,7 +89,7 @@
           
           <div class="form-group">
               <div class="form-wrap input">
-                  <input type="text" id="studyUnit" name="studyUnit">
+                  <input type="text" id="studyUnit" name="studyUnit" placeholder="Study unit">
               </div>
             <label for="studyUnit" data-func="showInput" data-param="true">Study unit:</label>
               <div class="current-value" data-func="showInput" data-default="Empty">Empty</div>
@@ -176,10 +175,11 @@
           <h1 class="page-name">Add new group</h1>
           
           <div class="form-group">
-              <label for="groupName">Name</label>
-              <div class="form-wrap">
-                  <input type="text" id="groupName" name="groupName">
+              <div class="form-wrap input">
+                  <input type="text" id="groupName" name="groupName" placeholder="Group name">
               </div>
+              <label for="groupName" data-func="showInput">Group name:</label>
+              <div class="current-value" data-func="showInput" data-default="Empty">Empty</div>
           </div>
           
           <div class="ok-wrap">
