@@ -269,35 +269,65 @@ header button.back-screen{
 
 /*    */
 
-input[type="text"]{
+.form-group input[type="text"]{
     
-    border: 0;
-    border-bottom: 1px solid grey;
     padding: 5px 0;
     font-size: 20px;
+    background: white;
+    box-shadow: 0 0 2px #ccc;
+    width: 300px;
+    border: 0;
     
 }
 
 .form-group{
     
-    margin-left: 20px;
-    margin-top: 30px;
     text-align: justify;
+    width: 340px;
+    margin-top: 20px;
+    height: 70px;
+    box-shadow: 0 0 3px #aaa;
+    transition-duration: .3s;
+    background: #eee;
+    margin-left: 10px;
+    
 }
 
-label{
+.form-group label{
     
-    font-size: 20px;
-    display: inline-block;
-    width: 120px;
+    font-size: 22px;
+    display: block;
+    width: inherit;
+    position: relative;
+    top: 10px;
+    left: 10px;
     
 }
 
-.form-wrap{
+.form-group .form-wrap.input{
     
     display: inline-block;
-    width: 235px;
-    text-align: right;
+    width: 0;
+    overflow: hidden;
+    background-color: #1E88E5;
+    height: 70px;
+    text-align: center;
+    line-height: 70px;
+    position: absolute;
+    left: 10px;
+    top: auto;
+    transition-duration: .3s;
+    z-index: 1;
+    
+}
+
+.form-group .current-value{
+    
+    color: #777;
+    font-size: 18px;
+    display: block;
+    margin-top: 10px;
+    margin-left: 10px;
     
 }
 
@@ -381,6 +411,8 @@ button.ok{
     background-size: 100% auto;
     
 }
+
+
 
 
 

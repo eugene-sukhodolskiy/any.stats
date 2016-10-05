@@ -128,6 +128,43 @@ function inpFocus(){
 
 }
 
+function showInput(t){
+    
+    $(t).parent().find('.form-wrap.input').css({'width': 'inherit'}).find('input',0).focus();
+    
+    var cv = $(t).parent().find('.current-value');
+    
+    if($(cv).attr('data-edit-flag') == 1){
+        
+        $(cv).parent().find('input',0).attr('value',$(cv).html());
+        
+    }
+
+    
+}
+
+function hiddenInput(t){
+    
+    var fw = $(t).parent();
+    
+    $(fw).css({'width': '0px'});
+    
+    var val = $(t).prop('value');
+    
+    var cval = $(fw).parent().find('.current-value');
+    
+    if(val != ''){
+    
+        $(cval).html(val).attr('data-edit-flag',1);
+        
+    }else{
+        
+        $(cval).html($(cval).attr('data-default'));
+        
+    }
+    
+}
+
 
 
 // vis/hid //
@@ -151,3 +188,10 @@ function hiddenPage(){
     Nav.hiddenAll();
 
 }
+
+//////
+
+
+
+
+

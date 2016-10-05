@@ -336,6 +336,13 @@ Funcs.do.saveEditName = function(page){
 }
 
 
+Funcs.do.showInput = function(p,t){
+    
+    showInput(t);
+
+}
+
+
 
 
 

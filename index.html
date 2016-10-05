@@ -81,17 +81,19 @@
          <h1 class="page-name">Add new study</h1>
           
           <div class="form-group">
-              <label for="studyName">Name</label>
-              <div class="form-wrap">
+              <div class="form-wrap input">
                   <input type="text" id="studyName" name="studyName">
               </div>
+              <label for="studyName" data-func="showInput">Study name:</label>
+              <div class="current-value" data-func="showInput" data-default="Empty">Empty</div>
           </div>
           
           <div class="form-group">
-              <label for="studyUnit">Unit</label>
-              <div class="form-wrap">
+              <div class="form-wrap input">
                   <input type="text" id="studyUnit" name="studyUnit">
               </div>
+            <label for="studyUnit" data-func="showInput" data-param="true">Study unit:</label>
+              <div class="current-value" data-func="showInput" data-default="Empty">Empty</div>
           </div>
           
           <div class="form-group">
