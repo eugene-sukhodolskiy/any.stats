@@ -49,10 +49,6 @@ Nav.events.open.groups = function(param){
             
             $('#groups .container').html(html);
                 
-//            var id = res.rows.item(i).id;
-
-//            console.log(' id: '+id);
-
             getCount(res);
 
             

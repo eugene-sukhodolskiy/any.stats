@@ -51,7 +51,7 @@ Funcs.do.saveNewGroup = function(param){
     
 }
 
-Funcs.do.showDelBtn = function(page){
+Funcs.do.showDelBtn = function(page,t){
     
     page = '#' + page;
     
@@ -67,7 +67,7 @@ Funcs.do.showDelBtn = function(page){
         
     },1);
     
-    $(page + ' [data-func="showDelBtn"]').css('background-color','#ccc').attr('data-func','hiddenDelBtn').attr('data-backmark',1);
+    $(t).css('background-color','#ccc').attr('data-func','hiddenDelBtn').attr('data-backmark',1);
     
     Nav.addTmpBack(function(){
         
@@ -79,7 +79,7 @@ Funcs.do.showDelBtn = function(page){
     
 }
 
-Funcs.do.hiddenDelBtn = function(page){
+Funcs.do.hiddenDelBtn = function(page,t){
     
     Nav.removeTmpBack();
     
@@ -97,7 +97,7 @@ Funcs.do.hiddenDelBtn = function(page){
 
     },200);
     
-    $(page + ' [data-func="hiddenDelBtn"]').css('background-color','#E0E0E0').attr('data-func','showDelBtn');
+    $('[data-func="hiddenDelBtn"]').css('background-color','#E0E0E0').attr('data-func','showDelBtn');
     
     var el = $('.page .no:visible',0);
     
