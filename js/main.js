@@ -55,6 +55,8 @@ $(document).ready(function(){
             
             console.log(char);
             
+            $(this).attr('value',$(this).prop('value'));
+            
             return false;
 
         }
