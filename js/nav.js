@@ -87,7 +87,7 @@ var Nav = {
             
             this.removeTmpBack();
             
-            return false;
+            return true;
             
         }
         
