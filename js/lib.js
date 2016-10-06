@@ -128,6 +128,8 @@ function inpFocus(){
 
 function showInput(t){
     
+    $(t).attr('data-backmark',1);
+    
     $(t).parent().find('.form-wrap.input').css({'width': 'inherit','opacity': 1}).find('input',0).focus();
     
     var cv = $(t).parent().find('.current-value');
@@ -139,11 +141,24 @@ function showInput(t){
         $(cv).parent().find('input',0).attr('value',val).prop('selectionStart',val.length);
         
     }
+    
+    console.log('add');
 
+    Nav.addTmpBack(function(){
+        
+        hiddenInput($('[data-backmark="1"]',0));
+        
+    });
     
 }
 
 function hiddenInput(t){
+    
+    console.log('hid');
+    
+    $(t).removeAttr('data-backmark');
+    
+    Nav.removeTmpBack();
     
     var fw = $(t).parent();
     

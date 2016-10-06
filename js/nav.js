@@ -30,6 +30,22 @@ var Nav = {
         
     },
     
+    tmpBack: false,
+    
+    addTmpBack: function(func){
+        
+        console.log('nav.add');
+        
+        this.tmpBack = func;
+        
+    },
+    
+    removeTmpBack: function(){
+        
+        this.tmpBack = false;
+        
+    },
+    
     goTo: function(page, param, flag){
         
         if(this.currentPage == page)
@@ -60,6 +76,20 @@ var Nav = {
     },
     
     back: function(){
+        
+        console.log(typeof this.tmpBack);
+        
+        if(typeof this.tmpBack == 'function'){
+            
+            console.log('work');
+            
+            this.tmpBack();
+            
+            this.removeTmpBack();
+            
+            return false;
+            
+        }
         
         if(this.history.page.length < 2 || this.history.param.length < 2)
             return false;
