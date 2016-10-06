@@ -34,8 +34,6 @@ var Nav = {
     
     addTmpBack: function(func){
         
-        console.log('nav.add');
-        
         this.tmpBack = func;
         
     },
@@ -43,6 +41,22 @@ var Nav = {
     removeTmpBack: function(){
         
         this.tmpBack = false;
+        
+    },
+    
+    preBack: function(){
+        
+        if(typeof Nav.tmpBack == 'function'){
+
+            Nav.tmpBack();
+
+            Nav.removeTmpBack();
+
+            return false;
+
+        }
+        
+        return true;
         
     },
     
@@ -76,20 +90,6 @@ var Nav = {
     },
     
     back: function(){
-        
-        console.log(typeof this.tmpBack);
-        
-        if(typeof this.tmpBack == 'function'){
-            
-            console.log('work');
-            
-            this.tmpBack();
-            
-            this.removeTmpBack();
-            
-            return true;
-            
-        }
         
         if(this.history.page.length < 2 || this.history.param.length < 2)
             return false;
@@ -136,17 +136,22 @@ var Nav = {
     initBackbtn: function(){
         
         $('[data-back]').click(function(){
-
-            Nav.back();
+            
+            if(Nav.preBack())
+                Nav.back();
 
         });
 
         document.addEventListener("backbutton", function(){
+            
+            if(Nav.preBack()){
 
-            if(Nav.back() == false){
+                if(Nav.back() == false){
 
-                navigator.app.exitApp();
+                    navigator.app.exitApp();
 
+                }
+                
             }
 
         }, true);

@@ -67,11 +67,21 @@ Funcs.do.showDelBtn = function(page){
         
     },1);
     
-    $(page + ' [data-func="showDelBtn"]').css('background-color','#ccc').attr('data-func','hiddenDelBtn');
+    $(page + ' [data-func="showDelBtn"]').css('background-color','#ccc').attr('data-func','hiddenDelBtn').attr('data-backmark',1);
+    
+    Nav.addTmpBack(function(){
+        
+        console.log('tmpback');
+        
+        $('[data-backmark="1"]').click();
+        
+    });
     
 }
 
 Funcs.do.hiddenDelBtn = function(page){
+    
+    Nav.removeTmpBack();
     
     page = '#' + page;
 

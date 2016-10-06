@@ -142,23 +142,9 @@ function showInput(t){
         
     }
     
-    console.log('add');
-
-    Nav.addTmpBack(function(){
-        
-        hiddenInput($('[data-backmark="1"]',0));
-        
-    });
-    
 }
 
 function hiddenInput(t){
-    
-    console.log('hid');
-    
-    $(t).removeAttr('data-backmark');
-    
-    Nav.removeTmpBack();
     
     var fw = $(t).parent();
     
