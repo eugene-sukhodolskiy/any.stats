@@ -83,6 +83,8 @@ Funcs.do.hiddenDelBtn = function(page,t){
     
     Nav.removeTmpBack();
     
+    $(t).removeAttr('data-backmark');
+    
     page = '#' + page;
 
     $(page + ' .container .nav-btn').css('background','#1E88E5');
