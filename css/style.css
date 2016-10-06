@@ -93,7 +93,7 @@ header button.back-screen{
 .page-name{
     
     font-size: 30px;
-    padding: 30px 0px 20px 20px;
+    padding: 30px 0px 20px 5%;
     width: 70%;
     
 }
@@ -324,7 +324,7 @@ header button.back-screen{
     text-align: center;
     line-height: 70px;
     position: absolute;
-    left: 10px;
+    left: 5%;
     top: auto;
     transition-duration: .3s;
     z-index: 1;
@@ -340,9 +340,9 @@ header button.back-screen{
     height: 20px;
     font-size: 12px;
     color: #E53935;
-    left: auto;
+    left: 68%;
     top: auto;
-    margin: 0px 0px 0px 273px;
+    margin: 0px 0px 0px 23px;
     transition-duration: .3s;
     opacity: 0;
     
@@ -364,9 +364,10 @@ header button.back-screen{
     height: 25px;
     border: 0;
     position: absolute;
-    left: 310px;
+    left: 100%;
     margin-top: 10px;
     top: auto;
+    margin-left: -15%;
     
 }
 
@@ -422,7 +423,7 @@ header button.back-screen{
     content: '!';
     display: block;
     position: absolute;
-    left: 325px;
+    left: 90%;
     top: auto;
     z-index: 0;
     font-size: 35px;
@@ -485,6 +486,7 @@ button.ok{
     top: 60px;
     left: 0;
     display: none;
+    text-align: center;
     
 }
 
@@ -492,7 +494,7 @@ button.ok{
     
     margin: 20px 0 0 20px;
     padding-left: 5px;
-    width: 260px;
+    width: 70%;
     box-shadow: 0 0 3px #555;
     border: 0;
     padding: 8px 5px;
