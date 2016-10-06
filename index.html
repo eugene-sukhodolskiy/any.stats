@@ -81,7 +81,8 @@
           
           <div class="form-group">
               <div class="form-wrap input">
-                  <input type="text" id="studyName" name="studyName" placeholder="Study name">
+                <span class="counter"></span>
+                  <input type="text" id="studyName" name="studyName" data-len-max="12" placeholder="Study name">
               </div>
               <label for="studyName" data-func="showInput">Study name:</label>
               <div class="current-value" data-func="showInput" data-default="Empty">Empty</div>
@@ -89,7 +90,8 @@
           
           <div class="form-group">
               <div class="form-wrap input">
-                  <input type="text" id="studyUnit" name="studyUnit" placeholder="Study unit">
+                  <span class="counter"></span>
+                  <input type="text" id="studyUnit" name="studyUnit" data-len-max="12" placeholder="Study unit">
               </div>
             <label for="studyUnit" data-func="showInput" data-param="true">Study unit:</label>
               <div class="current-value" data-func="showInput" data-default="Empty">Empty</div>
@@ -111,7 +113,7 @@
               <div class="current-value" data-func="showInput" data-default="No checkboxed">No checkboxed</div>
           </div>
           
-          <div class="form-group">
+          <div class="form-group" data-func="openSelect">
               <label for="periodicity">Periodicity of notification</label>
               
               <div class="form-wrap">
@@ -176,7 +178,8 @@
           
           <div class="form-group">
               <div class="form-wrap input">
-                  <input type="text" id="groupName" name="groupName" placeholder="Group name">
+                 <span class="counter"></span>
+                  <input type="text" id="groupName" name="groupName" data-len-max="12" placeholder="Group name">
               </div>
               <label for="groupName" data-func="showInput">Group name:</label>
               <div class="current-value" data-func="showInput" data-default="Empty">Empty</div>
@@ -197,10 +200,12 @@
           </h1>
 
           <div class="form-group">
-              <label for="amount">Amount</label>
-              <div class="form-wrap">
-                  <input type="text" id="amount" name="amount" value="1">
+              <div class="form-wrap input">
+                  <span class="counter"></span>
+                  <input type="text" id="amount" name="amount" data-len-max="10" placeholder="Amount">
               </div>
+              <label for="amount" data-func="showInput">Amount:</label>
+              <div class="current-value" data-func="showInput" data-default="1">1</div>
           </div>
 
           <div class="ok-wrap">
