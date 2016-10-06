@@ -51,11 +51,11 @@ $(document).ready(function(){
         
         count = (isNaN(count)) ? 0 : count;
         
+        $(this).attr('value',$(this).prop('value'));
+        
         if(count >= max && char != 8 && char != 13){
             
             console.log(char);
-            
-            $(this).attr('value',$(this).prop('value'));
             
             return false;
 
