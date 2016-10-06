@@ -415,6 +415,28 @@ header button.back-screen{
 
 }
 
+.form-group:before{
+    
+    content: '!';
+    display: block;
+    position: absolute;
+    left: 325px;
+    top: auto;
+    z-index: 0;
+    font-size: 35px;
+    color: #E53935;
+    margin-top: 13px;
+    transition-duration: .2s;
+    opacity: 0;
+    
+}
+
+.form-group.warning:before{
+    
+    opacity: 1;
+    
+}
+
 .ok-wrap{
 
     margin-top: 20px;

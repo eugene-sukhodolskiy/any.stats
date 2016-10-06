@@ -128,8 +128,6 @@ function inpFocus(){
 
 function showInput(t){
     
-    $(t).attr('data-backmark',1);
-    
     $(t).parent().find('.form-wrap.input').css({'width': 'inherit','opacity': 1}).find('input',0).focus();
     
     var cv = $(t).parent().find('.current-value');
@@ -158,9 +156,13 @@ function hiddenInput(t){
     
         $(cval).html(val).attr('data-edit-flag',1);
         
+        $(fw).parent().removeClass('warning');
+        
     }else{
         
         $(cval).html($(cval).attr('data-default'));
+        
+        $(fw).parent().addClass('warning');
         
     }
     

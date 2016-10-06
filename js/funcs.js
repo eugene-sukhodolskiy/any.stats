@@ -27,7 +27,7 @@ Funcs.do.saveNewGroup = function(param){
     
     if(name == ''){
         
-        $('#groupName').css('border-color','red');
+        $('#groupName').parent().parent().addClass('warning');
         
         return false;
         
@@ -194,7 +194,7 @@ Funcs.do.saveNewStudy = function(id){
     
     if(name == ''){
         
-        $('#studyName').css('border-color','red'); 
+        $('#studyName').parent().parent().addClass('warning'); 
         
         return false;
         
@@ -202,7 +202,7 @@ Funcs.do.saveNewStudy = function(id){
     
     if(unit == ''){
 
-        $('#studyUnit').css('border-color','red'); 
+        $('#studyUnit').parent().parent().addClass('warning'); 
         
         return false;
 
@@ -231,7 +231,7 @@ Funcs.do.saveStat = function(id){
     
     if(isNaN(amount)){
         
-        $('#amount').css('border-color','red');
+        $('#amount').parent().parent().addClass('warning'); 
         
         return false;
         
@@ -257,11 +257,11 @@ Funcs.do.openEditName = function(page){
     
     var p = $('#' + page + ' .form-edit');
     
-    $(p).css({'display': 'block'});
+    $(p).css({'display': 'block'}).attr('data-backmark',page);
     
     var val = $('#' + page ).find('.page-name').html();
     
-    $(p).find('input').attr('value',val).focus().prop('selectionStart',val.length);
+    $(p).find('input',0).prop('value',val).prop('selectionStart',val.length).focus();
     
     setTimeout(function(){
         
@@ -274,9 +274,17 @@ Funcs.do.openEditName = function(page){
         
     },1);
     
+    Nav.addTmpBack(function(){
+        
+        Funcs.do.closeEditName($('.form-edit[data-backmark]').attr('data-backmark'));
+        
+    });
+    
 }
 
 Funcs.do.closeEditName = function(page){
+    
+    Nav.removeTmpBack();
 
     var p = $('#' + page + ' .form-edit');
     
@@ -285,9 +293,7 @@ Funcs.do.closeEditName = function(page){
         'opacity': 0,
         'height': '10%'
 
-    });
-
-    $('#' + page ).find('.page-name').html($(p).find('input').attr('value'));
+    }).removeAttr('data-backmark').find('input',0).prop('value','').attr('value','');
 
     setTimeout(function(){
         
@@ -305,18 +311,20 @@ Funcs.do.saveEditName = function(page){
     
     if(val == ''){
         
-        $(inp).parent().css('background-color', '#C62828');
-        
-        setTimeout(function(){
-            
-            $(inp).parent().css('background-color', '#1976D2');
-            
-        },2000);
+//        $(inp).parent().css('background-color', '#C62828');
+//        
+//        setTimeout(function(){
+//            
+//            $(inp).parent().css('background-color', '#1976D2');
+//            
+//        },2000);
         
         
     } else {
         
         var path = '#' + page + ' .page-name';
+        
+        $(path).html($(inp).attr('value'));
         
         setTimeout(function(){
             $(path).html(val);
