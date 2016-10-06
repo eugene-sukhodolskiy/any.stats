@@ -53,6 +53,8 @@ $(document).ready(function(){
         
         if(count >= max && char != 8 && char != 13){
             
+            console.log(char);
+            
             return false;
 
         }
