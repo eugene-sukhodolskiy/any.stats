@@ -194,6 +194,34 @@ function checkOff(p,t){
 
 }
 
+function showNoRes(){
+    
+    $("#showStats .canvas-container").css('display', 'none');
+    
+    $("#showStats .average").css('display','none');
+    
+    $("#showStats .unit").css('display','none');
+    
+    $('#showStats [name="period"]').css('display','none');
+    
+    $('#showStats .no-res').css('display','block');
+    
+}
+
+function hidNoRes(){
+
+    $("#showStats .canvas-container").css('display', 'block');
+
+    $("#showStats .average").css('display','block');
+    
+    $("#showStats .unit").css('display','block');
+
+    $('#showStats [name="period"]').css('display','block');
+
+    $('#showStats .no-res').css('display','none');
+
+}
+
 
 
 // vis/hid //

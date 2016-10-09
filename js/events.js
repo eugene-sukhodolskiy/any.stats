@@ -213,9 +213,11 @@ Nav.events.open.showStats = function(id_study){
         
         c.executeSql("SELECT * FROM entry WHERE id_study=? ORDER BY timestamp DESC",[id_study],function(c,res){
             
-            c.executeSql("SELECT name FROM study WHERE id=?",[id_study],function(c,res){
+            c.executeSql("SELECT name,unit FROM study WHERE id=?",[id_study],function(c,res){
                 
                 $("#showStats .page-name").html(res.rows.item(0).name).attr('data-id',id_study);
+                
+                $("#showStats .unit").html(res.rows.item(0).unit);
                 
                 showPage('showStats');
                 
@@ -319,9 +321,19 @@ Nav.events.open.showStats = function(id_study){
             
             var height = parseInt($('#main-canvas').attr('height'));
             
-            console.log(max);
+//            console.log(max);
             
             graph.sizeY = (height - height / 4) / max;
+            
+            if(points.length == 0){
+                
+                showNoRes();
+                
+            }else{
+                
+                hidNoRes();
+                
+            }
             
             graph.set([points]);
             

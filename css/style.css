@@ -562,7 +562,7 @@ button.ok{
 
 #showStats .average label{
     
-    top: 5px;
+    top: 8px;
     z-index: 0;
     
 }
@@ -571,6 +571,30 @@ button.ok{
     
     margin-top: 5px;
     z-index: 0;
+    
+}
+
+.no-res{
+    
+    width: 100%;
+    height: 200px;
+    text-align: center;
+    font-size: 18px;
+    color: #999;
+    line-height: 200px;
+    
+}
+
+#showStats .unit{
+    
+    position: absolute;
+    margin-top: -40px;
+    left: 20px;
+    color: black;
+    font-size: 17px;
+    padding: 10px;
+    background-color: #eee;
+    box-shadow: 0 0 3px #aaa;
     
 }
 
