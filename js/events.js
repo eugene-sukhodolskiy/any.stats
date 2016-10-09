@@ -309,13 +309,27 @@ Nav.events.open.showStats = function(id_study){
                 
                 points[i][3] = d.getFullYear();
                 
-                points[i][3] += '/' + d.getMonth();
+                var month = d.getMonth();
                 
-                points[i][3] += '/' + d.getDay() + ' ';
+                month = (month < 10) ? '0' + month : month;
                 
-                points[i][3] += d.getHours();
+                points[i][3] += '/' + month;
                 
-                points[i][3] += ':' + d.getMinutes();
+                var day = d.getDate();
+                
+                day = (day < 10) ? '0' + day : day;
+                
+                points[i][3] += '/' + day + ' ';
+                
+                var h = d.getHours();
+                
+                points[i][3] += (h < 10) ? '0' + h : h;
+                
+                var m = d.getMinutes();
+                
+                points[i][3] += ':';
+                
+                points[i][3] += (m < 10) ? '0' + m : m;
                 
             }
             

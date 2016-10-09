@@ -10,7 +10,7 @@ function getGraph(param){
 
         sizeY: param.size,
         
-        sizeX: 180,
+        sizeX: 220,
 
         colors: ['red','blue','green','grey','orange','black'],
 
@@ -20,7 +20,7 @@ function getGraph(param){
             
             var w = this.sizeX * this.data[0].length + 200;
             
-            if(w < 420) w = 420;
+            if(w < 600) w = 600;
             
             $('#' + this.canvas).attr('width',w).css('width',(w / 2) + 'px');
 
