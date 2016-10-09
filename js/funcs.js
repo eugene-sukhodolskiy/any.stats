@@ -374,6 +374,12 @@ Funcs.do.openSelect = function(p,t){
     
 }
 
+Funcs.do.reload = function(p){
+    
+    Nav.reload();
+    
+}
+
 
 
 

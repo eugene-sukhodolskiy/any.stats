@@ -75,7 +75,7 @@ function getGraph(param){
                 
                 // end downline
                 
-                ctx[n].font = 'normal 20px sans-serif';
+                ctx[n].font = 'normal 22px sans-serif';
                 
 
                 for(var i=0;i<this.data[n].length;i++){
@@ -122,21 +122,21 @@ function getGraph(param){
                     
                     // percent
                     
-//                    if(i != this.data[n].length - 1){
-//                        
-//                        var x2 = parseInt(this.data[n][i+1][0] * this.sizeX);
-//
-//                        var y2 = parseInt(this.data[n][i+1][1] * this.sizeY + 20);
-//                        
-//                        var small = (this.data[n][i+1][1] < this.data[n][i][1]) ? this.data[n][i+1][1] : this.data[n][i][1];
-//                        
-//                        var big = (this.data[n][i+1][1] < this.data[n][i][1]) ? this.data[n][i][1] : this.data[n][i+1][1];
-//                        
-//                        var per = 100 - parseInt(small / big * 100);
-//                        
-//                        ctx[n].fillText(per + '%', x - ((x - x2) / 2), y - ((y2 - y) / 2));
-//                        
-//                    }
+                    if(i != this.data[n].length - 1){
+                        
+                        var x2 = parseInt(this.data[n][i+1][0] * this.sizeX);
+
+                        var y2 = parseInt(this.data[n][i+1][1] * this.sizeY + 20);
+                        
+                        var small = (this.data[n][i+1][1] < this.data[n][i][1]) ? this.data[n][i+1][1] : this.data[n][i][1];
+                        
+                        var big = (this.data[n][i+1][1] < this.data[n][i][1]) ? this.data[n][i][1] : this.data[n][i+1][1];
+                        
+                        var per = 100 - parseInt(small / big * 100);
+                        
+                        ctx[n].fillText(per + '%', x - ((x - x2) / 2) - 10, height - 60);
+                        
+                    }
                     
 
                 }

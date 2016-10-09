@@ -393,7 +393,7 @@ header button.back-screen{
     background-size: 100% auto;
     background-color: transparent;
     position: absolute;
-    margin-left: 20px;
+    margin-left: 14px;
     margin-top: -38px;
     opacity: 0;
     transition-duration: .2s;
@@ -487,6 +487,7 @@ button.ok{
     left: 0;
     display: none;
     text-align: center;
+    z-index: 5;
     
 }
 
@@ -534,6 +535,44 @@ button.ok{
     
 }
 
+.search{
+    
+    display: none;
+    
+}
+
+#showStats .average .form-group{
+    
+    height: 40px;
+    width: 150px;
+    
+}
+
+#showStats .average{
+    
+    margin-left: 185px;
+    
+}
+
+#showStats .average .current-value{
+    
+    display: none;
+    
+}
+
+#showStats .average label{
+    
+    top: 5px;
+    z-index: 0;
+    
+}
+
+#average{
+    
+    margin-top: 5px;
+    z-index: 0;
+    
+}
 
 
 

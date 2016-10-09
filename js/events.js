@@ -234,6 +234,10 @@ Nav.events.open.showStats = function(id_study){
             
             var n = 1;
             
+            var check = $('#average').prop('checked');
+            
+            var c = 0;
+            
             for(var i=0;i<res.rows.length;i++){
                 
                 flag = 0;
@@ -244,6 +248,8 @@ Nav.events.open.showStats = function(id_study){
                     
                     ft = res.rows.item(i).timestamp;
                     
+                    c++;
+                    
                     continue;
                     
                 }
@@ -252,7 +258,14 @@ Nav.events.open.showStats = function(id_study){
                     
                     sum += res.rows.item(i).value;
                     
+                    c++;
+                    
                 }else{
+                    
+                    if(check == true)
+                        sum = sum / c;
+                    
+                    c = 1;
                     
                     var p = [n++, sum, ft];
                     
@@ -270,13 +283,18 @@ Nav.events.open.showStats = function(id_study){
             
             if(flag == 0){
                 
+                if(check == true)
+                    sum = sum / c;
+                
+                c = 0;
+                
                 var p = [n, sum, ft];
 
                 points[points.length] = p;
                 
             }
             
-            console.log(points);
+//            console.log(points);
             
             var max = 0;
             
@@ -300,6 +318,8 @@ Nav.events.open.showStats = function(id_study){
             }
             
             var height = parseInt($('#main-canvas').attr('height'));
+            
+            console.log(max);
             
             graph.sizeY = (height - height / 4) / max;
             
