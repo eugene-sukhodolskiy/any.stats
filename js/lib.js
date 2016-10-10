@@ -222,41 +222,47 @@ function hidNoRes(){
 
 }
 
-function showLastOneStat(p,container){
+function showLastOneStat(p,container,id_study){
     
-    console.log(p);
+    DB.connect.transaction(function(c){
     
-    var str = '';
-    
-    for(var i = 0; i < 10; i++){
+        c.executeSql("SELECT unit FROM study WHERE id=?",[id_study],function(c,res){
+
+            var str = '';
+
+            for(var i = 0; i < 10; i++){
+
+                var time = getFormatDate(p.rows.item(i).timestamp);
+
+                var split = time.split(' ');
+
+                time = split[0] + '<span>' + split[1] + '</span>';
+
+                str += '<div class="form-group one-stat">';
+
+                str += '<div class="form-wrap input">';
+
+                str += '<input type="text" value="' + p.rows.item(i).value + '" placeholder="Value">';
+
+                str += '</div>';
+
+                str += '<div class="time">' + time + '</div>';
+
+                str += '<div class="current-value pencil" data-func="showInput" data-default="' + p.rows.item(i).value + '" data-unit="' + res.rows.item(0).unit + '">' + p.rows.item(i).value + '</div>';
+
+                str += '<div class="del"></div> </div>';
+
+            }
+
+            $(container).html(str);
+
+            Funcs.init(container);
+
+            addBlurToFormGroup(container);
+
+        });
         
-        var time = getFormatDate(p.rows.item(i).timestamp);
-        
-        var split = time.split(' ');
-        
-        time = split[0] + '<span>' + split[1] + '</span>';
-        
-        str += '<div class="form-group one-stat">';
-        
-        str += '<div class="form-wrap input">';
-        
-        str += '<input type="text" value="' + p.rows.item(i).value + '" placeholder="Value">';
-        
-        str += '</div>';
-        
-        str += '<div class="time">' + time + '</div>';
-        
-        str += '<div class="current-value pencil" data-func="showInput" data-default="' + p.rows.item(i).value + '">' + p.rows.item(i).value + '</div>';
-        
-        str += '<div class="del"></div> </div>';
-          
-    }
-    
-    $(container).html(str);
-    
-    Funcs.init(container);
-    
-    addBlurToFormGroup(container);
+    });
     
 }
 

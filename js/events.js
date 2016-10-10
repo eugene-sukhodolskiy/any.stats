@@ -27,6 +27,12 @@ Nav.events.open.groups = function(param){
             
             var html = '';
             
+            if(res.rows.length != 0){
+                
+                $('#groups .nav-btn[data-del]').css('display','inline-block');
+                
+            }
+            
             for(var i=0;i<res.rows.length;i++){
                 
                 html += '<div class="nav-btn" data-page="study" data-param="' + res.rows.item(i).id + '">';
@@ -69,6 +75,8 @@ Nav.events.open.groups = function(param){
 Nav.events.close.groups = function(param){
     
     $('[data-back]').css('display','block');
+    
+    $('#groups .nav-btn[data-del]').css('display','none');
     
     hiddenPage();
     
@@ -113,6 +121,12 @@ Nav.events.open.study = function(param){
 //            console.log(res);
 
             var html = '';
+            
+            if(res.rows.length != 0){
+
+                $('#study .nav-btn[data-del]').css('display','inline-block');
+                
+            }
 
             for(var i=0;i<res.rows.length;i++){
 
@@ -152,6 +166,8 @@ Nav.events.open.study = function(param){
 Nav.events.close.study = function(param){
     
     Funcs.do.closeEditName('study');
+    
+    $('#study .nav-btn[data-del]').css('display','none');
 
     hiddenPage();
 
@@ -222,7 +238,6 @@ Nav.events.open.showStats = function(id_study){
                 showPage('showStats');
                 
             });
-            
 
             var points = [];
             
@@ -331,7 +346,7 @@ Nav.events.open.showStats = function(id_study){
             
             graph.draw();
             
-            showLastOneStat(res,'#showStats .last-container');
+            showLastOneStat(res,'#showStats .last-container',id_study);
             
             
         }, function(c,err){
@@ -347,6 +362,8 @@ Nav.events.open.showStats = function(id_study){
 Nav.events.close.showStats = function(){
     
     Funcs.do.closeEditName('showStats');
+    
+    $('#showStats .last-container').html('');
     
     hiddenPage();
     
