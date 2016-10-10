@@ -305,31 +305,9 @@ Nav.events.open.showStats = function(id_study){
                 if(points[i][1] > max)
                     max = points[i][1];
                 
-                var d = new Date(points[i][2]);
+                var time = getFormatDate(points[i][2]);
                 
-                points[i][3] = d.getFullYear();
-                
-                var month = d.getMonth();
-                
-                month = (month < 10) ? '0' + month : month;
-                
-                points[i][3] += '/' + month;
-                
-                var day = d.getDate();
-                
-                day = (day < 10) ? '0' + day : day;
-                
-                points[i][3] += '/' + day + ' ';
-                
-                var h = d.getHours();
-                
-                points[i][3] += (h < 10) ? '0' + h : h;
-                
-                var m = d.getMinutes();
-                
-                points[i][3] += ':';
-                
-                points[i][3] += (m < 10) ? '0' + m : m;
+                points[i][3] = time;
                 
             }
             
@@ -352,6 +330,8 @@ Nav.events.open.showStats = function(id_study){
             graph.set([points]);
             
             graph.draw();
+            
+            showLastOneStat(res,'#showStats .last-container');
             
             
         }, function(c,err){

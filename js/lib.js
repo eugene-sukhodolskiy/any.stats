@@ -210,16 +210,97 @@ function showNoRes(){
 
 function hidNoRes(){
 
-    $("#showStats .canvas-container").css('display', 'block');
+    $("#showStats .canvas-container").removeAttr('style');
 
-    $("#showStats .average").css('display','block');
+    $("#showStats .average").removeAttr('style');
     
-    $("#showStats .unit").css('display','block');
+    $("#showStats .unit").removeAttr('style');
 
-    $('#showStats [name="period"]').css('display','block');
+    $('#showStats [name="period"]').removeAttr('style');
 
     $('#showStats .no-res').css('display','none');
 
+}
+
+function showLastOneStat(p,container){
+    
+    console.log(p);
+    
+    var str = '';
+    
+    for(var i = 0; i < 10; i++){
+        
+        var time = getFormatDate(p.rows.item(i).timestamp);
+        
+        var split = time.split(' ');
+        
+        time = split[0] + '<span>' + split[1] + '</span>';
+        
+        str += '<div class="form-group one-stat">';
+        
+        str += '<div class="form-wrap input">';
+        
+        str += '<input type="text" value="' + p.rows.item(i).value + '" placeholder="Value">';
+        
+        str += '</div>';
+        
+        str += '<div class="time">' + time + '</div>';
+        
+        str += '<div class="current-value pencil" data-func="showInput" data-default="' + p.rows.item(i).value + '">' + p.rows.item(i).value + '</div>';
+        
+        str += '<div class="del"></div> </div>';
+          
+    }
+    
+    $(container).html(str);
+    
+    Funcs.init(container);
+    
+    addBlurToFormGroup(container);
+    
+}
+
+function addBlurToFormGroup(container){
+    
+    container = container || '';
+    
+    $(container + ' .form-wrap.input input[type="text"]').blur(function(){
+
+        hiddenInput(this);
+
+    });
+    
+}
+
+function getFormatDate(timestamp){
+    
+    var d = new Date(timestamp);
+
+    var year = d.getFullYear();
+
+    var month = d.getMonth();
+
+    month = (month < 10) ? '0' + month : month;
+
+    var day = d.getDate();
+
+    day = (day < 10) ? '0' + day : day;
+
+    var h = d.getHours();
+
+    h = (h < 10) ? '0' + h : h;
+
+    var m = d.getMinutes();
+    
+    m = (m < 10) ? '0' + m : m;
+    
+    
+    var str = year + '/' + month + '/' + day + ' ';
+    
+    str += h + ':' + m;
+    
+    return str;
+    
 }
 
 

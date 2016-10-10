@@ -23,11 +23,7 @@ $(document).ready(function(){
         
     });
     
-    $('.form-wrap.input input[type="text"]').blur(function(){
-        
-        hiddenInput(this);
-        
-    });
+    addBlurToFormGroup();
     
     $('input[data-len-max]').keydown(function(e){
         

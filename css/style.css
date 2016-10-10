@@ -607,6 +607,82 @@ button.ok{
     
 }
 
+#showStats .nav-btn{
+    
+    height: 40px;
+    
+}
+
+#showStats [name="period"]{
+    
+    height: 40px;
+    background-color: #E0E0E0;
+    border: 0;
+    box-shadow: 0 0 3px #888;
+    width: 155px;
+    margin: 0 0 15px 15px;
+    font-size: 20px;
+    padding: 0 10px;
+    
+}
+
+.last-container{
+    
+    width: 100%;
+    display: block;
+    margin-bottom: 40px;
+    
+}
+
+.last-container .time{
+    
+    position: absolute;
+    left: 100%;
+    margin: 15px 0px 0px -110px;
+    width: 80px;
+    color: #999;
+    font-size: 15px;
+    text-align: right;
+    
+}
+
+.last-container .time span{
+    
+    display: block;
+    margin-top: 5px;
+    width: inherit;
+    
+}
+
+.last-container .time span:before{
+    
+    content: '';
+    display: block;
+    position: absolute;
+    margin: -2px 0px 0px 18px;
+    background-image: url(../imgs/clock.png);
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 20px;
+    
+}
+
+.last-container .current-value{
+    
+    font-size: 22px;
+    color: black;
+    height: 70px;
+    line-height: 70px;
+    
+}
+
+.last-container .warning:before{
+    
+    display: none;
+    
+}
+
 
 
 
