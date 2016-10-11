@@ -260,7 +260,7 @@ function showLastOneStat(p,container,id_study){
 
             addBlurToFormGroup(container);
             
-            var hammertime = new Hammer($('.one-stat'), myOptions);
+            var hammertime = new Hammer($('.one-stat'));
             
             hammertime.on('swipeLeft', function(ev) {
                 
