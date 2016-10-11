@@ -476,6 +476,7 @@ button.ok{
     width: 100%;
     height: 430px;
     overflow-x: auto;
+    margin-top: 15px;
     
 }
 
@@ -705,6 +706,7 @@ button.ok{
     width: 100px;
     height: 70px;
     top: 0px;
+    margin-left: 10px;
     background-size: 20px 20px;
     background-position: right center;
     

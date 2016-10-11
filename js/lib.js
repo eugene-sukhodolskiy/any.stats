@@ -248,7 +248,7 @@ function showLastOneStat(p,container,id_study){
 
                 str += '<div class="time">' + time + '</div>';
 
-                str += '<div class="current-value pencil" data-func="showInput" data-default="' + p.rows.item(i).value + '" data-unit="' + res.rows.item(0).unit + '">' + p.rows.item(i).value + '</div>';
+                str += '<div class="current-value" data-func="showInput" data-default="' + p.rows.item(i).value + '" data-unit="' + res.rows.item(0).unit + '">' + p.rows.item(i).value + '</div>';
 
                 str += '<div class="del"></div> </div>';
 
@@ -259,6 +259,18 @@ function showLastOneStat(p,container,id_study){
             Funcs.init(container);
 
             addBlurToFormGroup(container);
+            
+            $$('.one-stat').swipeLeft(function(){
+                
+                console.log('swipe left');
+                
+            });
+            
+            $$('.one-stat').swipeRight(function(){
+
+                console.log('swipe right');
+
+            });
 
         });
         
