@@ -260,13 +260,13 @@ function showLastOneStat(p,container,id_study){
 
             addBlurToFormGroup(container);
             
-            $$('.one-stat').swipeLeft(function(){
+            $('.one-stat').swipeLeft(function(){
                 
                 console.log('swipe left');
                 
             });
             
-            $$('.one-stat').swipeRight(function(){
+            $('.one-stat').swipeRight(function(){
 
                 console.log('swipe right');
 
