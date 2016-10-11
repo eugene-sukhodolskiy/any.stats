@@ -653,7 +653,7 @@ button.ok{
     
     position: absolute;
     left: 95%;
-    margin: 15px 0px 0px -95px;
+    margin: 15px 0px 0px -75px;
     width: 80px;
     color: #999;
     font-size: 15px;
@@ -689,6 +689,7 @@ button.ok{
     color: black;
     height: 70px;
     line-height: 70px;
+    margin-top: 0;
     
 }
 
@@ -758,7 +759,62 @@ button.list{
     
 }
 
+.one-stat-del{
+    
+    width: 100px;
+    height: 70px;
+    background-image: url(../imgs/delete.png);
+    background-repeat: no-repeat;
+    background-size: 30% auto;
+    background-position: center center;
+    background-color: red;
+    position: absolute;
+    left: 95%;
+    margin-left: -100px;
+    z-index: 0;
+    border: 0;
+    
+}
 
+.one-stat-wrap{
+    
+    overflow: hidden;
+    width: 90%;
+    height: 70px;
+    margin-top: 20px;
+    
+}
+
+.one-stat{
+    
+    margin-left: 5%;
+    width: 90%;
+    position: absolute;
+    z-index: 1;
+    height: 70px;
+    transition-duration: .2s;
+    
+}
+
+.one-stat .form-wrap.input{
+    
+    left: 0;
+    
+}
+
+.form-wrap.input.full{
+
+    width: inherit;
+    opacity: 1;
+
+}
+
+.one-stat .form-wrap.input.full{
+
+    width: 100%;
+    opacity: 1;
+
+}
 
 
 

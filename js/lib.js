@@ -128,7 +128,7 @@ function inpFocus(){
 
 function showInput(t){
     
-    $(t).parent().find('.form-wrap.input').css({'width': 'inherit','opacity': 1}).find('input',0).focus();
+    $(t).parent().find('.form-wrap.input').addClass('full').find('input',0).focus();
     
     var cv = $(t).parent().find('.current-value');
     
@@ -146,7 +146,7 @@ function hiddenInput(t){
     
     var fw = $(t).parent();
     
-    $(fw).css({'width': '0px','opacity': 0});
+    $(fw).removeClass('full');
     
     var val = $(t).prop('value');
     
@@ -237,6 +237,8 @@ function showLastOneStat(p,container,id_study){
                 var split = time.split(' ');
 
                 time = split[0] + '<span>' + split[1] + '</span>';
+                
+                str += '<div class="one-stat-wrap">';
 
                 str += '<div class="form-group one-stat">';
 
@@ -251,6 +253,10 @@ function showLastOneStat(p,container,id_study){
                 str += '<div class="current-value" data-func="showInput" data-default="' + p.rows.item(i).value + '" data-unit="' + res.rows.item(0).unit + '">' + p.rows.item(i).value + '</div>';
 
                 str += '<div class="del"></div> </div>';
+                
+                str += '<button class="one-stat-del"></button>';
+                
+                str += '</div>';
 
             }
 
@@ -262,9 +268,33 @@ function showLastOneStat(p,container,id_study){
             
             $(".one-stat").swipe({
                 
-                swipeRight: function(event, direction) {
+                swipeStatus: function(event, d, direction, distance) {
                     
-                    console.log("Вы перелистнули " + direction + " сторону" );
+                    
+                    
+                    if(direction == "left" && distance < 70){
+                    
+                        $(this).css('left',(0 - distance) + 'px');
+                        
+                    }else if(direction == "right" && distance >= 40){
+                        
+                        $(this).css('left','0px');
+                        
+                    }else if(direction == "left" && distance >= 70){
+                        
+                        $(this).css('left','-100px');
+                        
+                    }
+                    
+                    if(d == 'end' && distance >= 70){
+                        
+                        $(this).css('left','-100px');
+                        
+                    }else{
+                        
+                        $(this).css('left','0px');
+                        
+                    }
                     
                 }
                 
