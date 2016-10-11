@@ -260,17 +260,25 @@ function showLastOneStat(p,container,id_study){
 
             addBlurToFormGroup(container);
             
-            $('.one-stat').swipeLeft(function(){
+            var hammertime = new Hammer($('.one-stat'), myOptions);
+            
+            hammertime.on('swipeLeft', function(ev) {
                 
-                console.log('swipe left');
+                console.log(ev);
                 
             });
             
-            $('.one-stat').swipeRight(function(){
-
-                console.log('swipe right');
-
-            });
+//            $('.one-stat').swipeLeft(function(){
+//                
+//                console.log('swipe left');
+//                
+//            });
+//            
+//            $('.one-stat').swipeRight(function(){
+//
+//                console.log('swipe right');
+//
+//            });
 
         });
         
