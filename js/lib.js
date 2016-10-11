@@ -272,25 +272,21 @@ function showLastOneStat(p,container,id_study){
                     
                     
                     
-                    if(direction == "left" && distance < 70){
+                    if(direction == "left" && distance < 100){
                     
                         $(this).css('left',(0 - distance) + 'px');
                         
-                    }else if(direction == "right" && distance >= 40){
+                    }else if(direction == "right" && distance > 0){
                         
-                        $(this).css('left','0px');
-                        
-                    }else if(direction == "left" && distance >= 70){
-                        
-                        $(this).css('left','-100px');
+                        $(this).css('left',(0 - distance) + 'px');
                         
                     }
                     
-                    if(d == 'end' && distance >= 70){
+                    if(d == 'end' && distance >= 50){
                         
                         $(this).css('left','-100px');
                         
-                    }else{
+                    }else if(d == 'end' && distance <= 50){
                         
                         $(this).css('left','0px');
                         
