@@ -270,26 +270,9 @@ function showLastOneStat(p,container,id_study){
                 
                 swipeStatus: function(event, d, direction, distance) {
                     
+                    $(this).css('left',(0 - distance) + 'px');
                     
-                    if(d != 'end' && direction == "left" && distance < 50){
                     
-                        $(this).css('left',(0 - distance) + 'px');
-                        
-                    }else if(d != 'end' && direction == "right" && distance >= 50){
-                        
-                        $(this).css('left',(0 - distance) + 'px');
-                        
-                    }
-                    
-                    if(d == 'end' && distance >= 50){
-                        
-                        $(this).css('left','-100px');
-                        
-                    }else if(d == 'end' && distance <= 50){
-                        
-                        $(this).css('left','0px');
-                        
-                    }
                     
                 }
                 
