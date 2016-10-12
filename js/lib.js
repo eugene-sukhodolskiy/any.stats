@@ -128,7 +128,7 @@ function inpFocus(){
 
 function showInput(t){
     
-    $(t).parent().find('.form-wrap.input').addClass('full').find('input',0).focus();
+    $(t).parent().find('.form-wrap.input').css({'width': 'inherit','opacity': 1}).find('input',0).focus();
     
     var cv = $(t).parent().find('.current-value');
     
@@ -146,7 +146,7 @@ function hiddenInput(t){
     
     var fw = $(t).parent();
     
-    $(fw).removeClass('full');
+    $(fw).css({'width': '0px','opacity': 0});
     
     var val = $(t).prop('value');
     
@@ -237,8 +237,6 @@ function showLastOneStat(p,container,id_study){
                 var split = time.split(' ');
 
                 time = split[0] + '<span>' + split[1] + '</span>';
-                
-                str += '<div class="one-stat-wrap">';
 
                 str += '<div class="form-group one-stat">';
 
@@ -253,10 +251,6 @@ function showLastOneStat(p,container,id_study){
                 str += '<div class="current-value" data-func="showInput" data-default="' + p.rows.item(i).value + '" data-unit="' + res.rows.item(0).unit + '">' + p.rows.item(i).value + '</div>';
 
                 str += '<div class="del"></div> </div>';
-                
-                str += '<button class="one-stat-del"></button>';
-                
-                str += '</div>';
 
             }
 
@@ -265,69 +259,6 @@ function showLastOneStat(p,container,id_study){
             Funcs.init(container);
 
             addBlurToFormGroup(container);
-            
-            $(".one-stat").swipe({
-                
-                swipeStatus: function(event, d, direction, distance) {
-                    
-                    if(direction == 'left')
-                        var left = (0 - distance);
-                    else if(direction == 'right')
-                        var left = -100 + distance;
-                    else{
-                        
-                        return false;
-                        
-                    }
-                    
-                    if(d == 'move'){
-                        
-                        if(left <= 0 && left >= -100){
-                            
-                            $(this).css('left',left + 'px');
-
-                            console.log(left + ' ' + direction + ' ' + distance + d);
-                            
-                        }
-                        
-                    }else{
-                        
-                        var cur = parseInt($(this).css('left'));
-                        
-                        if(cur > -50){
-                            
-                            $(this).css('left','0px');
-                            
-                            console.log('to 0');
-                            
-                        }else{
-                            
-                            $(this).css('left','-100px');
-                            
-                            console.log('to -100');
-                            
-                        }
-                        
-                    }
-                        
-                    
-                    
-                }
-                
-            });
-            
-            
-//            $('.one-stat').swipeLeft(function(){
-//                
-//                console.log('swipe left');
-//                
-//            });
-//            
-//            $('.one-stat').swipeRight(function(){
-//
-//                console.log('swipe right');
-//
-//            });
 
         });
         
