@@ -274,6 +274,11 @@ function showLastOneStat(p,container,id_study){
                         var left = (0 - distance);
                     else if(direction == 'right')
                         var left = -100 + distance;
+                    else{
+                        
+                        return false;
+                        
+                    }
                     
                     if(d == 'move'){
                         
