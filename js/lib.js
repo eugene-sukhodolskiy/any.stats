@@ -270,8 +270,41 @@ function showLastOneStat(p,container,id_study){
                 
                 swipeStatus: function(event, d, direction, distance) {
                     
-                    $(this).css('left',(0 - distance) + 'px');
+                    if(direction == 'left')
+                        var left = (0 - distance);
+                    else if(direction == 'right')
+                        var left = -100 + distance;
                     
+                    if(d == 'move'){
+                        
+                        if(left <= 0 && left >= -100){
+                            
+                            $(this).css('left',left + 'px');
+
+                            console.log(left + ' ' + direction + ' ' + distance + d);
+                            
+                        }
+                        
+                    }else{
+                        
+                        var cur = parseInt($(this).css('left'));
+                        
+                        if(cur > -50){
+                            
+                            $(this).css('left','0px');
+                            
+                            console.log('to 0');
+                            
+                        }else{
+                            
+                            $(this).css('left','-100px');
+                            
+                            console.log('to -100');
+                            
+                        }
+                        
+                    }
+                        
                     
                     
                 }
