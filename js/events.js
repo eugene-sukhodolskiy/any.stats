@@ -255,6 +255,16 @@ Nav.events.open.showStats = function(id_study){
             
             var c = 0;
             
+            var timebtns = {
+                
+                start: [],
+                
+                end: [],
+                
+                format: []
+                
+            };
+            
             for(var i=0;i<res.rows.length;i++){
                 
                 flag = 0;
@@ -288,6 +298,10 @@ Nav.events.open.showStats = function(id_study){
                     
                     points[points.length] = p;
                     
+                    timebtns.start[timebtns.start.length] = ft;
+
+                    timebtns.end[timebtns.end.length] = res.rows.item(i - 1).timestamp;
+                    
                     sum = res.rows.item(i).value;
                     
                     ft = res.rows.item(i).timestamp;
@@ -309,24 +323,33 @@ Nav.events.open.showStats = function(id_study){
 
                 points[points.length] = p;
                 
+                timebtns.start[timebtns.start.length] = ft;
+
+                timebtns.end[timebtns.end.length] = res.rows.item(i - 1).timestamp;
+                
             }
             
 //            console.log(points);
             
             var max = 0;
             
+            var formatDate = getFormatFromPeriod(time);
+            
             for(var i=0;i<points.length;i++){
                 
                 if(points[i][1] > max)
                     max = points[i][1];
                 
-                var time = getFormatDate(points[i][2]);
+                var time = getFormatDate(points[i][2],formatDate);
                 
                 points[i][3] = time;
+                
+                timebtns.format[timebtns.format.length] = time;
                 
             }
             
             var height = parseInt($('#main-canvas').attr('height'));
+            
             
 //            console.log(max);
             
@@ -346,6 +369,10 @@ Nav.events.open.showStats = function(id_study){
             
             graph.draw();
             
+            genTimeBtn(timebtns,'#showStats .time-btn-container');
+            
+            $('#showStats .time-btn-container').css('width',$('#main-canvas').css('width'));
+            
             showLastOneStat(res,'#showStats .last-container',id_study);
             
             
@@ -364,6 +391,65 @@ Nav.events.close.showStats = function(){
     Funcs.do.closeEditName('showStats');
     
     $('#showStats .last-container').html('');
+    
+    hiddenPage();
+    
+}
+
+Nav.events.open.goToEntries = function(p){
+
+    var data = new String(p).split('-');
+
+    var start = data[0];
+
+    var end = data[1];
+    
+    var id_study = data[2];
+    
+    var format = 'Y/M/D';
+    
+    var formatStart = getFormatDate(start,format);
+    
+    var formatEnd = getFormatDate(end,format);
+
+    DB.connect.transaction(function(c){
+        
+        c.executeSql("SELECT name,unit FROM study WHERE id=?",[id_study], function(c,study){
+            
+            var pagename = study.rows.item(0).name + '<br><small>' + formatStart + ' - ' + formatEnd + '</small>';
+            
+            $('#entriesList .page-name').html(pagename);
+            
+            c.executeSql("SELECT * FROM entry WHERE id_study=? AND timestamp <= ? AND timestamp >= ? ORDER BY id DESC", [id_study,start,end], function(c,res){
+                
+                var str = getListEntries(res,study);
+                
+                $('#entriesList .enries-container').html(str);
+                
+                Funcs.init('#entriesList .enries-container');
+                
+                addBlurToFormEntriesList('#entriesList .enries-container');
+                
+                showPage('entriesList');
+
+            }, function(c,err){
+
+                console.log(err);
+
+            });
+            
+            
+        }, function(c,err){
+            
+            console.log(err);
+            
+        });
+        
+    });
+
+}
+
+Nav.events.close.goToEntries = function(p){
     
     hiddenPage();
     

@@ -111,12 +111,12 @@ function getGraph(param){
                     
                     // date
                     
-                    ctx[n].fillStyle = 'black';
-                    
-                    ctx[n].fillText(this.data[n][i][3], x - 70, height - 20);
-                    
-                    
-                    ctx[n].fillStyle = this.colors[n];
+//                    ctx[n].fillStyle = 'black';
+//                    
+//                    ctx[n].fillText(this.data[n][i][3], x - 70, height - 20);
+//                    
+//                    
+//                    ctx[n].fillStyle = this.colors[n];
                     
                     
                     

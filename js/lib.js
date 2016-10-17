@@ -228,41 +228,51 @@ function showLastOneStat(p,container,id_study){
     
         c.executeSql("SELECT unit FROM study WHERE id=?",[id_study],function(c,res){
 
-            var str = '';
-
-            for(var i = 0; i < 10; i++){
-
-                var time = getFormatDate(p.rows.item(i).timestamp);
-
-                var split = time.split(' ');
-
-                time = split[0] + '<span>' + split[1] + '</span>';
-
-                str += '<div class="form-group one-stat">';
-
-                str += '<div class="form-wrap input">';
-
-                str += '<input type="text" value="' + p.rows.item(i).value + '" placeholder="Value">';
-
-                str += '</div>';
-
-                str += '<div class="time">' + time + '</div>';
-
-                str += '<div class="current-value" data-func="showInput" data-default="' + p.rows.item(i).value + '" data-unit="' + res.rows.item(0).unit + '">' + p.rows.item(i).value + '</div>';
-
-                str += '<div class="del"></div> </div>';
-
-            }
+            var str = getListEntries(p,res);
 
             $(container).html(str);
 
             Funcs.init(container);
 
-            addBlurToFormGroup(container);
+            addBlurToFormEntriesList(container);
 
         });
         
     });
+    
+}
+
+function getListEntries(p,res){
+    
+    var str = '';
+    
+    var count = (p.rows.length < 10) ? p.rows.length : 10;
+
+    for(var i = 0; i < count; i++){
+
+        var time = getFormatDate(p.rows.item(i).timestamp);
+
+        var split = time.split(' ');
+
+        time = split[0] + '<span>' + split[1] + '</span>';
+
+        str += '<div class="form-group one-stat">';
+
+        str += '<div class="form-wrap input">';
+
+        str += '<input type="text" data-id="' + p.rows.item(i).id + '" value="' + p.rows.item(i).value + '" placeholder="Value">';
+
+        str += '</div>';
+
+        str += '<div class="time">' + time + '</div>';
+
+        str += '<div class="current-value" data-func="showInput" data-default="' + p.rows.item(i).value + '" data-unit="' + res.rows.item(0).unit + '">' + p.rows.item(i).value + '</div>';
+
+        str += '<div class="del"></div> </div>';
+
+    }
+    
+    return str;
     
 }
 
@@ -278,34 +288,119 @@ function addBlurToFormGroup(container){
     
 }
 
-function getFormatDate(timestamp){
+function addBlurToFormEntriesList(container){
+
+    container = container || '';
+
+    $(container + ' .form-wrap.input input[type="text"]').blur(function(){
+
+        hiddenInput(this);
+        
+        var value = new String($(this).prop('value'));
+        
+        var id_entry = new String($(this).attr('data-id'));
+        
+        DB.connect.transaction(function(c){
+            
+            c.executeSql("UPDATE entry SET value=? WHERE id=?",[value,id_entry], function(c,res){
+                
+                console.log('UPDATE entry WHERE id='+id_entry);
+                
+            },function(c,err){
+                
+                console.log(err);
+                
+            })
+            
+        });
+
+    });
+
+}
+
+function getFormatDate(timestamp,format){
     
-    var d = new Date(timestamp);
-
-    var year = d.getFullYear();
-
-    var month = d.getMonth();
-
-    month = (month < 10) ? '0' + month : month;
-
-    var day = d.getDate();
-
-    day = (day < 10) ? '0' + day : day;
-
-    var h = d.getHours();
-
-    h = (h < 10) ? '0' + h : h;
-
-    var m = d.getMinutes();
+    format = format || 'Y/M/D h:m';
     
-    m = (m < 10) ? '0' + m : m;
+    var date = {};
+    
+    var d = new Date(parseInt(timestamp));
+
+    date.Y = d.getFullYear();
+
+    date.M = d.getMonth();
+
+    date.M = (date.M < 10) ? '0' + date.M : date.M;
+
+    date.D = d.getDate();
+
+    date.D = (date.D < 10) ? '0' + date.D : date.D;
+
+    date.h = d.getHours();
+
+    date.h = (date.h < 10) ? '0' + date.h : date.h;
+
+    date.m = d.getMinutes();
+    
+    date.m = (date.m < 10) ? '0' + date.m : date.m;
     
     
-    var str = year + '/' + month + '/' + day + ' ';
+    var str = '';
     
-    str += h + ':' + m;
+    for(var i=0;i<format.length;i++){
+        
+        if(typeof date[format[i]] != 'undefined'){
+            
+            str += date[format[i]];
+            
+        }else{
+            
+            str += format[i];
+            
+        }
+        
+    }
     
     return str;
+    
+}
+
+
+function genTimeBtn(arr,container){
+    
+    var str = '';
+    
+    var id_study = Nav.currentParam;
+    
+    for(var i=0;i<arr.start.length;i++){
+        
+        str += '<button class="timestamp-btn" data-page="goToEntries" data-param="' + arr.start[i] + '-' + arr.end[i] + ' - ' + id_study + '">' + arr.format[i] + '</button>'
+        
+    }
+        
+    $(container).html(str);
+    
+    Nav.initPages(container);
+    
+}
+
+function getFormatFromPeriod(period){
+    
+    var source = {
+        
+        '600000': 'Y/M/D h:m',
+        
+        '3600000': 'Y/M/D h:m',
+        
+        '86400000': 'Y/M/D',
+        
+        '2592000000': 'Y/M',
+        
+        '31536000000': 'Y',
+        
+    }
+    
+    return source[new String(period)];
     
 }
 

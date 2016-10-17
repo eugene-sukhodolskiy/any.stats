@@ -6,7 +6,7 @@ var Funcs = {
         
         path = path || '';
         
-        $(path+' [data-func]').click(function(){
+        $(path + ' [data-func]').click(function(){
             
             var funcname = $(this).attr('data-func');
             
