@@ -688,6 +688,8 @@ button.ok{
     color: black;
     height: 70px;
     line-height: 70px;
+    max-width: 173px;
+    overflow: hidden;
     
 }
 

@@ -264,7 +264,7 @@ function getListEntries(p,res){
         
         str += '<span class="counter"></span>';
                     
-        str += '<input type="number" data-id="' + p.rows.item(i).id + '" value="' + p.rows.item(i).value + '" placeholder="Value" max="999999999">';
+        str += '<input type="number" data-id="' + p.rows.item(i).id + '" value="' + p.rows.item(i).value + '" placeholder="Value" min="1" step="1" max="999999999">';
 
         str += '</div>';
 
@@ -298,28 +298,40 @@ function addBlurToFormEntriesList(container){
 
     $(container + ' .form-wrap.input input[type="text"]').blur(function(){
 
-        hiddenInput(this);
-        
-        var value = new String($(this).prop('value'));
-        
-        var id_entry = new String($(this).attr('data-id'));
-        
-        DB.connect.transaction(function(c){
-            
-            c.executeSql("UPDATE entry SET value=? WHERE id=?",[value,id_entry], function(c,res){
-                
-                console.log('UPDATE entry WHERE id='+id_entry);
-                
-            },function(c,err){
-                
-                console.log(err);
-                
-            })
-            
-        });
+        blurToFormEntriesList(this);
+
+    });
+    
+    $(container + ' .form-wrap.input input[type="number"]').blur(function(){
+
+        blurToFormEntriesList(this);
 
     });
 
+}
+
+function blurToFormEntriesList(t){
+    
+    hiddenInput(t);
+
+    var value = new String($(t).prop('value'));
+
+    var id_entry = new String($(t).attr('data-id'));
+
+    DB.connect.transaction(function(c){
+
+        c.executeSql("UPDATE entry SET value=? WHERE id=?",[value,id_entry], function(c,res){
+
+            console.log('UPDATE entry WHERE id='+id_entry);
+
+        },function(c,err){
+
+            console.log(err);
+
+        })
+
+    });
+    
 }
 
 function getFormatDate(timestamp,format){
