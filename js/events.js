@@ -436,6 +436,8 @@ Nav.events.open.goToEntries = function(p){
                 
                 addBlurToFormEntriesList('#entriesList .enries-container');
                 
+                addMaxLengthToInput('#entriesList .enries-container');
+                
                 showPage('entriesList');
 
             }, function(c,err){

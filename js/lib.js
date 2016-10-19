@@ -235,6 +235,8 @@ function showLastOneStat(p,container,id_study){
             Funcs.init(container);
 
             addBlurToFormEntriesList(container);
+            
+            addMaxLengthToInput(container);
 
         });
         
@@ -259,8 +261,10 @@ function getListEntries(p,res){
         str += '<div class="form-group one-stat">';
 
         str += '<div class="form-wrap input">';
-
-        str += '<input type="text" data-id="' + p.rows.item(i).id + '" value="' + p.rows.item(i).value + '" placeholder="Value">';
+        
+        str += '<span class="counter"></span>';
+                    
+        str += '<input type="text" data-id="' + p.rows.item(i).id + '" value="' + p.rows.item(i).value + '" placeholder="Value" maxlength="10">';
 
         str += '</div>';
 
@@ -401,6 +405,74 @@ function getFormatFromPeriod(period){
     }
     
     return source[new String(period)];
+    
+}
+
+
+function addMaxLengthToInput(container){
+    
+    container = container || '';
+    
+    $(container + ' input[maxlength]').keydown(function(e){
+
+        var char = e.keyCode;
+
+        if(char == 13){
+
+            $(this).blur();
+
+            return false;
+
+        }
+
+        var counter = $(this).parent().find('span.counter');
+
+        var max = parseInt($(this).attr("maxlength"));
+
+        var val = $(this).prop('value');
+
+        var count = val.length;
+
+        count = (isNaN(count)) ? 0 : count;
+
+        $(this).attr('value',$(this).prop('value'));
+
+        //        if(char == 13){
+        //            
+        //            console.log(char);
+        //            
+        //            return false;
+        //
+        //        }
+
+        if(count == 0 && char == 8)
+            return false;
+
+        //        if(count > 0 && char == 8)
+        //            count--;
+        //        else if(char != 13 && char != 39 && char != 37 && char != 35 && char != 36) 
+        //            count++;
+
+        var len = count;
+
+        len = (len > max) ? max : len;
+
+        len = max - len;
+
+        $(counter).html(len + '/' + max);
+
+        if(len <= 5){
+
+            $(counter).css({'opacity': 1});
+
+        } else {
+
+            $(counter).css({'opacity': 0});
+
+        }
+
+
+    });
     
 }
 

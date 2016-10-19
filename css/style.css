@@ -558,6 +558,7 @@ button.ok{
     position: absolute;
     left: 95%;
     margin-left: -145px;
+    box-shadow: none;
     
 }
 
@@ -609,11 +610,9 @@ button.ok{
     
     position: absolute;
     left: 5%;
-    color: black;
+    color: #999;
     font-size: 17px;
     padding: 10px;
-    background-color: #eee;
-    box-shadow: 0 0 3px #aaa;
     
 }
 
@@ -791,6 +790,12 @@ button.list{
     width: inherit;
     text-align: center;
     margin-top: 5px;
+    
+}
+
+.last-container .form-wrap{
+    
+    
     
 }
 
