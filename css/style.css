@@ -283,7 +283,8 @@ header button.back-screen{
 
 /*    */
 
-.form-group input[type="text"]{
+.form-group input[type="text"],
+.form-group input[type="number"]{
     
     padding: 8px 5px;
     font-size: 18px;

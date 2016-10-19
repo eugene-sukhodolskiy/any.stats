@@ -264,7 +264,7 @@ function getListEntries(p,res){
         
         str += '<span class="counter"></span>';
                     
-        str += '<input type="text" data-id="' + p.rows.item(i).id + '" value="' + p.rows.item(i).value + '" placeholder="Value" maxlength="10">';
+        str += '<input type="number" data-id="' + p.rows.item(i).id + '" value="' + p.rows.item(i).value + '" placeholder="Value" max="999999999">';
 
         str += '</div>';
 
