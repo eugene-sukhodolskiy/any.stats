@@ -435,23 +435,7 @@ function addMaxLengthToInput(container){
 
         count = (isNaN(count)) ? 0 : count;
 
-        $(this).attr('value',$(this).prop('value'));
 
-        //        if(char == 13){
-        //            
-        //            console.log(char);
-        //            
-        //            return false;
-        //
-        //        }
-
-        if(count == 0 && char == 8)
-            return false;
-
-        //        if(count > 0 && char == 8)
-        //            count--;
-        //        else if(char != 13 && char != 39 && char != 37 && char != 35 && char != 36) 
-        //            count++;
 
         var len = count;
 
