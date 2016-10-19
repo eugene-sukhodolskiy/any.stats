@@ -140,7 +140,13 @@ Nav.events.open.study = function(param){
 
                 html += '<span>Delete?</span></div>';
 
-                html += '<div class="name">' + res.rows.item(i).name + '</div>';
+                html += '<div class="name">' + res.rows.item(i).name;
+                
+                var dateOfStart = getFormatDate(res.rows.item(i).timestamp,'Y/M/D');
+                
+                html += '<span class="date-of-start">from ' + dateOfStart + '</span>';
+                
+                html += '</div>';
 
                 html += '</div> ';
 
