@@ -27,4 +27,12 @@ $(document).ready(function(){
     
     addMaxLengthToInput();
     
+    $.getJSON('sys.json',function(d){
+        
+        $('#settings .ver').html(d.ver);
+        
+    });
+    
+    
+    
 });

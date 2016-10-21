@@ -79,7 +79,11 @@ var tables = [
     
     function(connect){
 
-        connect.executeSql("CREATE TABLE IF NOT EXISTS settings (id INTEGER PRIMARY KEY ASC, name TEXT, timestamp REAL, value TEXT )",[],null,function(connect,err){
+        connect.executeSql("CREATE TABLE IF NOT EXISTS sets (id INTEGER PRIMARY KEY ASC, email TEXT, uname TEXT, lastsync REAL)",[],function(c,res){
+            
+            c.executeSql('INSERT INTO sets(email) VALUES (?)',['Empty']);
+            
+        },function(connect,err){
 
             DB.errs[DB.errs.length] = err;
 

@@ -2,11 +2,43 @@
 
 Nav.events.open.settings = function(param){
     
+    DB.connect.transaction(function(c){
+
+        c.executeSql('SELECT * FROM sets',[],function(c,r){
+
+            $('#settings .email .current-value')
+                .html(r.rows.item(0).email)
+                .attr('data-default',r.rows.item(0).email);
+
+        },function(c,err){
+
+            console.log(err);
+
+        });
+
+    });
+    
     showPage('settings');
     
 }
 
 Nav.events.close.settings = function(param){
+    
+    var email = $('#settings #mail').prop('value');
+    
+    DB.connect.transaction(function(c){
+        
+        c.executeSql('UPDATE sets SET email=?',[email],function(c,r){
+            
+            console.log('update email ('+email+')');
+            
+        },function(c,err){
+            
+            console.log(err);
+            
+        });
+        
+    });
     
     hiddenPage();
     
