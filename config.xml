@@ -42,4 +42,6 @@
         <preference name="android-manifest/@android:hardwareAccelerated" value="true" />
     </platform>
     
+    <access origin="*" />
+    
 </widget>
