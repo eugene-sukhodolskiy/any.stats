@@ -1,4 +1,4 @@
-<widget id="com.example.hello" version="0.0.1">
+<widget id="com.example.hello" version="0.0.2">
     <name>Any.Stats</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
