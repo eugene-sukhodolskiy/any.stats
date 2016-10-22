@@ -474,11 +474,11 @@ function addMaxLengthToInput(container){
 
 function showLeftMenu(){
     
-    $('.popup-background').css('display','block');
+//    $('.popup-background').css('display','block');
     
     setTimeout(function(){
         
-        $('.popup-background').css('opacity',1);
+//        $('.popup-background').css('opacity',1);
         
         $('.left-menu').css('left','0px');
         
@@ -496,14 +496,14 @@ function hidLeftMenu(){
     
     Nav.removeTmpBack();
     
-    $('.popup-background').css('opacity',0);
+//    $('.popup-background').css('opacity',0);
 
     $('.left-menu').css('left','-300px');
     
 
     setTimeout(function(){
         
-        $('.popup-background').css('display','none');
+//        $('.popup-background').css('display','none');
 
     },300);
     
