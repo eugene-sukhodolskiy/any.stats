@@ -509,6 +509,38 @@ function hidLeftMenu(){
     
 }
 
+function initLeftMenu(){
+    
+    DB.connect.transaction(function(c){
+        
+        c.executeSql('SELECT * FROM groups ORDER BY id ASC',[],function(c,res){
+            
+            var str = '';
+            
+            for(var i=0;i<res.rows.length;i++){
+                
+                str += '<li class="label-style" data-page="study" data-func="hidMenu" data-param="' + res.rows.item(i).id + '">' + res.rows.item(i).name + '</li>';
+                
+            }
+            
+            var container = '.left-menu .group-list ul';
+            
+            $(container).prepend(str);
+            
+            Nav.initPages(container);
+            
+            Funcs.init(container);
+            
+        },function(c,err){
+            
+            console.log(err);
+            
+        });
+        
+    });
+    
+}
+
 
 
 // vis/hid //

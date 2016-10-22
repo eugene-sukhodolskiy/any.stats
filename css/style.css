@@ -857,6 +857,69 @@ header button.btn-left-menu{
     
 }
 
+.left-menu .header{
+    
+    height: 120px;
+    background-color: #bbb;
+    width: 300px;
+    
+}
+
+.left-menu .group-list{
+    
+    margin-top: 40px;
+    width: 300px;
+    
+}
+
+.left-menu .list-caption{
+    
+    font-size: 20px;
+    color: #999;
+    margin-left: 20px;
+    
+}
+
+.left-menu .group-list li,
+.left-menu .other-list li
+{
+
+    font-size: 24px;
+    color: black;
+    
+    margin-top: 15px;
+    margin-left: 20px;
+    list-style: none;
+
+}
+
+.left-menu .other-list{
+    
+    margin-top: 40px;
+    
+}
+
+li.label-style{
+    
+    padding-left: 50px;
+    background-image: url('../imgs/label.png');
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 30px auto;
+    
+}
+
+li.create-label{
+    
+    padding-left: 50px;
+    background-image: url('../imgs/plus-grey.png');
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 30px auto;
+    
+}
+
+
 
 
 

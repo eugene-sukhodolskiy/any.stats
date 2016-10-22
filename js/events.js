@@ -122,6 +122,12 @@ Nav.events.close.groups = function(param){
 Nav.events.open.addnewgroup = function(param){
 
     showPage('addnewgroup');
+    
+    setTimeout(function(){
+        
+        $('#addnewgroup [for="groupName"]').click();
+        
+    },200);
 
 }
 
