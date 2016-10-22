@@ -380,6 +380,18 @@ Funcs.do.reload = function(p){
     
 }
 
+Funcs.do.showMenu = function(p){
+    
+    showLeftMenu();
+    
+}
+
+Funcs.do.hidMenu = function(p){
+    
+    hidLeftMenu();
+    
+}
+
 
 
 

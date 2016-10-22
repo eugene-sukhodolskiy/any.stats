@@ -472,6 +472,43 @@ function addMaxLengthToInput(container){
     
 }
 
+function showLeftMenu(){
+    
+    $('.popup-background').css('display','block');
+    
+    setTimeout(function(){
+        
+        $('.popup-background').css('opacity',1);
+        
+        $('.left-menu').css('left','0px');
+        
+    },1);
+    
+    Nav.addTmpBack(function(){
+        
+        hidLeftMenu();
+        
+    });
+    
+}
+
+function hidLeftMenu(){
+    
+    Nav.removeTmpBack();
+    
+    $('.popup-background').css('opacity',0);
+
+    $('.left-menu').css('left','-300px');
+    
+
+    setTimeout(function(){
+        
+        $('.popup-background').css('display','none');
+
+    },300);
+    
+}
+
 
 
 // vis/hid //

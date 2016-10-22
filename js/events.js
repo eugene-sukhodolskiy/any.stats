@@ -49,6 +49,7 @@ Nav.events.close.settings = function(param){
 Nav.events.open.groups = function(param){
     
     $('[data-back]').css('display','none');
+    $('header button.btn-left-menu').css('display','block');
     
     
     DB.connect.transaction(function(connect){
@@ -107,6 +108,8 @@ Nav.events.open.groups = function(param){
 Nav.events.close.groups = function(param){
     
     $('[data-back]').css('display','block');
+    
+    $('header button.btn-left-menu').css('display','none');
     
     $('#groups .nav-btn[data-del]').css('display','none');
     
