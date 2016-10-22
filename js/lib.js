@@ -47,19 +47,6 @@ function sQuestionDel(id,t,page){
 }
 
 function delFromHTML(id,page){
-    
-    var el = $('.page .no:visible',0);
-    
-    var str = (new String(page)).split('#')[1];
-    
-    var letter = (new String(str[0])).toUpperCase();
-    
-    str = str.split(str[0])[1];
-    
-    var funcname = 'hQuestionDel' + letter + str;
-
-
-    Funcs.do[funcname](id,el,page);
 
     $(page + ' .container [data-param="' + id + '"]').css('opacity','0');
 
@@ -595,7 +582,7 @@ function show_cmdelstudy(t){
 
 function addContextMenuEvent(container){
     
-    $(container + ' [data-context]').bind('pinch', function(){
+    $(container + ' [data-context]').bind('taphold', function(){
         
         $(this).attr('data-taphold',1);
         
@@ -613,6 +600,30 @@ function addContextMenuEvent(container){
     
 }
 
+
+function addLabels(){
+    
+    $('.nav-btn .label-name').html();
+    
+    DB.connect.transaction(function(c){
+        
+        c.executeSql('SELECT id,name FROM groups',[],function(c,res){
+            
+            for(var i=0;i<res.rows.length;i++){
+                
+                $('#allStudy .nav-btn[data-label-id="' + res.rows.item(i).id + '"] .label-name').html(res.rows.item(i).name);
+                
+            }
+            
+        },function(c,err){
+            
+            console.log(err);
+            
+        });
+        
+    });
+    
+}
 
 
 // vis/hid //

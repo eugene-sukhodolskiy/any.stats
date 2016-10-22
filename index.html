@@ -5,12 +5,11 @@
     <title>Stats.info</title>
 <!--    <meta name="viewport" content="width=400, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">-->
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/settings.css">
     
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
     <script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
-<!--    <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>-->
-    <script type="text/javascript" src="js/jgestures.min.js"></script>
+    <script type="text/javascript">$(document).bind("mobileinit", function(){$.extend(  $.mobile , {autoInitializePage: false})});</script>
+    <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
     <script type="text/javascript" src="js/lib.js"></script>
     <script type="text/javascript" src="js/database.js"></script>
     <script type="text/javascript" src="js/graph.js"></script>
@@ -27,7 +26,7 @@
       
       <ul>
           
-          <li data-func="deleleOneStudy" data-param="">Delete</li>
+          <li data-func="delStudy" data-param="">Delete</li>
           
       </ul>
       
@@ -356,10 +355,6 @@
 
           <div class="nav-btn" data-new="study" data-page="addnewstudy" data-param="true">
 
-          </div>
-
-          <div class="nav-btn" data-del="allStudy" data-func="showDelBtn" data-param="allStudy">
-              <button class="nav-btn-del"></button>
           </div>
           
       </section>

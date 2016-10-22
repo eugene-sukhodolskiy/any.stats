@@ -124,7 +124,7 @@ header button.back-screen{
     margin: 0 0 15px 15px;
     height: 120px;
     display: inline-block;
-    -webkit-transition-duration: .3s;
+    transition-duration: .2s;
     vertical-align: top;
     
 }
@@ -143,7 +143,8 @@ header button.back-screen{
     font-size: 22px;
     color: white;
     margin-top: 45px;
-    -webkit-transition-duration: .3s;
+    transition-duration: .2s;
+    margin-top: 25px;
     
 }
 
@@ -915,7 +916,7 @@ header button.btn-left-menu{
     top: 100%;
     background: white;
     width: 100%;
-    height: 50px;
+    height: 60px;
     overflow: hidden;
     transition-duration: .2s;
     margin-top: 0;
@@ -926,18 +927,27 @@ header button.btn-left-menu{
 
 .cm-down li{
     
-    height: 50px;
-    line-height: 50px;
+    height: 60px;
+    line-height: 60px;
     font-size: 24px;
     color: black;
+    padding-left: 20px;
     
 }
 
-.ui-loader{
+.nav-btn .label-name{
     
-    display: none !important;
+    position: absolute;
+    left: auto;
+    top: auto;
+    padding: 5px;
+    color: white;
+    background: #1565C0;
+    margin: 90px 0px 0px 5px;
+    font-size: 12px;
     
 }
+
 
 
 

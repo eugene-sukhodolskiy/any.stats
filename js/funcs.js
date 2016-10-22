@@ -180,11 +180,13 @@ Funcs.do.delGroup = function(id){
     
 }
 
-Funcs.do.delStudy = function(id){
+Funcs.do.delStudy = function(id,t){
     
     studyDelFromDB(id);
     
-    delFromHTML(id,'#study');
+    delFromHTML(id,'#' + Nav.currentPage);
+    
+    hid_cmdown();
     
 }
 

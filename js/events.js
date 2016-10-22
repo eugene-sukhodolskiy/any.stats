@@ -67,15 +67,9 @@ Nav.events.open.allStudy = function(p){
 
             for(var i=0;i<res.rows.length;i++){
 
-                html += '<div class="nav-btn" data-context="show_cmdelstudy" data-page="showStats" data-param="' + res.rows.item(i).id + '">';
-
-//                html += '<div class="no-click"></div>';
-
-//                html += '<button class="nav-btn-del" data-func="sQuestionDelStudy" data-param="' + res.rows.item(i).id + '"></button>';
-
-//                html += '<div class="askDel"><button data-func="delStudy" data-param="' + res.rows.item(i).id + '" class="yes"></button> <button data-func="hQuestionDelStudy" data-param="true" class="no"></button>';
-
-//                html += '<span>Delete?</span></div>';
+                html += '<div class="nav-btn" data-label-id="' + res.rows.item(i).id_group + '" data-context="show_cmdelstudy" data-page="showStats" data-param="' + res.rows.item(i).id + '">';
+                
+                html += '<div class="label-name"></div>';
 
                 html += '<div class="name">' + res.rows.item(i).name;
 
@@ -90,6 +84,8 @@ Nav.events.open.allStudy = function(p){
             }
 
             $('#allStudy .container').html(html);
+            
+            addLabels();
 
             showPage('allStudy');
 
