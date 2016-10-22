@@ -2,12 +2,14 @@ var graph = {};
 
 $(document).ready(function(){
     
+    document.body.onselectstart= function() {return false}
+    
     DB.open("Test5","0.1",9000000);
     DB.createTables(tables);
     
-    Nav.begin.page = 'groups';
+    Nav.begin.page = 'allStudy';
     
-    Nav.begin.param = 'group list';
+    Nav.begin.param = 'allStudy list';
     
     Nav.init();
     

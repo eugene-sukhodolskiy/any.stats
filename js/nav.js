@@ -120,6 +120,14 @@ var Nav = {
         container = container || "";
         
         $(container + ' [data-page]').click(function(){
+            
+            if($(this).attr('data-taphold') == 1){
+
+                $(this).removeAttr('data-taphold');
+
+                return false;
+
+            }
 
             var page = $(this).attr('data-page');
 

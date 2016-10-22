@@ -8,7 +8,9 @@
     <link rel="stylesheet" type="text/css" href="css/settings.css">
     
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
-    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
+<!--    <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>-->
+    <script type="text/javascript" src="js/jgestures.min.js"></script>
     <script type="text/javascript" src="js/lib.js"></script>
     <script type="text/javascript" src="js/database.js"></script>
     <script type="text/javascript" src="js/graph.js"></script>
@@ -20,15 +22,24 @@
 <body>
   
   <div class="wrap">
+  
+      <div class="cm-down cm-del-study">
+      
+      <ul>
+          
+          <li data-func="deleleOneStudy" data-param="">Delete</li>
+          
+      </ul>
+      
+  </div>
    
    <header>
      
        <button class="back-screen btn-left-menu" data-func="showMenu"></button>
+       
       <button class="back-screen" data-back="true"></button>
        
       <div class="logo">Any <img src="imgs/logo.png"> Stats</div>
-       
-<!--      <button class="settings" data-page="settings" data-param="true"></button>-->
        
    </header>
    
@@ -54,7 +65,7 @@
 
            <ul>
                
-               <li data-page="settings">Settings</li>
+               <li class="settings" data-func="hidMenu" data-page="settings">Settings</li>
                
            </ul>
            
@@ -62,7 +73,7 @@
        
    </div>
    
-      <div class="popup-background" data-func="hidMenu"></div>
+      <div class="popup-background" data-func="hidBackground"></div>
     
     <section class="page" id="groups">
        
@@ -324,6 +335,32 @@
           
           <div class="last-container enries-container"></div>
           
+          
+      </section>
+      
+      
+      <section class="page" id="allStudy">
+          
+          <h1 class="page-name">All studies</h1>
+
+          <div class="form-edit">
+
+              <input type="text" name="edit-name">
+
+              <button class="save" data-func="saveEditName" data-param="allStudy"></button>
+
+          </div>
+
+          <div class="container"></div>
+
+
+          <div class="nav-btn" data-new="study" data-page="addnewstudy" data-param="true">
+
+          </div>
+
+          <div class="nav-btn" data-del="allStudy" data-func="showDelBtn" data-param="allStudy">
+              <button class="nav-btn-del"></button>
+          </div>
           
       </section>
     

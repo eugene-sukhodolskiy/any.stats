@@ -541,6 +541,78 @@ function initLeftMenu(){
     
 }
 
+function show_cmdown(t,container){
+    
+    Nav.addTmpBack(function(){
+        
+        hid_cmdown();
+        
+    });
+    
+    $(container).css('display','block');
+    
+    var li_height = parseInt($(container).find('li',0).css('height'));
+    
+    var mtop = $(container).find('li').length * li_height;
+    
+    $('.popup-background').css('display','block');
+    
+    setTimeout(function(){
+        
+        $('.popup-background').css('opacity',1);
+        
+        $(container).css('margin-top',(0 - mtop) + 'px');
+        
+    },1);
+    
+}
+
+function hid_cmdown(){
+    
+    $('.cm-down').css('margin-top','0px');
+    
+    $('.popup-background').css('opacity',0);
+    
+    setTimeout(function(){
+        
+        $('.cm-down').css('display','none');
+
+        $('.popup-background').css('display','none');
+        
+    },200);
+    
+}
+
+function show_cmdelstudy(t){
+    
+    var id = $(t).attr('data-param');
+    
+    $('.cm-del-study li',0).attr('data-param',id);
+    
+    show_cmdown(t,'.cm-del-study');
+    
+}
+
+function addContextMenuEvent(container){
+    
+    $(container + ' [data-context]').bind('pinch', function(){
+        
+        $(this).attr('data-taphold',1);
+        
+        var cmname = $(this).attr('data-context');
+        
+        var cm = {
+            
+            'show_cmdelstudy': show_cmdelstudy
+            
+        }
+        
+        cm[cmname](this);
+        
+    });
+    
+}
+
 
 
 // vis/hid //

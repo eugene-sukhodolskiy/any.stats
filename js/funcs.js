@@ -8,6 +8,14 @@ var Funcs = {
         
         $(path + ' [data-func]').click(function(){
             
+            if($(this).attr('data-taphold') == 1){
+                
+                $(this).removeAttr('data-taphold');
+                
+                return false;
+                
+            }
+            
             var funcname = $(this).attr('data-func');
             
             var param = $(this).attr('data-param');
@@ -389,6 +397,14 @@ Funcs.do.showMenu = function(p){
 Funcs.do.hidMenu = function(p){
     
     hidLeftMenu();
+    
+}
+
+Funcs.do.hidBackground = function(){
+    
+    hidLeftMenu();
+    
+    hid_cmdown();
     
 }
 

@@ -44,6 +44,81 @@ Nav.events.close.settings = function(param){
     
 }
 
+// allStudy //
+
+Nav.events.open.allStudy = function(p){
+    
+    $('[data-back]').css('display','none');
+    $('header button.btn-left-menu').css('display','block');
+    
+    DB.connect.transaction(function(connect){
+
+        connect.executeSql("SELECT * FROM study ORDER BY id ASC",[],function(connect,res){
+
+            //            console.log(res);
+
+            var html = '';
+
+            if(res.rows.length != 0){
+
+                $('#allStudy .nav-btn[data-del]').css('display','inline-block');
+
+            }
+
+            for(var i=0;i<res.rows.length;i++){
+
+                html += '<div class="nav-btn" data-context="show_cmdelstudy" data-page="showStats" data-param="' + res.rows.item(i).id + '">';
+
+//                html += '<div class="no-click"></div>';
+
+//                html += '<button class="nav-btn-del" data-func="sQuestionDelStudy" data-param="' + res.rows.item(i).id + '"></button>';
+
+//                html += '<div class="askDel"><button data-func="delStudy" data-param="' + res.rows.item(i).id + '" class="yes"></button> <button data-func="hQuestionDelStudy" data-param="true" class="no"></button>';
+
+//                html += '<span>Delete?</span></div>';
+
+                html += '<div class="name">' + res.rows.item(i).name;
+
+                var dateOfStart = getFormatDate(res.rows.item(i).timestamp,'Y/M/D');
+
+                html += '<span class="date-of-start">from ' + dateOfStart + '</span>';
+
+                html += '</div>';
+
+                html += '</div> ';
+
+            }
+
+            $('#allStudy .container').html(html);
+
+            showPage('allStudy');
+
+            $('#allStudy [data-new="study"]').attr('data-param',p);
+
+            Funcs.init('#allStudy .container');
+
+            Nav.initPages('#allStudy');
+            
+            addContextMenuEvent('#allStudy');
+
+        });
+
+    });
+    
+}
+
+Nav.events.close.allStudy = function(p){
+    
+    $('[data-back]').css('display','block');
+
+    $('header button.btn-left-menu').css('display','none');
+
+    $('#study .nav-btn[data-del]').css('display','none');
+
+    hiddenPage();
+
+}
+
 // Groups //
 
 Nav.events.open.groups = function(param){
