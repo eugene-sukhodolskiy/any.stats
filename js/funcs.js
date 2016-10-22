@@ -51,6 +51,8 @@ Funcs.do.saveNewGroup = function(param){
             
             updateLabelList();
             
+            initLabelListOnNewStudy();
+            
             
         },function(connect,err){
             
