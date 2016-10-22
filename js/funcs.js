@@ -49,6 +49,9 @@ Funcs.do.saveNewGroup = function(param){
             
             Nav.back();
             
+            updateLabelList();
+            
+            
         },function(connect,err){
             
             console.log(err);
@@ -58,98 +61,6 @@ Funcs.do.saveNewGroup = function(param){
     });
     
 }
-
-Funcs.do.showDelBtn = function(page,t){
-    
-    page = '#' + page;
-    
-    $(page + ' .container .nav-btn').css('background','#E53935').unbind();
-    
-    $('[data-page]').unbind();
-        
-    $(page + ' .nav-btn-del').css('display','block');
-    
-    setTimeout(function(){
-        
-        $(page + ' .nav-btn-del').css('opacity','1');
-        
-    },1);
-    
-    $(t).css('background-color','#ccc').attr('data-func','hiddenDelBtn').attr('data-backmark',1);
-    
-    Nav.addTmpBack(function(){
-        
-        console.log('tmpback');
-        
-        $('[data-backmark="1"]').click();
-        
-    });
-    
-}
-
-Funcs.do.hiddenDelBtn = function(page,t){
-    
-    Nav.removeTmpBack();
-    
-    $(t).removeAttr('data-backmark');
-    
-    page = '#' + page;
-
-    $(page + ' .container .nav-btn').css('background','#1E88E5');
-    
-    Nav.initPages();
-    
-    $(page + ' .nav-btn-del').css('opacity','0');
-
-    setTimeout(function(){
-        
-        $(page + ' .nav-btn-del').css('display','none');
-
-    },200);
-    
-    $('[data-func="hiddenDelBtn"]').css('background-color','#E0E0E0').attr('data-func','showDelBtn');
-    
-    var el = $('.page .no:visible',0);
-    
-    
-    var str = (new String(page)).split('#')[1];
-
-    var letter = (new String(str[0])).toUpperCase();
-
-    str = str.split(str[0])[1];
-    
-    var funcname = 'hQuestionDel' + letter + str;
-    
-    console.log(funcname);
-    
-    Funcs.do[funcname](true,el);
-    
-}
-
-Funcs.do.sQuestionDelGroups = function(id,t){
-    
-    sQuestionDel(id,t,'#groups');
-    
-}
-
-Funcs.do.hQuestionDelGroups = function(id,t){
-
-    hQuestionDel(id,t,'#groups');
-
-}
-
-Funcs.do.sQuestionDelStudy = function(id,t){
-
-    sQuestionDel(id,t,'#study');
-
-}
-
-Funcs.do.hQuestionDelStudy = function(id,t){
-
-    hQuestionDel(id,t,'#study');
-
-}
-
 
 Funcs.do.delGroup = function(id){
     
@@ -202,6 +113,8 @@ Funcs.do.saveNewStudy = function(id){
     
     var period = $('#periodicity').prop('value');
     
+    var id_group = $('#idLabel').prop('value');
+    
     if(name == ''){
         
         $('#studyName').parent().parent().addClass('warning'); 
@@ -220,7 +133,7 @@ Funcs.do.saveNewStudy = function(id){
     
     DB.connect.transaction(function(connect){
         
-        connect.executeSql('INSERT INTO study (id_group,name,unit,telegramNotif,emailNotif,repiodicityNotif,timestamp) VALUES (?,?,?,?,?,?,?)',[id,name,unit,telegramNotif,emailNotif,period,new Date().getTime()],function(connect,res){
+        connect.executeSql('INSERT INTO study (id_group,name,unit,telegramNotif,emailNotif,repiodicityNotif,timestamp) VALUES (?,?,?,?,?,?,?)',[id_group,name,unit,telegramNotif,emailNotif,period,new Date().getTime()],function(connect,res){
             
             Nav.back();
             

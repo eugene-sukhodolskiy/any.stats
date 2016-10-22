@@ -2,7 +2,7 @@ var graph = {};
 
 $(document).ready(function(){
     
-    document.body.onselectstart= function() {return false}
+    document.body.onselectstart = function() {return false}
     
     DB.open("Test5","0.1",9000000);
     DB.createTables(tables);
@@ -36,6 +36,8 @@ $(document).ready(function(){
     });
     
     initLeftMenu();
+    
+    initLabelListOnNewStudy();
     
     
     

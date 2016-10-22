@@ -39,6 +39,8 @@
       <button class="back-screen" data-back="true"></button>
        
       <div class="logo">Any <img src="imgs/logo.png"> Stats</div>
+      
+       <button class="add" data-page="addnewstudy" data-param=""></button>
        
    </header>
    
@@ -105,14 +107,7 @@
           </div>
           
           <div class="container"></div>
-
-
-          <div class="nav-btn" data-new="study" data-page="addnewstudy" data-param="true">
               
-          </div>
-
-          <div class="nav-btn" data-del="study" data-func="showDelBtn" data-param="study">
-              <button class="nav-btn-del"></button>
           </div>
 
       </section>
@@ -138,6 +133,16 @@
               </div>
             <label for="studyUnit" data-func="showInput" data-param="true">Study unit</label>
               <div class="current-value" data-func="showInput" data-default="Empty">Empty</div>
+          </div>
+          
+          <div class="form-group" data-func="openSelect">
+              <label for="idLabel">Label</label>
+
+              <div class="form-wrap">
+                  <select id="idLabel" name="idLabel">
+                      
+                  </select>
+              </div>
           </div>
           
           <div class="form-group">
@@ -351,9 +356,6 @@
           </div>
 
           <div class="container"></div>
-
-
-          <div class="nav-btn" data-new="study" data-page="addnewstudy" data-param="true">
 
           </div>
           

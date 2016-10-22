@@ -601,9 +601,9 @@ function addContextMenuEvent(container){
 }
 
 
-function addLabels(){
+function addLabels(container){
     
-    $('.nav-btn .label-name').html();
+    container = container || '#allStudy';
     
     DB.connect.transaction(function(c){
         
@@ -611,7 +611,7 @@ function addLabels(){
             
             for(var i=0;i<res.rows.length;i++){
                 
-                $('#allStudy .nav-btn[data-label-id="' + res.rows.item(i).id + '"] .label-name').html(res.rows.item(i).name);
+                $(container + ' .nav-btn[data-label-id="' + res.rows.item(i).id + '"] .label-name').html(res.rows.item(i).name);
                 
             }
             
@@ -622,6 +622,51 @@ function addLabels(){
         });
         
     });
+    
+}
+
+function updateLabelList(){
+    
+    var li = $('.left-menu .group-list li.label-style');
+    
+    for(var i=0;i<li.length;i++){
+        
+        li[i].parentNode.removeChild(li[i]);
+        
+    }
+    
+    $('.left-menu .group-list ul').html($('.left-menu .group-list ul').html());
+    
+    initLeftMenu();
+    
+    
+}
+
+function initLabelListOnNewStudy(){
+    
+    DB.connect.transaction(function(c){
+
+        c.executeSql('SELECT * FROM groups ORDER BY id DESC',[],function(c,res){
+
+            var str = '';
+
+            for(var i=0;i<res.rows.length;i++){
+
+                str += '<option value="' + res.rows.item(i).id + '">' + res.rows.item(i).name + '</option>';
+
+            }
+
+            var container = '#idLabel';
+
+            $(container).html(str);
+
+        },function(c,err){
+
+            console.log(err);
+
+        });
+
+    });  
     
 }
 

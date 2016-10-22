@@ -871,10 +871,10 @@ header button.btn-left-menu{
 .left-menu .other-list li
 {
 
-    font-size: 24px;
+    font-size: 21px;
     color: black;
     
-    margin-top: 15px;
+    margin-top: 20px;
     margin-left: 20px;
     list-style: none;
     
@@ -948,6 +948,22 @@ header button.btn-left-menu{
     
 }
 
+header .add{
+    
+    background: url(../imgs/plus.png);
+    background-position: center center;
+    background-size: 90% auto;
+    background-color: transparent;
+    border: 0;
+    position: absolute;
+    top: 6px;
+    left: 100%;
+    margin-left: -50px;
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    
+}
 
 
 

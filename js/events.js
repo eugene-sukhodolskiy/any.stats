@@ -53,17 +53,11 @@ Nav.events.open.allStudy = function(p){
     
     DB.connect.transaction(function(connect){
 
-        connect.executeSql("SELECT * FROM study ORDER BY id ASC",[],function(connect,res){
+        connect.executeSql("SELECT * FROM study ORDER BY id DESC",[],function(connect,res){
 
             //            console.log(res);
 
             var html = '';
-
-            if(res.rows.length != 0){
-
-                $('#allStudy .nav-btn[data-del]').css('display','inline-block');
-
-            }
 
             for(var i=0;i<res.rows.length;i++){
 
@@ -115,79 +109,6 @@ Nav.events.close.allStudy = function(p){
 
 }
 
-// Groups //
-
-Nav.events.open.groups = function(param){
-    
-    $('[data-back]').css('display','none');
-    $('header button.btn-left-menu').css('display','block');
-    
-    
-    DB.connect.transaction(function(connect){
-       
-        connect.executeSql("SELECT * FROM groups",[],function(connect,res){
-            
-//            console.log(res);
-            
-            var html = '';
-            
-            if(res.rows.length != 0){
-                
-                $('#groups .nav-btn[data-del]').css('display','inline-block');
-                
-            }
-            
-            for(var i=0;i<res.rows.length;i++){
-                
-                html += '<div class="nav-btn" data-page="study" data-param="' + res.rows.item(i).id + '">';
-                
-                html += '<div class="no-click"></div>';
-                
-                html += '<button class="nav-btn-del" data-func="sQuestionDelGroups" data-param="' + res.rows.item(i).id + '"></button>';
-                
-                html += '<div class="askDel"><button data-func="delGroup" data-param="' + res.rows.item(i).id + '" class="yes"></button> <button data-func="hQuestionDelGroups" data-param="true" class="no"></button>';
-                
-                html += '<span>Delete?</span></div>';
-
-                html += '<div class="name">' + res.rows.item(i).name + ' <span class="count"></span>';
-                
-                
-
-                html += '</div></div> ';
-                
-            }
-            
-            $('#groups .container').html(html);
-                
-            getCount(res);
-
-            
-            showPage('groups');
-            
-            Funcs.init('#groups .container');
-            
-            Nav.initPages('#groups');
-            
-        });
-        
-    });
-    
-}
-
-
-
-Nav.events.close.groups = function(param){
-    
-    $('[data-back]').css('display','block');
-    
-    $('header button.btn-left-menu').css('display','none');
-    
-    $('#groups .nav-btn[data-del]').css('display','none');
-    
-    hiddenPage();
-    
-}
-
 // Add new group //
 
 Nav.events.open.addnewgroup = function(param){
@@ -212,6 +133,8 @@ Nav.events.close.addnewgroup = function(param){
 
 Nav.events.open.study = function(param){
     
+    $('header button.add').attr('data-param',param);
+    
     // show .page-name
     
     DB.connect.transaction(function(c){
@@ -233,31 +156,19 @@ Nav.events.open.study = function(param){
 //            console.log(res);
 
             var html = '';
-            
-            if(res.rows.length != 0){
-
-                $('#study .nav-btn[data-del]').css('display','inline-block');
-                
-            }
 
             for(var i=0;i<res.rows.length;i++){
 
-                html += '<div class="nav-btn" data-page="showStats" data-param="' + res.rows.item(i).id + '">';
-                
-                html += '<div class="no-click"></div>';
-                
-                html += '<button class="nav-btn-del" data-func="sQuestionDelStudy" data-param="' + res.rows.item(i).id + '"></button>';
+                html += '<div class="nav-btn" data-label-id="' + res.rows.item(i).id_group + '" data-context="show_cmdelstudy" data-page="showStats" data-param="' + res.rows.item(i).id + '">';
 
-                html += '<div class="askDel"><button data-func="delStudy" data-param="' + res.rows.item(i).id + '" class="yes"></button> <button data-func="hQuestionDelStudy" data-param="true" class="no"></button>';
-
-                html += '<span>Delete?</span></div>';
+                html += '<div class="label-name"></div>';
 
                 html += '<div class="name">' + res.rows.item(i).name;
-                
+
                 var dateOfStart = getFormatDate(res.rows.item(i).timestamp,'Y/M/D');
-                
+
                 html += '<span class="date-of-start">from ' + dateOfStart + '</span>';
-                
+
                 html += '</div>';
 
                 html += '</div> ';
@@ -265,6 +176,8 @@ Nav.events.open.study = function(param){
             }
 
             $('#study .container').html(html);
+            
+            addLabels('#study');
 
             showPage('study');
             
@@ -273,6 +186,8 @@ Nav.events.open.study = function(param){
             Funcs.init('#study .container');
 
             Nav.initPages('#study');
+            
+            addContextMenuEvent('#study');
 
         });
 
@@ -282,6 +197,8 @@ Nav.events.open.study = function(param){
 
 
 Nav.events.close.study = function(param){
+    
+    $('header button.add').attr('data-param','');
     
     Funcs.do.closeEditName('study');
     
@@ -298,6 +215,12 @@ Nav.events.open.addnewstudy = function(param){
     // param is id //
 
     showPage('addnewstudy');
+    
+    if(param != ''){
+        
+        $('#idLabel option[value="' + param + '"]').attr('selected','selected');
+        
+    }
     
     $('#addnewstudy [data-func="saveNewStudy"]').attr('data-param',param);
 
