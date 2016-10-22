@@ -837,7 +837,7 @@ header button.btn-left-menu{
     z-index: 1000;
     top: 0;
     left: -300px;
-    transition-duration: .3s;
+    transition-duration: .2s;
     
     
 }
@@ -847,7 +847,7 @@ header button.btn-left-menu{
     position: fixed;
     left: 0;
     top: 0;
-    transition-duration: .3s;
+    transition-duration: .2s;
     background-color: rgba(0,0,0,.7);
     z-index: 500;
     width: 100%;
