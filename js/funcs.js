@@ -374,17 +374,17 @@ Funcs.do['_showInput'] = function(p){
 }
 
 Funcs.do.share = function(){
+//    
+//    ctx = document.getElementById('main-canvas');
+//    var img = ctx.toDataURL("image/jpeg");
     
-    ctx = document.getElementById('main-canvas');
-    var img = ctx.toDataURL("image/jpeg");
-    navigator.share(img,'My title','image/jpeg');
+    var path = 'file:///storage/emulated/0/xhdpi.png';
+    navigator.share(path,'My title','image/jpeg');
     
 }
 
 Funcs.do.base64 = function(){
-    
-    ctx = document.getElementById('main-canvas');
-    console.log(ctx.toDataURL("image/jpeg"));
+
     
 }
 
