@@ -39,6 +39,16 @@ $(document).ready(function(){
     
     initLabelListOnNewStudy();
     
+    $('.menu-left-swipe').bind('swiperight',function(){
+        
+        Funcs.do.showMenu();
+        
+    });
     
+    $('.left-menu').bind('swipeleft',function(){
+
+        Funcs.do.hidMenu();
+
+    });
     
 });
