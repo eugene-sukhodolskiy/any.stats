@@ -379,7 +379,15 @@ Funcs.do.share = function(){
 //    var img = ctx.toDataURL("image/jpeg");
     
     var path = 'file:///storage/emulated/0/xhdpi.png';
-    navigator.share(path,'My title','image/jpeg');
+    var img = new Image();
+    img.src = path;
+    img.load = function(){
+        
+        navigator.share(img,'My title','image/jpeg');
+        
+    }
+    
+    
     
 }
 
