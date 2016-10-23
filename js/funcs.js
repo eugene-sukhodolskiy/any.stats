@@ -373,6 +373,12 @@ Funcs.do['_showInput'] = function(p){
 
 }
 
+Funcs.do.share = function(){
+    
+    navigator.share('Some Text','My title','plain/text');
+    
+}
+
 
 
 
