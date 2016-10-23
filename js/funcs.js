@@ -381,11 +381,12 @@ Funcs.do.share = function(){
 //    var path = 'file:///storage/emulated/0/xhdpi.png';
     var img = new Image();
     img.src = base64;
-    img.load = function(){
-        
+    
+    setTimeout(function(){
         navigator.share(img,'My title','image/jpeg');
         
-    }
+    },100);
+    
     
     
     
