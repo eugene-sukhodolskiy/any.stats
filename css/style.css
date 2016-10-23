@@ -94,12 +94,7 @@ header button.back-screen{
     width: 100%;
     height: auto;
     margin-top: 50px;
-    -webkit-transition-duration: .3s;
-/*
-    position: static;
-    top: auto;
-    left: auto;
-*/
+    transition-duration: .2s;
     
 }
 
@@ -146,117 +141,6 @@ header button.back-screen{
     transition-duration: .2s;
     margin-top: 25px;
     
-}
-
-.page .no-click{
-    
-    width: inherit;
-    height: inherit;
-    position: absolute;
-    left: auto;
-    top: auto;
-    z-index: 2;
-    display: none;
-    
-}
-
-.page .nav-btn .nav-btn-del{
-    
-    position: absolute;
-    left: auto;
-    top: auto;
-    display: block;
-    width: 155px;
-    height: 120px;
-    background-image: url(../imgs/delete.png);
-    background-size: 20px auto;
-    background-position: 125px 10px;
-    background-repeat: no-repeat;
-    background-color: transparent;
-    -webkit-transition-duration: .3s;
-    border: 0;
-    opacity: 0;
-    display: none;
-    
-}
-
-.page .nav-btn .askDel{
-    
-    position: absolute;
-    left: auto;
-    top: auto;
-    display: block;
-    width: 155px;
-    height: 120px;
-    background: transparent;
-    -webkit-transition-duration: .3s;
-    border: 0;
-    font-size: 20px;
-    text-align: center;
-    color: white;
-    opacity: 0;
-    display: none;
-    z-index: 3;
-    
-}
-
-.page .nav-btn .askDel .yes,
-.page .nav-btn .askDel .no{
-    
-    background-image: url('../imgs/check.png');
-    background-size: 80% auto;
-    background-repeat: no-repeat;
-    background-position: center center;
-    display: block;
-    width: 40px;
-    height: 40px;
-    position: absolute;
-    left: auto;
-    top: auto;
-    margin: 0px 0px 0px 0px;
-    border: 0;
-    background-color: transparent;
-    
-}
-
-.page [data-del] .nav-btn-del{
-    
-    background-image: url('../imgs/close.png');
-    
-}
-
-.page .nav-btn .askDel .no{
-
-    background-image: url('../imgs/close.png');
-
-    margin: 0px 0px 0px 115px;
-
-}
-
-.page .nav-btn .askDel span{
-    font-size: 16px;
-    margin-top: 15px;
-    display: block;
-}
-
-
-
-[data-new],
-[data-del]{
-    
-    background: url('../imgs/plus.png') no-repeat;
-    background-position: center center;
-    background-color: #E0E0E0;
-    background-size: 30% auto;
-    box-shadow: 0 0 3px #888;
-    
-}
-
-.nav-btn[data-del]{
-    
-    background-image: url('../imgs/delete.png');
-    display: none;
-   
 }
 
 #groups{
@@ -307,7 +191,7 @@ header button.back-screen{
     margin-top: 20px;
     height: 70px;
     box-shadow: 0 0 3px #aaa;
-    transition-duration: .3s;
+    transition-duration: .2s;
     background: #eee;
     margin-left: 5%;
     
@@ -635,13 +519,12 @@ button.ok{
     background-color: #E0E0E0;
     border: 0;
     box-shadow: 0 0 3px #888;
-    width: 155px;
+    width: 90%;
     margin-bottom: 15px;
     font-size: 20px;
     padding: 0 10px;
     position: absolute;
-    left: 95%;
-    margin-left: -155px;
+    left: 5%;
     
 }
 
@@ -718,49 +601,16 @@ button.ok{
     
 }
 
-button.list{
-    
-    display: block;
-    position: absolute;
-    left: 5%;
-    top: auto;
-    margin-top: 15px;
-    background: url('../imgs/menu.png');
-    background-repeat: no-repeat;
-    background-size: 100% auto;
-    background-position: center center;
-    width: 40px;
-    height: 40px;
-    border: 0;
-    
-}
-
 .block-name{
     
-    width: 100%;
+    width: 90%;
     height: 70px;
     line-height: 70px;
-    text-align: center;
+    text-align: left;
     color: black;
     font-size: 26px;
-    
-}
-
-.del-one-entry{
-    
-    display: block;
-    position: absolute;
-    left: 95%;
-    top: auto;
-    margin-top: 15px;
-    margin-left: -40px;
-    background: url(../imgs/delete-grey.png);
-    background-repeat: no-repeat;
-    background-size: 100% auto;
-    background-position: center center;
-    width: 40px;
-    height: 40px;
-    border: 0;
+    margin-top: 40px;
+    margin-left: 5%;
     
 }
 

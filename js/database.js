@@ -45,7 +45,25 @@ var tables = [
     
     function(connect){
         
-        connect.executeSql("CREATE TABLE IF NOT EXISTS groups (id INTEGER PRIMARY KEY ASC, name TEXT, timestamp REAL, count REAL)",[],null,function(connect,err){
+        connect.executeSql("CREATE TABLE IF NOT EXISTS groups (id INTEGER PRIMARY KEY ASC, name TEXT, timestamp REAL)",[],function(c,res){
+            
+            c.executeSql('SELECT COUNT(*) FROM groups',[],function(c,res){
+                
+                if(res.rows.item(0)['COUNT(*)'] == 0){
+                    
+                    c.executeSql('INSERT INTO groups(name,timestamp) VALUES (?,?)',['Default',new Date().getTime()],null,function(c,err){
+
+                        console.log(err);
+
+                    });
+                    
+                }
+                
+            });
+            
+          
+                
+        },function(connect,err){
             
             console.log(err);
             
@@ -81,7 +99,15 @@ var tables = [
 
         connect.executeSql("CREATE TABLE IF NOT EXISTS sets (id INTEGER PRIMARY KEY ASC, email TEXT, uname TEXT, lastsync REAL)",[],function(c,res){
             
-            c.executeSql('INSERT INTO sets(email) VALUES (?)',['Empty']);
+            c.executeSql('SELECT COUNT(*) FROM sets',[],function(c,res){
+
+                if(res.rows.item(0)['COUNT(*)'] == 0){
+            
+                    c.executeSql('INSERT INTO sets(email) VALUES (?)',['Empty']);
+                    
+                }
+                
+            });
             
         },function(connect,err){
 

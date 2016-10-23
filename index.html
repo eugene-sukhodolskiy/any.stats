@@ -22,7 +22,7 @@
   
   <div class="wrap">
   
-      <div class="cm-down cm-del-study">
+<div class="cm-down cm-del-study">
       
       <ul>
           
@@ -31,6 +31,18 @@
       </ul>
       
   </div>
+  
+      <div class="cm-down cm-entry">
+
+          <ul>
+
+              <li data-func="_showInput" data-param="">Edit</li>
+              
+              <li data-func="delEntry" data-param="">Delete</li>
+
+          </ul>
+
+      </div>
    
    <header>
      
@@ -76,24 +88,6 @@
    
       <div class="popup-background" data-func="hidBackground"></div>
     
-    <section class="page" id="groups">
-       
-       <h1 class="page-name">Groups</h1>
-        
-        <div class="container"></div>
-        
-        <div class="nav-btn" data-new="group" data-page="addnewgroup" data-param="true">
-        </div>
-        
-        <div class="nav-btn" data-del="group" data-func="showDelBtn" data-param="groups">
-            <button class="nav-btn-del"></button>
-        </div>
-        
-        
-    </section>
-    
-    
-    
       <section class="page" id="study">
 
           <h1 class="page-name pencil" data-func="openEditName" data-param="study"></h1>
@@ -106,9 +100,10 @@
 
           </div>
           
+          <div class="no-res">You have not entered any values</div>
+          
           <div class="container"></div>
               
-          </div>
 
       </section>
       
@@ -278,6 +273,7 @@
 
           </div>
           
+<!--
           <div class="search">
              
               <input type="text" name="search" placeholder="Search on date">
@@ -285,6 +281,7 @@
               <button data-func="search"></button>
               
           </div>
+-->
           
           <div class="average" data-func="reload" data-param="showStats">
               
@@ -298,7 +295,7 @@
               
           </div>
           
-          <div class="unit">Kbit</div>
+          <div class="unit"></div>
           
           <div class="canvas-container">
             
@@ -310,8 +307,6 @@
           
           <div class="no-res">You have not entered any values</div>
           
-          <div class="nav-btn" data-new="stat" data-page="addStat" data-param="true"></div>
-          
           <select name="period">
               
               <option value="600000" selected data-func="setPeriod" data-param="true">Minute</option>
@@ -321,10 +316,6 @@
               <option value="31536000000" data-func="setPeriod" data-param="true">Year</option>
               
           </select>
-          
-          <button class="list"></button>
-          
-          <button class="del-one-entry"></button>
           
           <div class="block-name">Last</div>
           
@@ -339,6 +330,7 @@
           
           <div class="last-container enries-container"></div>
           
+          <div class="no-res">You have not entered any values</div>
           
       </section>
       
@@ -357,7 +349,7 @@
 
           <div class="container"></div>
 
-          </div>
+          <div class="no-res">You have not entered any values</div>
           
       </section>
     

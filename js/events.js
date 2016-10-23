@@ -58,6 +58,12 @@ Nav.events.open.allStudy = function(p){
             //            console.log(res);
 
             var html = '';
+            
+            if(res.rows.length > 0){
+                
+                $('#allStudy .no-res').css('display','none');
+                
+            }
 
             for(var i=0;i<res.rows.length;i++){
 
@@ -98,6 +104,8 @@ Nav.events.open.allStudy = function(p){
 }
 
 Nav.events.close.allStudy = function(p){
+
+    $('#allStudy .no-res').css('display','block');
     
     $('[data-back]').css('display','block');
 
@@ -156,6 +164,12 @@ Nav.events.open.study = function(param){
 //            console.log(res);
 
             var html = '';
+            
+            if(res.rows.length > 0){
+
+                $('#study .no-res').css('display','none');
+
+            }
 
             for(var i=0;i<res.rows.length;i++){
 
@@ -197,6 +211,8 @@ Nav.events.open.study = function(param){
 
 
 Nav.events.close.study = function(param){
+
+    $('#study .no-res').css('display','block');
     
     $('header button.add').attr('data-param','');
     
@@ -237,10 +253,16 @@ Nav.events.close.addnewstudy = function(param){
 
 Nav.events.open.addStat = function(param){
     
+    setTimeout(function(){
+        
+        $('#addStat .form-group label',0).click();
+        
+    },100);
+    
     DB.connect.transaction(function(connect){
         
         connect.executeSql("SELECT `name` FROM `study` WHERE `id`=?",[param],function(connect,res){
-            $('#addStat .page-name small').html('"'+res.rows.item(0).name+'"');
+            $('#addStat .page-name small').html('"' + res.rows.item(0).name + '"');
         });
         
     });
@@ -262,7 +284,7 @@ Nav.events.close.addStat = function(param){
 
 Nav.events.open.showStats = function(id_study){
     
-    $('[data-page="addStat"]').attr('data-param',id_study);
+    $('header button.add').attr('data-param',id_study).attr('data-page','addStat');
     
     graph.clear();
     
@@ -280,139 +302,7 @@ Nav.events.open.showStats = function(id_study){
                 
             });
 
-            var points = [];
-            
-            var ft;
-            
-            var sum = 0;
-            
-            var time = parseInt($('#showStats select[name="period"]').prop('value'));
-            
-            var flag = 1;
-            
-            var n = 1;
-            
-            var check = $('#average').prop('checked');
-            
-            var c = 0;
-            
-            var timebtns = {
-                
-                start: [],
-                
-                end: [],
-                
-                format: []
-                
-            };
-            
-            for(var i=0;i<res.rows.length;i++){
-                
-                flag = 0;
-                
-                if(sum == 0){
-                    
-                    sum = res.rows.item(i).value;
-                    
-                    ft = res.rows.item(i).timestamp;
-                    
-                    c++;
-                    
-                    continue;
-                    
-                }
-                
-                if(ft - res.rows.item(i).timestamp <= time){
-                    
-                    sum += res.rows.item(i).value;
-                    
-                    c++;
-                    
-                }else{
-                    
-                    if(check == true)
-                        sum = sum / c;
-                    
-                    c = 1;
-                    
-                    var p = [n++, sum, ft];
-                    
-                    points[points.length] = p;
-                    
-                    timebtns.start[timebtns.start.length] = ft;
-
-                    timebtns.end[timebtns.end.length] = res.rows.item(i - 1).timestamp;
-                    
-                    sum = res.rows.item(i).value;
-                    
-                    ft = res.rows.item(i).timestamp;
-                    
-                    flag = 1;
-                    
-                }
-                
-            }
-            
-            if(flag == 0){
-                
-                if(check == true)
-                    sum = sum / c;
-                
-                c = 0;
-                
-                var p = [n, sum, ft];
-
-                points[points.length] = p;
-                
-                timebtns.start[timebtns.start.length] = ft;
-
-                timebtns.end[timebtns.end.length] = res.rows.item(i - 1).timestamp;
-                
-            }
-            
-//            console.log(points);
-            
-            var max = 0;
-            
-            var formatDate = getFormatFromPeriod(time);
-            
-            for(var i=0;i<points.length;i++){
-                
-                if(points[i][1] > max)
-                    max = points[i][1];
-                
-                var time = getFormatDate(points[i][2],formatDate);
-                
-                points[i][3] = time;
-                
-                timebtns.format[timebtns.format.length] = time;
-                
-            }
-            
-            var height = parseInt($('#main-canvas').attr('height'));
-            
-            
-//            console.log(max);
-            
-            graph.sizeY = (height - height / 4) / max;
-            
-            if(points.length == 0){
-                
-                showNoRes();
-                
-            }else{
-                
-                hidNoRes();
-                
-            }
-            
-            graph.set([points]);
-            
-            graph.draw();
-            
-            genTimeBtn(timebtns,'#showStats .time-btn-container');
-            
-            $('#showStats .time-btn-container').css('width',$('#main-canvas').css('width'));
+            newGraph(res);
             
             showLastOneStat(res,'#showStats .last-container',id_study);
             
@@ -429,6 +319,8 @@ Nav.events.open.showStats = function(id_study){
 
 Nav.events.close.showStats = function(){
     
+    $('header button.add').attr('data-page','addnewstudy');
+    
     Funcs.do.closeEditName('showStats');
     
     $('#showStats .last-container').html('');
@@ -437,7 +329,7 @@ Nav.events.close.showStats = function(){
     
 }
 
-Nav.events.open.goToEntries = function(p){
+Nav.events.open.entriesList = function(p){
 
     var data = new String(p).split('-');
 
@@ -463,9 +355,17 @@ Nav.events.open.goToEntries = function(p){
             
             c.executeSql("SELECT * FROM entry WHERE id_study=? AND timestamp <= ? AND timestamp >= ? ORDER BY id DESC", [id_study,start,end], function(c,res){
                 
+                if(res.rows.length > 0){
+
+                    $('#entriesList .no-res').css('display','none');
+
+                }
+                
                 var str = getListEntries(res,study);
                 
                 $('#entriesList .enries-container').html(str);
+                
+                addContextMenuEvent('#entriesList .enries-container');
                 
                 Funcs.init('#entriesList .enries-container');
                 
@@ -492,11 +392,14 @@ Nav.events.open.goToEntries = function(p){
 
 }
 
-Nav.events.close.goToEntries = function(p){
+Nav.events.close.entriesList = function(p){
+
+    $('#entriesList .no-res').css('display','block');
     
     hiddenPage();
     
 }
+
 
 
 

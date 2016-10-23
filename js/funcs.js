@@ -266,7 +266,11 @@ Funcs.do.saveEditName = function(page){
         
         DB.connect.transaction(function(c){
             
-            c.executeSql("UPDATE " + tabname[page] + " SET name=? WHERE id=?",[val,id],null,function(c,err){
+            c.executeSql("UPDATE " + tabname[page] + " SET name=? WHERE id=?",[val,id],function(c,res){
+                
+                $('.left-menu .group-list [data-param="' + id + '"]',0).html(val);
+                
+            },function(c,err){
                 
                 console.log(err);
                 
@@ -324,6 +328,53 @@ Funcs.do.hidBackground = function(){
     hid_cmdown();
     
 }
+
+Funcs.do.delEntry = function(p,t){
+    
+    DB.connect.transaction(function(c){
+        
+        c.executeSql('DELETE FROM entry WHERE id=?',[p],function(c,res){
+            
+           var el = $('#' + Nav.currentPage + ' input[data-id="' + p + '"]',0).parent().parent();
+            
+            el.css('opacity',0);
+            
+            setTimeout(function(){
+                
+                el.css('display','none');
+                
+                reloadGraph();
+                
+                if(Nav.currentPage == 'entriesList' && $('#entriesList .one-stat:visible').length == 0){
+                    
+                    $('#entriesList .no-res').css('display','block');
+                    
+                }
+                
+            },200);
+            
+        });
+        
+    });
+    
+    hid_cmdown();
+    
+}
+
+Funcs.do['_showInput'] = function(p){
+    
+    hid_cmdown();
+
+    var el = $('#' + Nav.currentPage + ' [data-id="' + p + '"]',0).parent().parent().find('.current-value',0);
+    
+    console.log('#' + Nav.currentPage + ' [data-id="' + p + '"]');
+
+    showInput(el);
+
+}
+
+
+
 
 
 

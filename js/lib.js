@@ -1,51 +1,3 @@
-function hQuestionDel(id,t,page){
-
-    $(page + ' .container [data-flag="animation"]').css('opacity','1').removeAttr('data-flag');
-
-    $(t).parent().parent().find('.name').removeAttr('style');
-
-    var askDel = $(t).parent().parent().find('.askDel');
-
-    $(askDel).css('opacity',0);
-
-    setTimeout(function(){
-
-        $(askDel).css('display','none');
-
-    },200);
-
-    $('.page .no-click').css('display','none');
-
-    $(t).parent().parent().find('.nav-btn-del').css('opacity',1);
-
-}
-
-function sQuestionDel(id,t,page){
-
-    $(page + ' .container .nav-btn').attr('data-flag','animation');
-
-    $(t).parent().removeAttr('data-flag');
-
-    $(page + ' .container [data-flag="animation"]').css('opacity','.5');
-
-    $(t).parent().find('.name').css({'margin-top': '65px','opacity': '.6','font-size': '18px'});
-
-    var askDel = $(t).parent().find('.askDel');
-
-    $(askDel).css('display','block');
-
-    setTimeout(function(){
-
-        $(askDel).css('opacity',1);
-
-    },1);
-
-    $('.page .no-click').css('display','block');
-
-    $(t).parent().find('.nav-btn-del').css('opacity',0);
-
-}
-
 function delFromHTML(id,page){
 
     $(page + ' .container [data-param="' + id + '"]').css('opacity','0');
@@ -76,35 +28,6 @@ function studyDelFromDB(id){
 
 }
 
-function getCount(res,i){
-
-    i = i || 0;
-
-    DB.connect.transaction(function(c){
-
-        c.executeSql('SELECT COUNT(*) FROM study WHERE id_group=?',[res.rows.item(i).id],function(c,r){
-
-
-            var str = '(' + r.rows.item(0)['COUNT(*)'] + ')';
-
-            $('#groups .nav-btn[data-param="'+res.rows.item(i++).id+'"] span.count').html(str);
-
-            if(i < res.rows.length){
-
-                getCount(res,i);
-
-            }
-
-        });
-
-    });
-
-}
-
-
-
-// system funcs //
-
 function inpFocus(){
 
     $('input[type="text"]').focus(function(){
@@ -119,13 +42,13 @@ function showInput(t){
     
     var cv = $(t).parent().find('.current-value');
     
-    if($(cv).attr('data-edit-flag') == 1){
+//    if($(cv).attr('data-edit-flag') == 1){
         
         var val = $(cv).html();
         
-        $(cv).parent().find('input',0).attr('value',val).prop('selectionStart',val.length);
+       if(typeof val == 'string') $(cv).parent().find('input',0).attr('value',val).prop('selectionStart',val.length);
         
-    }
+//    }
     
 }
 
@@ -191,6 +114,8 @@ function showNoRes(){
     
     $('#showStats [name="period"]').css('display','none');
     
+    $('#showStats .block-name').css('display','none');
+    
     $('#showStats .no-res').css('display','block');
     
 }
@@ -204,6 +129,8 @@ function hidNoRes(){
     $("#showStats .unit").removeAttr('style');
 
     $('#showStats [name="period"]').removeAttr('style');
+    
+    $('#showStats .block-name').removeAttr('style');
 
     $('#showStats .no-res').css('display','none');
 
@@ -224,6 +151,8 @@ function showLastOneStat(p,container,id_study){
             addBlurToFormEntriesList(container);
             
             addMaxLengthToInput(container);
+            
+            addContextMenuEvent(container);
 
         });
         
@@ -245,7 +174,7 @@ function getListEntries(p,res){
 
         time = split[0] + '<span>' + split[1] + '</span>';
 
-        str += '<div class="form-group one-stat">';
+        str += '<div class="form-group one-stat" data-context="show_cmentry">';
 
         str += '<div class="form-wrap input">';
         
@@ -257,7 +186,7 @@ function getListEntries(p,res){
 
         str += '<div class="time">' + time + '</div>';
 
-        str += '<div class="current-value" data-func="showInput" data-default="' + p.rows.item(i).value + '" data-unit="' + res.rows.item(0).unit + '">' + p.rows.item(i).value + '</div>';
+        str += '<div class="current-value" data-default="' + p.rows.item(i).value + '" data-unit="' + res.rows.item(0).unit + '">' + p.rows.item(i).value + '</div>';
 
         str += '<div class="del"></div> </div>';
 
@@ -309,7 +238,7 @@ function blurToFormEntriesList(t){
 
         c.executeSql("UPDATE entry SET value=? WHERE id=?",[value,id_entry], function(c,res){
 
-            console.log('UPDATE entry WHERE id='+id_entry);
+            reloadGraph();
 
         },function(c,err){
 
@@ -377,7 +306,7 @@ function genTimeBtn(arr,container){
     
     for(var i=0;i<arr.start.length;i++){
         
-        str += '<button class="timestamp-btn" data-page="goToEntries" data-param="' + arr.start[i] + '-' + arr.end[i] + ' - ' + id_study + '">' + arr.format[i] + '</button>'
+        str += '<button class="timestamp-btn" data-page="entriesList" data-param="' + arr.start[i] + '-' + arr.end[i] + ' - ' + id_study + '">' + arr.format[i] + '</button>'
         
     }
         
@@ -542,6 +471,8 @@ function show_cmdown(t,container){
     
     var mtop = $(container).find('li').length * li_height;
     
+    $(container).css('height',mtop + 'px');
+    
     $('.popup-background').css('display','block');
     
     setTimeout(function(){
@@ -555,6 +486,8 @@ function show_cmdown(t,container){
 }
 
 function hid_cmdown(){
+    
+    Nav.removeTmpBack();
     
     $('.cm-down').css('margin-top','0px');
     
@@ -580,9 +513,21 @@ function show_cmdelstudy(t){
     
 }
 
+function show_cmentry(t){
+    
+    var inp_id = $(t).find('input',0).attr('data-id');
+    
+    $('.cm-entry li').attr('data-param',inp_id);
+    
+    show_cmdown(t,'.cm-entry');
+    
+}
+
 function addContextMenuEvent(container){
     
     $(container + ' [data-context]').bind('taphold', function(){
+        
+        console.log('tap');
         
         $(this).attr('data-taphold',1);
         
@@ -590,7 +535,8 @@ function addContextMenuEvent(container){
         
         var cm = {
             
-            'show_cmdelstudy': show_cmdelstudy
+            'show_cmdelstudy': show_cmdelstudy,
+            'show_cmentry': show_cmentry
             
         }
         
@@ -667,6 +613,166 @@ function initLabelListOnNewStudy(){
         });
 
     });  
+    
+}
+
+function newGraph(res){
+    
+    var points = [];
+
+    var ft;
+
+    var sum = 0;
+
+    var time = parseInt($('#showStats select[name="period"]').prop('value'));
+
+    var flag = 1;
+
+    var n = 1;
+
+    var check = $('#average').prop('checked');
+
+    var c = 0;
+
+    var timebtns = {
+
+        start: [],
+
+        end: [],
+
+        format: []
+
+    };
+
+    for(var i=0;i<res.rows.length;i++){
+
+        flag = 0;
+
+        if(sum == 0){
+
+            sum = res.rows.item(i).value;
+
+            ft = res.rows.item(i).timestamp;
+
+            c++;
+
+            continue;
+
+        }
+
+        if(ft - res.rows.item(i).timestamp <= time){
+
+            sum += res.rows.item(i).value;
+
+            c++;
+
+        }else{
+
+            if(check == true)
+                sum = sum / c;
+
+            c = 1;
+
+            var p = [n++, sum, ft];
+
+            points[points.length] = p;
+
+            timebtns.start[timebtns.start.length] = ft;
+
+            timebtns.end[timebtns.end.length] = res.rows.item(i - 1).timestamp;
+
+            sum = res.rows.item(i).value;
+
+            ft = res.rows.item(i).timestamp;
+
+            flag = 1;
+
+        }
+
+    }
+
+    if(flag == 0){
+
+        if(check == true)
+            sum = sum / c;
+
+        c = 0;
+
+        var p = [n, sum, ft];
+
+        points[points.length] = p;
+
+        timebtns.start[timebtns.start.length] = ft;
+
+        timebtns.end[timebtns.end.length] = res.rows.item(i - 1).timestamp;
+
+    }
+
+    //            console.log(points);
+
+    var max = 0;
+
+    var formatDate = getFormatFromPeriod(time);
+
+    for(var i=0;i<points.length;i++){
+
+        if(points[i][1] > max)
+            max = points[i][1];
+
+        var time = getFormatDate(points[i][2],formatDate);
+
+        points[i][3] = time;
+
+        timebtns.format[timebtns.format.length] = time;
+
+    }
+
+    var height = parseInt($('#main-canvas').attr('height'));
+
+
+    //            console.log(max);
+
+    graph.sizeY = (height - height / 4) / max;
+
+    if(points.length == 0){
+
+        showNoRes();
+
+    }else{
+
+        hidNoRes();
+
+    }
+
+    graph.set([points]);
+
+    graph.draw();
+
+    genTimeBtn(timebtns,'#showStats .time-btn-container');
+
+    $('#showStats .time-btn-container').css('width',$('#main-canvas').css('width'));
+    
+}
+
+function reloadGraph(){
+
+    DB.connect.transaction(function(c){
+        
+        var id_study = Nav.currentParam;
+
+        c.executeSql("SELECT * FROM entry WHERE id_study=? ORDER BY timestamp DESC",[id_study],function(c,res){
+
+            graph.clear();
+            
+            newGraph(res);
+
+        }, function(c,err){
+
+            console.log(err);
+
+        });
+
+    });
     
 }
 
