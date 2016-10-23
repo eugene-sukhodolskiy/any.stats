@@ -51,7 +51,7 @@ $(document).ready(function(){
 
     });
     
-    $('.popup-backgroud').bind('swipeleft',function(){
+    $('.popup-background').bind('swipeleft',function(){
 
         Funcs.do.hidMenu();
 
