@@ -175,12 +175,13 @@ header button.back-screen{
 .form-group input[type="text"],
 .form-group input[type="number"]{
     
-    padding: 8px 5px;
+    padding: 18px 10px;
     font-size: 18px;
     background: white;
-    box-shadow: 0 0 2px #ccc;
-    width: 290px;
+    width: inherit;
     border: 0;
+    position: relative;
+    top: 1px;
     
 }
 
@@ -219,7 +220,7 @@ header button.back-screen{
     display: inline-block;
     width: 0;
     overflow: hidden;
-    background-color: #1E88E5;
+    background-color: white;
     height: 70px;
     text-align: center;
     line-height: 70px;

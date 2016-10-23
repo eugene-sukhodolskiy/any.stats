@@ -42,13 +42,14 @@ function showInput(t){
     
     var cv = $(t).parent().find('.current-value');
     
-//    if($(cv).attr('data-edit-flag') == 1){
+    if($(cv).attr('data-edit-flag') == 1 && $(cv).html() != 'Empty'){
         
         var val = $(cv).html();
         
-       if(typeof val == 'string') $(cv).parent().find('input',0).attr('value',val).prop('selectionStart',val.length);
+       if(typeof val == 'string'){                                                     $(cv).parent().find('input',0).attr('value',val).prop('selectionStart',val.length);
+        } 
         
-//    }
+    }
     
 }
 
