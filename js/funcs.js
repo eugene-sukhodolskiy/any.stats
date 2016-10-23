@@ -375,7 +375,16 @@ Funcs.do['_showInput'] = function(p){
 
 Funcs.do.share = function(){
     
-    navigator.share('Some Text','My title','plain/text');
+    ctx = document.getElementById('main-canvas');
+    var img = ctx.toDataURL("image/jpeg");
+    navigator.share(img,'My title','image/jpeg');
+    
+}
+
+Funcs.do.base64 = function(){
+    
+    ctx = document.getElementById('main-canvas');
+    console.log(ctx.toDataURL("image/jpeg"));
     
 }
 
