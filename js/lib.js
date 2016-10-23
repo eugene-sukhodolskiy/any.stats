@@ -396,7 +396,8 @@ function showLeftMenu(){
         
         $('.popup-background').css('opacity',1);
         
-        $('.left-menu').css('width','300px');
+//        $('.left-menu').css('width','300px');
+        $('.left-menu').animate({'width': '300px'},200);
         
     },1);
     
@@ -414,7 +415,9 @@ function hidLeftMenu(){
     
     $('.popup-background').css('opacity',0);
 
-    $('.left-menu').css('width','0');
+//    $('.left-menu').css('width','0');
+    
+    $('.left-menu').animate({'width': '0px'},200);
     
 
     setTimeout(function(){

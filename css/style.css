@@ -674,7 +674,7 @@ header button.btn-left-menu{
     z-index: 1000;
     top: 0;
     left: 0;
-    transition-duration: .2s;
+/*    transition-duration: .2s;*/
     
     
 }
