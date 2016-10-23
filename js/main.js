@@ -51,4 +51,10 @@ $(document).ready(function(){
 
     });
     
+    $('.popup-backgroud').bind('swipeleft',function(){
+
+        Funcs.do.hidMenu();
+
+    });
+    
 });
