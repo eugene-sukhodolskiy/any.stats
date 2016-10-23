@@ -375,12 +375,12 @@ Funcs.do['_showInput'] = function(p){
 
 Funcs.do.share = function(){
 //    
-//    ctx = document.getElementById('main-canvas');
-//    var img = ctx.toDataURL("image/jpeg");
-    
-    var path = 'file:///storage/emulated/0/xhdpi.png';
+    ctx = document.getElementById('main-canvas');
+    var base64 = ctx.toDataURL("image/jpeg");
+//    
+//    var path = 'file:///storage/emulated/0/xhdpi.png';
     var img = new Image();
-    img.src = path;
+    img.src = base64;
     img.load = function(){
         
         navigator.share(img,'My title','image/jpeg');
