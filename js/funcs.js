@@ -417,7 +417,7 @@ Funcs.do.login = function(){
         
     }, function(err){
         
-        console.log('facebook-err: '+err);
+        console.log(err);
         
     })
     
