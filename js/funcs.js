@@ -395,10 +395,7 @@ Funcs.do.share = function(){
 Funcs.do.login = function(){
 
     window.plugins.googleplus.login(
-        {
-            'webClientId': 'AIzaSyCXCJklPEDYgdRiLGhphdHoz0OFtvkEw3Y',
-            'offline': true,
-        },
+        {},
         function (obj) {
             console.log(JSON.stringify(obj));
         },

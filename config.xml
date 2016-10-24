@@ -38,7 +38,7 @@
     <plugin name="com.badrit.backbutton" spec="0.1.0" source="pgb" />
     <plugin name="nl.madebymark.share" spec="0.1.1" source="pgb" />
     <plugin name="cordova-plugin-googleplus" source="npm">
-        <param name="REVERSED_CLIENT_ID" value="AIzaSyCXCJklPEDYgdRiLGhphdHoz0OFtvkEw3Y" />
+        <param name="REVERSED_CLIENT_ID" value="AIzaSyAnE8SwfVOGzyGoogCxEFfE6ereelX7riQ" />
     </plugin>
     
 <!--    <plugin name="com.appodeal.googleplayservices" spec="7.8.0" source="pgb" />-->
