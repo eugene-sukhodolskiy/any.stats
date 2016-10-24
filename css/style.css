@@ -130,7 +130,7 @@ header button.back-screen{
 .page .container .nav-btn{
 
 /*    background-color: #1E88E5;*/
-    background-color: #303F9F;
+    background-color: #3949AB;
     box-shadow: 0 0 1px #444;
 
 }
@@ -194,7 +194,7 @@ header button.back-screen{
     width: 90%;
     margin-top: 20px;
     height: 70px;
-    box-shadow: 0 0 3px #aaa;
+    box-shadow: 0 0 1px #aaa;
     transition-duration: .2s;
     background: #eee;
     margin-left: 5%;
@@ -255,9 +255,9 @@ header button.back-screen{
 .form-group .current-value{
     
     color: #777;
-    font-size: 18px;
+    font-size: 16px;
     display: block;
-    margin-top: 10px;
+    margin-top: 15px;
     margin-left: 10px;
     
 }
@@ -317,8 +317,8 @@ header button.back-screen{
     border: 0;
     background: transparent;
     color: #777;
-    font-size: 18px;
-    margin-top: 3px;
+    font-size: 16px;
+    margin-top: 10px;
 
 }
 
@@ -358,10 +358,10 @@ button.ok{
     width: 100px;
     height: 50px;
     font-size: 20px;
-    background: #1E88E5;
+    background: #3949AB;
     border: 0;
     color: white;
-    box-shadow: 0 0 3px #555;
+    box-shadow: 0 0 1px #555;
     
 }
 
@@ -385,7 +385,7 @@ button.ok{
     width: inherit;
     height: 10%;
 /*    background-color: #1976D2;*/
-    background-color: #303F9F;
+    background-color: #3949AB;
     transition-duration: .3s;
     opacity: 0;
     top: 55px;
@@ -520,13 +520,13 @@ button.ok{
 
 #showStats [name="period"]{
     
-    height: 40px;
+    height: 50px;
     background-color: #eee;
     border: 0;
-    box-shadow: 0 0 3px #aaa;
+    box-shadow: 0 0 1px #aaa;
     width: 90%;
     font-size: 18px;
-    padding: 0 10px;
+    padding: 0 5px;
     margin-left: 5%;
     
 }
@@ -543,10 +543,10 @@ button.ok{
     
     position: absolute;
     left: 95%;
-    margin: 15px 0px 0px -95px;
+    margin: 19px 0px 0px -95px;
     width: 80px;
     color: #999;
-    font-size: 15px;
+    font-size: 13px;
     text-align: right;
     
 }
@@ -564,9 +564,9 @@ button.ok{
     content: '';
     display: block;
     position: absolute;
-    margin: -2px 0px 0px 18px;
+    margin: -1px 0px 0px 27px;
     background-image: url(../imgs/clock.png);
-    background-size: 100% auto;
+    background-size: 80% auto;
     background-repeat: no-repeat;
     width: 20px;
     height: 20px;
@@ -613,6 +613,7 @@ button.ok{
     color: black;
     font-size: 23px;
     margin-left: 5%;
+    margin-top: 10px;
     
 }
 
@@ -621,7 +622,7 @@ button.ok{
     position: relative;
     left: 0;
     height: 40px;
-    margin-top: -27px;
+    margin-top: -24px;
     
 }
 
@@ -634,6 +635,7 @@ button.ok{
     border: 0;
     padding: 3px;
     width: 85px;
+    background: #eee;
     
 }
 
@@ -790,8 +792,9 @@ header button.btn-left-menu{
     color: white;
 /*    background: #1565C0;*/
     background: #283593;
-    margin: 90px 0px 0px 5px;
-    font-size: 12px;
+    margin: 91px 0px 0px 6px;
+    font-size: 10px;
+    opacity: 0.9;
     
 }
 
