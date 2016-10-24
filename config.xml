@@ -37,8 +37,7 @@
     
     <plugin name="com.badrit.backbutton" spec="0.1.0" source="pgb" />
     <plugin name="nl.madebymark.share" spec="0.1.1" source="pgb" />
-    
-    <gap:plugin spec="https://github.com/EddyVerbruggen/cordova-plugin-googleplus.git" source="git">
+    <gap:plugin name="cordova-plugin-googleplus" source="npm">
         <param name="REVERSED_CLIENT_ID" value="AIzaSyCXCJklPEDYgdRiLGhphdHoz0OFtvkEw3Y" />
     </gap:plugin>
     
