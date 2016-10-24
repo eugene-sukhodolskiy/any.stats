@@ -392,7 +392,7 @@ Funcs.do.share = function(){
     
 }
 
-Funcs.do.login = function(){
+Funcs.do.login_ = function(){
 
     window.plugins.googleplus.login(
         {
@@ -406,6 +406,20 @@ Funcs.do.login = function(){
             console.log('error: ' + msg);
         }
     );
+    
+}
+
+Funcs.do.login = function(){
+    
+    facebookConnectPlugin.login([], function(data){
+        
+        console.log(data);
+        
+    }, function(err){
+        
+        console.log('facebook-err: '+err);
+        
+    })
     
 }
 
