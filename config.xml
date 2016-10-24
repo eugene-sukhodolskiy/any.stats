@@ -37,6 +37,7 @@
     
     <plugin name="com.badrit.backbutton" spec="0.1.0" source="pgb" />
     <plugin name="nl.madebymark.share" spec="0.1.1" source="pgb" />
+    <plugin name="nl.x-services.plugins.googleplus" spec="1.0.7" source="pgb" />
      
     
     <platform name="android">
