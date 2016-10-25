@@ -366,8 +366,6 @@ Funcs.do['_showInput'] = function(p){
     hid_cmdown();
 
     var el = $('#' + Nav.currentPage + ' [data-id="' + p + '"]',0).parent().parent().find('.current-value',0);
-    
-    console.log('#' + Nav.currentPage + ' [data-id="' + p + '"]');
 
     showInput(el);
 
@@ -420,6 +418,46 @@ Funcs.do.login = function(){
         console.log(err);
         
     })
+    
+}
+
+Funcs.do.delLabel = function(id_label){
+    
+    hid_cmdown();
+    
+    if(id_label == 1) return false;
+    
+    DB.connect.transaction(function(c){
+       
+        c.executeSql('DELETE FROM groups WHERE id=?',[id_label],function(c,res){
+            
+            c.executeSql('UPDATE study SET id_group=1 WHERE id_group=?',[id_label],function(c,res){
+                
+                $('.left-menu .group-list .label-style[data-param="' + id_label + '"]').css('display','none');
+                
+                var el = $('#labels .container [data-id="' + id_label + '"]').parent().parent();
+                
+                $(el).css('opacity',0);
+                
+                setTimeout(function(){
+                    
+                    $(el).css('display','none');
+                    
+                },200);
+                
+            },function(c,err){
+                
+                console.log(err);
+                
+            });
+            
+        },function(c,err){
+            
+            console.log(err);
+            
+        });
+        
+    });
     
 }
 

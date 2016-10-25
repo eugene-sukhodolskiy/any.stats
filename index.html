@@ -23,15 +23,15 @@
   
   <div class="wrap">
   
-<div class="cm-down cm-del-study">
-      
-      <ul>
-          
-          <li data-func="delStudy" data-param="">Delete</li>
-          
-      </ul>
-      
-  </div>
+    <div class="cm-down cm-del-study">
+
+          <ul>
+
+              <li data-func="delStudy" data-param="">Delete</li>
+
+          </ul>
+
+      </div>
   
       <div class="cm-down cm-entry">
 
@@ -40,6 +40,18 @@
               <li data-func="_showInput" data-param="">Edit</li>
               
               <li data-func="delEntry" data-param="">Delete</li>
+
+          </ul>
+
+      </div>
+      
+      <div class="cm-down cm-label">
+
+          <ul>
+
+              <li data-func="_showInput" data-param="">Edit</li>
+
+              <li data-func="delLabel" data-param="">Delete</li>
 
           </ul>
 
@@ -66,12 +78,17 @@
            <div class="list-caption">Menu</div>
 
            <ul>
-
+                
+               <li class="allstudy" data-func="hidMenu" data-page="allStudy">All studies</li>
+                
                <li class="settings" data-func="hidMenu" data-page="settings">Settings</li>
                
+               
+<!--
                <li data-func="share">Share test</li>
                
                <li data-func="login">Login</li>
+-->
 
            </ul>
 
@@ -80,6 +97,8 @@
        <div class="group-list">
            
            <div class="list-caption">Labels</div>
+           
+           <button class="label-edit" data-func="hidMenu" data-page="labels">Edit</button>
            
            <ul>
                
@@ -226,14 +245,14 @@
       
       <section class="page" id="addnewgroup">
           
-          <h1 class="page-name">Add new group</h1>
+          <h1 class="page-name">Create new label</h1>
           
           <div class="form-group">
               <div class="form-wrap input">
                  <span class="counter"></span>
-                  <input type="text" id="groupName" name="groupName" maxlength="12" placeholder="Group name">
+                  <input type="text" id="groupName" name="groupName" maxlength="12" placeholder="Label name">
               </div>
-              <label for="groupName" data-func="showInput">Group name</label>
+              <label for="groupName" data-func="showInput">Label name</label>
               <div class="current-value" data-func="showInput" data-default="Empty">Empty</div>
           </div>
           
@@ -358,6 +377,16 @@
 
           <div class="no-res">You have not entered any values</div>
           
+      </section>
+      
+      <section class="page" id="labels">
+
+          <h1 class="page-name">Labels</h1>
+
+          <div class="container"></div>
+
+          <div class="no-res">You have not entered any values</div>
+
       </section>
     
     </div>

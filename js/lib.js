@@ -42,12 +42,16 @@ function showInput(t){
     
     var cv = $(t).parent().find('.current-value');
     
-    if($(cv).attr('data-edit-flag') == 1 && $(cv).html() != 'Empty'){
+    if($(cv).html() != 'Empty'){
         
         var val = $(cv).html();
         
-       if(typeof val == 'string'){                                                     $(cv).parent().find('input',0).attr('value',val).prop('selectionStart',val.length);
-        } 
+        var inp = $(cv).parent().find('input',0);
+        
+        val = new String(val);        
+        
+        $(inp).attr('value',val).prop('selectionStart',val.length);
+        
         
     }
     
@@ -202,6 +206,26 @@ function addBlurToFormGroup(container){
     container = container || '';
     
     $(container + ' .form-wrap.input input[type="text"]').blur(function(){
+
+        hiddenInput(this);
+
+    });
+    
+    $(container + ' .form-wrap.input input[type="number"]').blur(function(){
+
+        hiddenInput(this);
+
+    });
+    
+}
+
+function addBlurToFormLabels(container){
+
+    container = container || '';
+
+    $(container + ' .form-wrap.input input[type="text"]').blur(function(){
+        
+        renameLabel(this);
 
         hiddenInput(this);
 
@@ -527,6 +551,16 @@ function show_cmentry(t){
     
 }
 
+function show_cmlabels(t){
+    
+    var inp_id = $(t).find('input',0).attr('data-id');
+
+    $('.cm-label li').attr('data-param',inp_id);
+
+    show_cmdown(t,'.cm-label');
+    
+}
+
 function addContextMenuEvent(container){
     
     $(container + ' [data-context]').bind('taphold', function(){
@@ -540,7 +574,8 @@ function addContextMenuEvent(container){
         var cm = {
             
             'show_cmdelstudy': show_cmdelstudy,
-            'show_cmentry': show_cmentry
+            'show_cmentry': show_cmentry,
+            'show_cmlabels': show_cmlabels
             
         }
         
@@ -776,6 +811,28 @@ function reloadGraph(){
 
         });
 
+    });
+    
+}
+
+function renameLabel(t){
+    
+    var name = $(t).prop('value');
+    
+    var label_id = $(t).attr('data-id');
+    
+    DB.connect.transaction(function(c){
+        
+        c.executeSql('UPDATE groups SET name=? WHERE id=?',[name,label_id],function(c,res){
+            
+            $('.left-menu .group-list .label-style[data-param="' + label_id + '"]').html(name);
+            
+        },function(c,err){
+            
+            console.log(err);
+            
+        });
+        
     });
     
 }

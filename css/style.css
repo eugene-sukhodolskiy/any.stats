@@ -368,7 +368,7 @@ button.ok{
 .canvas-container{
     
     width: 100%;
-    height: 435px;
+    height: 437px;
     overflow-x: auto;
     
 }
@@ -823,6 +823,34 @@ header .add{
     left: 0;
     height: 100%;
     background: transparent;
+    
+}
+
+.left-menu li.allstudy{
+    
+    background-image: url('../imgs/chart-bubble.png');
+    
+}
+
+.left-menu .label-edit{
+    
+    position: absolute;
+    left: auto;
+    top: auto;
+    margin: -22px 0px 0px 240px;
+    font-size: 18px;
+    color: #999;
+    border: 0;
+    background: transparent;
+    
+}
+
+#labels .form-group .current-value{
+    
+    height: 70px;
+    line-height: 70px;
+    font-size: 19px;
+    color: black;
     
 }
 

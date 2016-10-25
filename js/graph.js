@@ -20,9 +20,10 @@ function getGraph(param){
             
             var w = this.sizeX * this.data[0].length + 200;
             
-            if(w < 600) w = 600;
+            if(w < 800) w = 800;
             
             $('#' + this.canvas).attr('width',w).css('width',(w / 2) + 'px');
+            
 
         },
         
@@ -44,36 +45,22 @@ function getGraph(param){
         },
 
         draw: function(){
-
+            
+            var n = 0;
+            
             var ctx = [];
 
-            for(var n=0;n<this.data.length;n++){
+//            for(var n=0;n<this.data.length;n++){
 
                 ctx[n] = document.getElementById(this.canvas);
 
                 var height = parseInt($('#'+this.canvas).attr('height'));
                 
                 var width = parseInt($('#'+this.canvas).attr('width'));
-
+                
                 ctx[n] = ctx[n].getContext('2d');
                 
-                
-                
-                // downline (mark)
-                
-                ctx[n].beginPath();
-                
-                ctx[n].strokeStyle = 'black';
-
-                ctx[n].fillStyle = 'black';
-                
-                ctx[n].moveTo(0,height - 45);
-                
-                ctx[n].lineTo(width,height - 45);
-                
-                ctx[n].stroke();
-                
-                // end downline
+            
                 
                 ctx[n].font = 'normal 22px sans-serif';
                 
@@ -106,7 +93,9 @@ function getGraph(param){
                     
                     // mark
                     
-                    ctx[n].fillText('|', x-2, height - 50);
+                    ctx[n].fillStyle = 'black';
+                    
+                    ctx[n].fillText("'", x-2, height - 40);
                     
                     
                     // date
@@ -141,9 +130,22 @@ function getGraph(param){
 
                 }
 
-                ctx[n].stroke();
+            
+            ctx[n].stroke();
+            
+            // downline (mark)
 
-            }
+            ctx[n].strokeStyle = '#000000';
+
+            ctx[n].beginPath();
+
+            ctx[n].moveTo(0,height - 45);
+
+            ctx[n].lineTo(width,height - 45);
+
+            ctx[n].stroke();
+
+            // end downline
 
         }
 

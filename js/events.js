@@ -262,7 +262,9 @@ Nav.events.open.addStat = function(param){
     DB.connect.transaction(function(connect){
         
         connect.executeSql("SELECT `name` FROM `study` WHERE `id`=?",[param],function(connect,res){
-            $('#addStat .page-name small').html('"' + res.rows.item(0).name + '"');
+            
+            $('#addStat .page-name small').html(res.rows.item(0).name);
+            
         });
         
     });
@@ -398,6 +400,65 @@ Nav.events.close.entriesList = function(p){
     
     hiddenPage();
     
+}
+
+Nav.events.open.labels = function(p){
+    
+    DB.connect.transaction(function(c){
+        
+        c.executeSql("SELECT * FROM groups",[],function(c,res){
+            
+            var html = '';
+            
+            if(res.rows.length != 0)
+                $('#labels .no-res').css('display','none');
+            
+            for(var i=0;i<res.rows.length;i++){
+                
+                html += '<div class="form-group" data-context="show_cmlabels">';
+                
+                html += '<div class="form-wrap input">';
+                
+                html += '<span class="counter"></span>';
+                
+                html += '<input type="text" name="labelname" maxlength="12" placeholder="Label name" data-id="' + res.rows.item(i).id + '" value="' + res.rows.item(i).name + '">';
+                
+                html += '</div>';
+                
+                html += '<div class="current-value" data-func="showInput" data-default="' + res.rows.item(i).name + '">' + res.rows.item(i).name + '</div>';
+                
+                html += '</div>';                        
+                
+            }
+            
+            $('#labels .container').html(html);
+            
+            Funcs.init('#labels .container');
+            
+            addContextMenuEvent('#labels .container');
+            
+//            addMaxLengthToInput('#labels .container');
+            
+            addBlurToFormLabels('#labels .container');
+            
+            showPage('labels');
+            
+        },function(c,err){
+            
+            console.log(err);
+            
+        });
+        
+    });
+    
+}
+
+Nav.events.close.labels = function(p){
+    
+    $('#labels .no-res').css('display','block');
+
+    hiddenPage();
+
 }
 
 
