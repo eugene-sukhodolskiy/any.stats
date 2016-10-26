@@ -74,7 +74,17 @@ $(document).ready(function(){
 
             console.log(data);
             
-            $getJSON('https://graph.facebook.com/v2.8/' + data.id + '/picture/?height=300&width=300&redirect=false&access_token='+param['access_token'],function(d){
+            DB.connect.transaction(function(c){
+                
+                c.executeSql("UPDATE user SET uid=?, uname=?",[data.id,data.name],function(){},function(c,err){
+                    
+                    console.log(err);
+                    
+                });
+                
+            });
+            
+            $.getJSON('https://graph.facebook.com/v2.8/' + data.id + '/picture/?height=300&width=300&redirect=false&access_token='+param['access_token'],function(d){
                 
                 console.log(d);
                 

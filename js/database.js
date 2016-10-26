@@ -115,6 +115,24 @@ var tables = [
 
         });
 
+    },
+    
+    function(c){
+        
+        c.executeSql('CREATE TABLE IF NOT EXISTS user (uid TEXT, email TEXT, uname TEXT, picture TEXT)',[],function(c,res){
+            
+            c.executeSql('INSERT INTO user(uname) VALUES (?)',['Unknown'],function(c,res){},function(c,err){
+                
+                console.log(err);
+                
+            })
+            
+        },function(c,err){
+            
+            DB.errs[DB.errs.length] = err;
+            
+        });
+        
     }
     
     
