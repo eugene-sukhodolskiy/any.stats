@@ -32,6 +32,16 @@ var DB = {
             
         }
         
+    },
+    
+    drop = function(tablename){
+    
+        this.connect.transaction(function(c){
+    
+    c.executeSql("DROP TABLE " + tablename,[],function(){console.log('true')},function(c,err){console.log(err)});
+    
+        });
+    
     }
     
     
@@ -119,7 +129,7 @@ var tables = [
     
     function(c){
         
-        c.executeSql('CREATE TABLE IF NOT EXISTS user (uid TEXT, email TEXT, uname TEXT, picture TEXT)',[],function(c,res){
+        c.executeSql('CREATE TABLE IF NOT EXISTS user (uid TEXT, email TEXT, uname TEXT, picture TEXT, picture_url TEXT)',[],function(c,res){
             
             c.executeSql('INSERT INTO user(uname) VALUES (?)',['Unknown'],function(c,res){},function(c,err){
                 
