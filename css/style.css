@@ -694,8 +694,8 @@ header button.btn-left-menu{
 
 .left-menu .header{
     
-    height: 120px;
-    background-color: #bbb;
+    height: 150px;
+    background-color: #5C6BC0;
     width: 300px;
     
 }
@@ -854,6 +854,36 @@ header .add{
     
 }
 
+.left-menu .header .picture{
+    
+    width: 70px;
+    height: 70px;
+    background: white;
+    border-radius: 100%;
+    position: relative;
+    top: 20px;
+    left: 20px;
+    box-shadow: 0 0 1px #aaa;
+    overflow: hidden;
+    
+}
+
+.left-menu .header .user-name{
+    
+    position: relative;
+    top: 40px;
+    left: 20px;
+    font-size: 18px;
+    color: #ececec;
+    
+}
+
+.left-menu .header .picture img{
+    
+    width: inherit;
+    height: auto;
+    
+}
 
 
 

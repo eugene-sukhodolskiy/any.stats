@@ -42,6 +42,16 @@ var DB = {
     
         });
     
+    },
+    
+    q: function(query,param,s,e){
+        
+        this.connect.transaction(function(c){
+            
+            c.executeSql(query,param,s,e);
+            
+        });
+        
     }
     
     

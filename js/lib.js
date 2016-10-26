@@ -837,6 +837,22 @@ function renameLabel(t){
     
 }
 
+function initProfile(){
+    
+    DB.q("SELECT * FROM user",[],function(c,res){
+        
+        $('.left-menu .header .picture img').attr('src',res.rows.item(0).picture);
+        
+        $('.left-menu .header .user-name').html(res.rows.item(0).uname);
+        
+    },function(c,err){
+        
+        console.log(err);
+        
+    });
+    
+}
+
 
 // vis/hid //
 
