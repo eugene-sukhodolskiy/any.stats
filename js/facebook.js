@@ -41,7 +41,7 @@ var plugin_fb = {
         if (tmp[0]=='https://www.facebook.com/connect/login_success.html') {
             plugin_fb.wwwref.close();
             var tmp=url_parser.get_args(tmp[1]);
-            if(typeof this.callback != 'function'){
+            if(!this.callback){
                 window.localStorage.setItem("plugin_fb_token", tmp['access_token']);
                 window.localStorage.setItem("plugin_fb_exp", tmp['expires_in']);
                 window.localStorage.setItem("plugin_fb_perms", plugin_fb.plugin_perms);
