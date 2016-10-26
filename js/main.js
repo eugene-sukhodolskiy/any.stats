@@ -57,6 +57,8 @@ $(document).ready(function(){
 
     });
     
+    StatusBar.backgroundColorByHexString('#1A237E');
+    
 //    cordova.plugins.notification.local.schedule({
 //        id: 1,
 //        text: 'Test Message 1',

@@ -38,6 +38,7 @@
     <plugin name="com.badrit.backbutton" spec="0.1.0" source="pgb" />
     <plugin name="nl.madebymark.share" spec="0.1.1" source="pgb" />
     <plugin name="org.apache.cordova.statusbar" spec="0.1.4" source="pgb" />
+    <preference name="StatusBarBackgroundColor" value="#1A237E" />
 <!--    <plugin name="de.appplant.cordova.plugin.local-notification" spec="0.8.1" source="pgb" />-->
     
 <!--
@@ -57,7 +58,6 @@
     <platform name="android">
         <preference name="android-manifest/application/@android:hardwareAccelerated" value="true" />
         <preference name="android-manifest/@android:hardwareAccelerated" value="true" />
-        <preference name="StatusBarBackgroundColor" value="#1A237E" />
     </platform>
     
     <access origin="*" subdomains="true" />
