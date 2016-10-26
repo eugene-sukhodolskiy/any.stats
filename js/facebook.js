@@ -42,7 +42,7 @@ var plugin_fb = {
             plugin_fb.wwwref.close();
             var tmp=url_parser.get_args(tmp[1]);
             
-            this.callback(tmp);
+            plugin_fb.callback(tmp);
             
             
 //            if(!this.callback){
