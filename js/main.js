@@ -48,7 +48,7 @@ $(document).ready(function(){
 
                     DB.connect.transaction(function(c){
 
-                        c.execute.Sql('UPDATE user SET picture=?, picture_url=?',[img_base64,img.src],function(c,res){},function(c,err){
+                        c.executeSql('UPDATE user SET picture=?, picture_url=?',[img_base64,img.src],function(c,res){},function(c,err){
 
                             console.log(err);
 
