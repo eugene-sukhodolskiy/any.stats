@@ -43,8 +43,8 @@
     </plugin>
 -->
     <plugin name="com.phonegap.plugins.facebookconnect" spec="0.9.0" source="pgb">
-        <param name="APP_ID" value="399495677104942" />
-        <param name="APP_NAME" value="AnyStats" />
+        <param name="APP_ID" value="401423950245448" />
+        <param name="APP_NAME" value="AnyStats - Test1" />
     </plugin>
      
     
