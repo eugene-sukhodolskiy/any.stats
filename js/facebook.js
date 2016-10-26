@@ -24,7 +24,7 @@ var plugin_fb = {
     
     wwwref: false,
     
-    callback: false;
+    callback: false,
     
     plugin_perms: "read_stream,manage_friendlists,read_friendlists,read_mailbox,publish_actions,offline_access",
 
