@@ -57,17 +57,5 @@ $(document).ready(function(){
 
     });
     
-    StatusBar.backgroundColorByHexString('#1A237E');
-    
-//    cordova.plugins.notification.local.schedule({
-//        id: 1,
-//        text: 'Test Message 1',
-//        icon: 'http://3.bp.blogspot.com/-Qdsy-GpempY/UU_BN9LTqSI/AAAAAAAAAMA/LkwLW2yNBJ4/s1600/supersu.png',
-//        smallIcon: 'res://cordova',
-//        sound: null,
-//        badge: 1,
-//        data: { test: id }
-//    });
-    
     
 });

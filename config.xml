@@ -17,11 +17,11 @@
     <icon src="imgs/icon/hdpi.png" density="hdpi" />
     <icon src="imgs/icon/xhdpi.png" density="xhdpi" />
     
-<!--
     <splash src="imgs/splash/hdpi.png" density="port-hdpi"/>
     <splash src="imgs/splash/mdpi.png" density="port-mdpi"/>
     <splash src="imgs/splash/xhdpi.png" density="port-xhdpi"/>
     
+<!--
     <plugin name="br.com.paveisitemas.splashscreen" spec="2.1.1" source="pgb" />
     
     <preference name="SplashScreenDelay" value="1000" />
@@ -30,16 +30,14 @@
     <preference name="FadeSplashScreenDuration" value="1"/>
 -->
    
-<!--
     <plugin name="com.phonegap.plugin.statusbar" spec="1.1.0" source="pgb" />
-    <preference name="StatusBarBackgroundColor" value="#1565C0" />
--->
+    <preference name="StatusBarBackgroundColor" value="#1A237E" />
     
     <plugin name="com.badrit.backbutton" spec="0.1.0" source="pgb" />
     <plugin name="nl.madebymark.share" spec="0.1.1" source="pgb" />
-    <plugin name="org.apache.cordova.statusbar" spec="0.1.4" source="pgb" />
-    <preference name="StatusBarBackgroundColor" value="#1A237E" />
-<!--    <plugin name="de.appplant.cordova.plugin.local-notification" spec="0.8.1" source="pgb" />-->
+<!--    <plugin name="org.apache.cordova.statusbar" spec="0.1.4" source="pgb" />-->
+    
+
     
 <!--
     <plugin name="cordova-plugin-googleplus" source="npm">
@@ -50,9 +48,6 @@
         <param name="APP_ID" value="399495677104942" />
         <param name="APP_NAME" value="AnyStats" />
     </plugin>
-    
-<!--    <plugin name="com.appodeal.googleplayservices" spec="7.8.0" source="pgb" />-->
-<!--    <plugin name="nl.x-services.plugins.googleplus" spec="1.0.7" source="pgb" />-->
      
     
     <platform name="android">
