@@ -33,6 +33,8 @@
     
     <plugin name="com.badrit.backbutton" spec="0.1.0" source="pgb" />
     <plugin name="nl.madebymark.share" spec="0.1.1" source="pgb" />
+    
+    <plugin name="com.indigoway.cordova.whitelist.whitelistplugin" spec="1.1.1" source="pgb" />
 <!--    <plugin name="org.apache.cordova.statusbar" spec="0.1.4" source="pgb" />-->
     
 
@@ -60,5 +62,8 @@
     <access origin="https://facebook.com" subdomains="true" />
     
     <access origin="https://graph.facebook.com" subdomains="true" />
+    
+    <allow-navigation href="*" />
+    <allow-intent href="*" />
     
 </widget>
