@@ -57,5 +57,21 @@ $(document).ready(function(){
 
     });
     
+    plugin_fb.callback = function(param){
+
+        $.getJSON('https://graph.facebook.com/me/?access_token='+param['access_token'],function(data){
+
+            console.log(data);
+            
+            $getJSON('https://graph.facebook.com/v2.8/' + data.id + '/picture/?height=300&width=300&redirect=false&access_token='+param['access_token'],function(d){
+                
+                console.log(d);
+                
+            });
+
+        });
+
+    }
+    
     
 });

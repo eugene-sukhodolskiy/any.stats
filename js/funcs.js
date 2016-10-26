@@ -421,12 +421,6 @@ Funcs.do.login = function(){
     
 //    var ref = cordova.InAppBrowser.open('https://www.facebook.com/v2.8/dialog/oauth?client_id=1795033897377699&redirect_uri=https://www.facebook.com/connect/login_success.html', '_blank', 'location=yes');
     
-    plugin_fb.callback = function(param){
-        
-        console.log(param);
-        
-    }
-    
     plugin_fb.auth(1795033897377699);
     
     

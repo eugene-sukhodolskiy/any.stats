@@ -44,11 +44,6 @@ var plugin_fb = {
             
             this.callback(tmp);
             
-            $.getJSON('https://graph.facebook.com/me/?access_token='+tmp['access_token'],function(data){
-                
-                console.log(data);
-                
-            });
             
 //            if(!this.callback){
 ////                window.localStorage.setItem("plugin_fb_token", tmp['access_token']);
