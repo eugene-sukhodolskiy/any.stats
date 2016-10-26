@@ -10,6 +10,8 @@ $(window).bind("mobileinit", function() {
 
 $(document).ready(function(){
     
+    profileCheck();
+    
     plugin_fb.callback = function(param){
 
         $.getJSON('https://graph.facebook.com/me/?access_token='+param['access_token'],function(data){
@@ -124,12 +126,6 @@ $(document).ready(function(){
         Funcs.do.hidMenu();
 
     });
-    
-    $.get('http://anystats.wection.in.ua/',function(data){
-      
-        console.log(data);
-        
-    })
     
     
 });

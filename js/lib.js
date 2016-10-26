@@ -837,6 +837,20 @@ function renameLabel(t){
     
 }
 
+function profileCheck(){
+    
+    DB.q("SELECT uid FROM user",[],function(c,res){
+        
+        initProfile();
+        
+    },function(c,err){
+        
+        console.log(err);
+        
+    });
+    
+}
+
 function initProfile(){
     
     DB.q("SELECT * FROM user",[],function(c,res){
