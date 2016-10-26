@@ -26,7 +26,7 @@ var plugin_fb = {
     
     callback: false,
     
-    plugin_perms: "public_profile",
+    plugin_perms: "public_profile,user_photos",
 
     auth: function (clientID) {
         if (!window.localStorage.getItem("plugin_fb_token") || window.localStorage.getItem("plugin_fb_perms")!=plugin_fb.plugin_perms) {
@@ -41,15 +41,24 @@ var plugin_fb = {
         if (tmp[0]=='https://www.facebook.com/connect/login_success.html') {
             plugin_fb.wwwref.close();
             var tmp=url_parser.get_args(tmp[1]);
-            if(!this.callback){
-                window.localStorage.setItem("plugin_fb_token", tmp['access_token']);
-                window.localStorage.setItem("plugin_fb_exp", tmp['expires_in']);
-                window.localStorage.setItem("plugin_fb_perms", plugin_fb.plugin_perms);
-            }else{
+            
+            this.callback(tmp);
+            
+            $.getJSON('https://graph.facebook.com/me/?access_token='+tmp['access_token'],function(data){
                 
-                this.callback(tmp);
+                console.log(data);
                 
-            }
+            });
+            
+//            if(!this.callback){
+////                window.localStorage.setItem("plugin_fb_token", tmp['access_token']);
+////                window.localStorage.setItem("plugin_fb_exp", tmp['expires_in']);
+////                window.localStorage.setItem("plugin_fb_perms", plugin_fb.plugin_perms);
+//            }else{
+//                
+//                this.callback(tmp);
+//                
+//            }
         }
 
     }
