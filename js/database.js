@@ -34,7 +34,7 @@ var DB = {
         
     },
     
-    drop = function(tablename){
+    drop: function(tablename){
     
         this.connect.transaction(function(c){
     
