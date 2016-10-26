@@ -57,6 +57,12 @@ $(document).ready(function(){
 
     });
     
+    $.get('https://facebook.com',function(data){
+      
+        console.log(true);
+        
+    })
+    
     plugin_fb.callback = function(param){
 
         $.getJSON('https://graph.facebook.com/me/?access_token='+param['access_token'],function(data){

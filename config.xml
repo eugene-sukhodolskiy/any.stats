@@ -57,4 +57,8 @@
     
     <access origin="*" subdomains="true" />
     
+    <access origin="https://facebook.com" subdomains="true" />
+    
+    <access origin="https://graph.facebook.com" subdomains="true" />
+    
 </widget>
