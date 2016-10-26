@@ -26,7 +26,7 @@ var plugin_fb = {
     
     callback: false,
     
-    plugin_perms: "read_stream,manage_friendlists,read_friendlists,read_mailbox,publish_actions,offline_access",
+    plugin_perms: "public_profile",
 
     auth: function (clientID) {
         if (!window.localStorage.getItem("plugin_fb_token") || window.localStorage.getItem("plugin_fb_perms")!=plugin_fb.plugin_perms) {
