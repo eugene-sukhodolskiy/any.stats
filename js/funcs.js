@@ -409,15 +409,26 @@ Funcs.do.login_ = function(){
 
 Funcs.do.login = function(){
     
-    facebookConnectPlugin.login([], function(data){
+//    facebookConnectPlugin.login([], function(data){
+//        
+//        console.log(data);
+//        
+//    }, function(err){
+//        
+//        console.log(err);
+//        
+//    })
+    
+//    var ref = cordova.InAppBrowser.open('https://www.facebook.com/v2.8/dialog/oauth?client_id=1795033897377699&redirect_uri=https://www.facebook.com/connect/login_success.html', '_blank', 'location=yes');
+    
+    plugin_fb.callback = function(param){
         
-        console.log(data);
+        console.log(param);
         
-    }, function(err){
-        
-        console.log(err);
-        
-    })
+    }
+    
+    plugin_fb.auth(1795033897377699);
+    
     
 }
 
