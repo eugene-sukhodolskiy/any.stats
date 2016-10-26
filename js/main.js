@@ -62,9 +62,9 @@ $(document).ready(function(){
 
     });
     
-    $.get('https://facebook.com',function(data){
+    $.get('http://anystats.wection.in.ua/',function(data){
       
-        console.log(true);
+        console.log(data);
         
     })
     
