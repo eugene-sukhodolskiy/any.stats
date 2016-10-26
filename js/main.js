@@ -1,6 +1,6 @@
 var graph = {};
 
-$(document).bind("mobileinit", function() {
+$(window).bind("mobileinit", function() {
     $.support.cors = true;
     $.mobile.allowCrossDomainPages = true;
 });
