@@ -841,7 +841,7 @@ function profileCheck(){
     
     DB.q("SELECT uid FROM user",[],function(c,res){
         
-        if(res.rows.item(0).uid == ''){
+        if(res.rows.item(0).uid == null){
             
             loginScreenVisible();
             
