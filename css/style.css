@@ -971,6 +971,23 @@ header .add{
     
 }
 
+.left-menu .header .cover{
+    
+    width: inherit;
+    height: inherit;
+    overflow: hidden;
+    position: absolute;
+    
+}
+
+.left-menu .header .cover img{
+    
+    width: 100%;
+    height: auto;
+    filter: blur(5px);
+    
+}
+
 
 
 
