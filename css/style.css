@@ -469,13 +469,11 @@ button.ok{
     
 }
 
-/*
 #average:after{
     
     margin-left: 0;
     
 }
-*/
 
 #showStats .average .current-value{
     
@@ -730,7 +728,7 @@ header button.btn-left-menu{
     font-size: 17px;
     color: black;
     
-    margin-top: 15px;
+    margin-top: 20px;
     margin-left: 20px;
     list-style: none;
     
@@ -900,13 +898,7 @@ header .add{
     
 }
 
-/*
-.container .nav-btn:last-line{
-    
-    margin-left: -2px;
-    
-}
-*/
+
 
 
 
