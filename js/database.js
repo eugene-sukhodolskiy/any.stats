@@ -141,11 +141,18 @@ var tables = [
         
         c.executeSql('CREATE TABLE IF NOT EXISTS user (uid TEXT, email TEXT, uname TEXT, picture TEXT, picture_url TEXT)',[],function(c,res){
             
-            c.executeSql('INSERT INTO user(uname) VALUES (?)',['Unknown'],function(c,res){},function(c,err){
-                
-                console.log(err);
-                
-            })
+            c.executeSql('SELECT COUNT(*) FROM sets',[],function(c,res){
+
+                if(res.rows.item(0)['COUNT(*)'] == 0){
+                    
+                    c.executeSql('INSERT INTO user(uname) VALUES (?)',['Unknown'],function(c,res){},function(c,err){
+
+                        console.log(err);
+
+                    });
+                    
+                }
+            });
             
         },function(c,err){
             

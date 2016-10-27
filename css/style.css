@@ -895,10 +895,81 @@ header .add{
 #study .container{
     
     text-align: center;
+    margin-left: -8px;
     
 }
 
+.login-screen{
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #1A237E;
+    z-index: 10000;
+    
+}
 
+.login-screen .content{
+    
+    position: fixed;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: auto;
+    
+}
+
+.login-screen .applogo{
+    
+    width: 70px;
+    height: 70px;
+    background-image: url(../imgs/icon/hdpi.png);
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    position: relative;
+    left: 50%;
+    margin-left: -35px;
+    
+}
+
+.login-screen .login-screen-caption{
+    
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 13px;
+    margin-top: 20px;
+    
+}
+
+.login-screen .login-btn{
+    
+    display: block;
+    width: 200px;
+    background-repeat: no-repeat;
+    background-size: auto 82%;
+    background-position: 4px center;
+    margin-top: 20px;
+    border: 0;
+    position: relative;
+    left: 50%;
+    margin-left: -100px;
+    height: 40px;
+    color: white;
+    font-size: 18px;
+    box-shadow: 0 0 2px #444;
+    border-radius: 2px;
+    
+}
+
+.login-screen .login-btn.facebook{
+    
+    background-color: #3b5998;
+    background-image: url(../imgs/facebook-box.png);
+    
+}
 
 
 

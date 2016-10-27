@@ -841,7 +841,16 @@ function profileCheck(){
     
     DB.q("SELECT uid FROM user",[],function(c,res){
         
-        initProfile();
+        if(res.rows.item(0).uid == ''){
+            
+            loginScreenVisible();
+            
+        }else{
+            
+            loginScreenHidden();
+            initProfile();
+            
+        }
         
     },function(c,err){
         
@@ -864,6 +873,18 @@ function initProfile(){
         console.log(err);
         
     });
+    
+}
+
+function loginScreenVisible(){
+    
+    $('.login-screen').css('display','block');
+    
+}
+
+function loginScreenHidden(){
+    
+    $('.login-screen').css('display','none');
     
 }
 
