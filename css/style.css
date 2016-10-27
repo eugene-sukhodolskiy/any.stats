@@ -985,7 +985,7 @@ header .add{
     
     width: 100%;
     height: auto;
-    -webkit-filter: blur(10px);
+    -webkit-filter: blur(20px);
     
 }
 

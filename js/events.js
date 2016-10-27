@@ -55,8 +55,6 @@ Nav.events.open.allStudy = function(p){
 
         connect.executeSql("SELECT * FROM study ORDER BY id DESC",[],function(connect,res){
 
-            //            console.log(res);
-
             var html = '';
             
             if(res.rows.length > 0){
@@ -96,6 +94,14 @@ Nav.events.open.allStudy = function(p){
             Nav.initPages('#allStudy');
             
             addContextMenuEvent('#allStudy');
+            
+            if(res.rows.length % 2 == 1){
+                
+                var eq = res.rows.length - 1;
+                
+                $('#allStudy .container .nav-btn:eq(' + eq + ')').css('width','327px');
+                
+            }
 
         });
 
@@ -202,6 +208,14 @@ Nav.events.open.study = function(param){
             Nav.initPages('#study');
             
             addContextMenuEvent('#study');
+            
+            if(res.rows.length % 2 == 1){
+
+                var eq = res.rows.length - 1;
+
+                $('#study .container .nav-btn:eq(' + eq + ')').css('width','327px');
+
+            }
 
         });
 
