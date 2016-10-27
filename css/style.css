@@ -869,7 +869,7 @@ header .add{
     position: relative;
     top: 20px;
     left: 20px;
-    box-shadow: 0 0 1px #aaa;
+    box-shadow: 0 0 1px #444;
     overflow: hidden;
     
 }
@@ -880,7 +880,8 @@ header .add{
     top: 40px;
     left: 20px;
     font-size: 18px;
-    color: #ececec;
+    color: white;
+    text-shadow: 0 0 1px #444;
     
 }
 
@@ -984,7 +985,7 @@ header .add{
     
     width: 100%;
     height: auto;
-    filter: blur(5px);
+    -webkit-filter: blur(10px);
     
 }
 
