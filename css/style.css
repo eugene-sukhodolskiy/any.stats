@@ -103,7 +103,7 @@ header button.back-screen{
 .page-name{
     
     font-size: 23px;
-    padding: 20px 0px 20px 5%;
+    padding: 15px 0px 15px 8%;;
     width: 70%;
     font-weight: normal;
     
@@ -118,8 +118,8 @@ header button.back-screen{
 
 .page .nav-btn{
     
-    width: 155px;
-    margin: 0 0 15px 15px;
+    width: 160px;
+    margin: 0 0 7px 7px;
     height: 120px;
     display: inline-block;
     transition-duration: .2s;
@@ -204,6 +204,12 @@ header button.back-screen{
 .form-group:first-of-type{
     
     margin-top: 0;
+    
+}
+
+#labels .form-group:first-of-type{
+    
+    margin-top: -15px;
     
 }
 
@@ -452,7 +458,7 @@ button.ok{
     width: 150px;
     position: absolute;
     left: 95%;
-    margin-left: -145px;
+    margin-left: -150px;
     box-shadow: none;
     
 }
@@ -463,11 +469,13 @@ button.ok{
     
 }
 
+/*
 #average:after{
     
     margin-left: 0;
     
 }
+*/
 
 #showStats .average .current-value{
     
@@ -702,14 +710,14 @@ header button.btn-left-menu{
 
 .left-menu .group-list{
     
-    margin-top: 40px;
+    margin-top: 30px;
     width: 300px;
     
 }
 
 .left-menu .list-caption{
     
-    font-size: 18px;
+    font-size: 15px;
     color: #999;
     margin-left: 20px;
     
@@ -719,10 +727,10 @@ header button.btn-left-menu{
 .left-menu .other-list li
 {
 
-    font-size: 20px;
+    font-size: 17px;
     color: black;
     
-    margin-top: 20px;
+    margin-top: 15px;
     margin-left: 20px;
     list-style: none;
     
@@ -735,7 +743,7 @@ header button.btn-left-menu{
 
 .left-menu .other-list{
     
-    margin-top: 40px;
+    margin-top: 30px;
     
 }
 
@@ -837,8 +845,8 @@ header .add{
     position: absolute;
     left: auto;
     top: auto;
-    margin: -22px 0px 0px 240px;
-    font-size: 18px;
+    margin: -18px 0px 0px 240px;
+    font-size: 15px;
     color: #999;
     border: 0;
     background: transparent;
@@ -885,7 +893,20 @@ header .add{
     
 }
 
+#allStudy .container,
+#study .container{
+    
+    text-align: center;
+    
+}
 
+/*
+.container .nav-btn:last-line{
+    
+    margin-left: -2px;
+    
+}
+*/
 
 
 

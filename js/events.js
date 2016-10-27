@@ -79,7 +79,7 @@ Nav.events.open.allStudy = function(p){
 
                 html += '</div>';
 
-                html += '</div> ';
+                html += '</div>';
 
             }
 
@@ -185,7 +185,7 @@ Nav.events.open.study = function(param){
 
                 html += '</div>';
 
-                html += '</div> ';
+                html += '</div>';
 
             }
 
