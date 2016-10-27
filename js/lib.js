@@ -866,6 +866,8 @@ function initProfile(){
         
         $('.left-menu .header .picture img').attr('src',res.rows.item(0).picture);
         
+        $('.left-menu .header .cover img').attr('src',res.rows.item(0).picture);
+        
         $('.left-menu .header .user-name').html(res.rows.item(0).uname);
         
     },function(c,err){
