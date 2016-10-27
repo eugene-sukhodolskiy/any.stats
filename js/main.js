@@ -52,6 +52,8 @@ $(document).ready(function(){
                             
                             initProfile();
                             
+                            loginScreenHidden();
+                            
                         },function(c,err){
 
                             console.log(err);
