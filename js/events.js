@@ -95,13 +95,7 @@ Nav.events.open.allStudy = function(p){
             
             addContextMenuEvent('#allStudy');
             
-            if(res.rows.length % 2 == 1){
-                
-                var eq = res.rows.length - 1;
-                
-                $('#allStudy .container .nav-btn:eq(' + eq + ')').css('width','327px');
-                
-            }
+            navBtnWidth('#allStudy');
 
         });
 
@@ -209,13 +203,7 @@ Nav.events.open.study = function(param){
             
             addContextMenuEvent('#study');
             
-            if(res.rows.length % 2 == 1){
-
-                var eq = res.rows.length - 1;
-
-                $('#study .container .nav-btn:eq(' + eq + ')').css('width','327px');
-
-            }
+            navBtnWidth('#study');
 
         });
 

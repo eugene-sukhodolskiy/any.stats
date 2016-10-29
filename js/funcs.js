@@ -407,7 +407,7 @@ Funcs.do.login_ = function(){
     
 }
 
-Funcs.do.login = function(){
+Funcs.do.login = function(p){
     
 //    facebookConnectPlugin.login([], function(data){
 //        
@@ -421,7 +421,15 @@ Funcs.do.login = function(){
     
 //    var ref = cordova.InAppBrowser.open('https://www.facebook.com/v2.8/dialog/oauth?client_id=1795033897377699&redirect_uri=https://www.facebook.com/connect/login_success.html', '_blank', 'location=yes');
     
-    plugin_fb.auth(1795033897377699);
+    if(p == 'facebook'){
+    
+        plugin_fb.auth(1795033897377699);
+        
+    }else if(p == 'google'){
+        
+        
+        
+    }
     
     
 }

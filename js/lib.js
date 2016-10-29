@@ -5,6 +5,8 @@ function delFromHTML(id,page){
     setTimeout(function(){
 
         $(page + ' .container [data-param="' + id + '"]').css('display','none');
+        
+        navBtnWidth(page);
 
     },200);
     
@@ -887,6 +889,22 @@ function loginScreenVisible(){
 function loginScreenHidden(){
     
     $('.login-screen').css('display','none');
+    
+}
+
+function navBtnWidth(page){
+    
+    var nbtn = $(page + ' .container .nav-btn:visible');
+    
+    $(nbtn).removeAttr('style');
+    
+    if(nbtn.length % 2 == 1){
+
+        var eq = nbtn.length - 1;
+
+        $(nbtn[eq]).css('width','327px');
+
+    }
     
 }
 

@@ -877,7 +877,7 @@ header .add{
 .left-menu .header .user-name{
     
     position: relative;
-    top: 40px;
+    top: 35px;
     left: 20px;
     font-size: 18px;
     color: white;
@@ -924,8 +924,8 @@ header .add{
 
 .login-screen .applogo{
     
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
     background-image: url(../imgs/icon/hdpi.png);
     background-size: 100% auto;
     background-repeat: no-repeat;
