@@ -398,9 +398,7 @@ function addMaxLengthToInput(container){
 
         len = max - len;
 
-        $(counter).html(len + '/' + max);
-
-        if(len <= 5){
+        if(len <= 0){
 
             $(counter).css({'opacity': 1});
 

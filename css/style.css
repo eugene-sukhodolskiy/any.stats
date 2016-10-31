@@ -247,15 +247,15 @@ header button.back-screen{
     
     display: block;
     position: absolute;
-    width: 50px;
+    width: 200px;
     height: 20px;
     font-size: 12px;
     color: #E53935;
-    left: 68%;
     top: auto;
-    margin: 0px 0px 0px 23px;
+    margin: 22px 0px 0px 120px;
     transition-duration: .3s;
     opacity: 0;
+    z-index: 3;
     
 }
 
