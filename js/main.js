@@ -10,6 +10,12 @@ $(window).bind("mobileinit", function() {
 
 $(document).ready(function(){
     
+    setTimeout(function(){
+        
+        $('.splash').css('display','none');
+        
+    },100);
+    
     plugin_fb.callback = function(param){
 
         $.getJSON('https://graph.facebook.com/me/?access_token='+param['access_token'],function(data){
@@ -85,6 +91,8 @@ $(document).ready(function(){
     
     Funcs.init();
     
+    profileCheck();
+    
     inpFocus();
     
     graph = getGraph({"canvas": 'main-canvas',"size": 10});
@@ -126,8 +134,6 @@ $(document).ready(function(){
         Funcs.do.hidMenu();
 
     });
-    
-    profileCheck();
     
     
 });

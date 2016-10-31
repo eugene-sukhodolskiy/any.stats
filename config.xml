@@ -18,6 +18,7 @@
     <icon src="imgs/icon/xhdpi.png" density="xhdpi" />
     
     <splash src="imgs/splash/hdpi.png" density="port-hdpi"/>
+    <splash src="imgs/splash/ldpi.png" density="port-ldpi"/>
     <splash src="imgs/splash/mdpi.png" density="port-mdpi"/>
     <splash src="imgs/splash/xhdpi.png" density="port-xhdpi"/>
     
@@ -25,8 +26,10 @@
     
     <preference name="SplashScreenDelay" value="1000" />
     <preference name="SplashScreenBackgroundColor" value="white" />
+<!--
     <preference name="SplashMaintainAspectRatio" value="true" />
     <preference name="FadeSplashScreenDuration" value="1"/>
+-->
    
     <plugin name="com.phonegap.plugin.statusbar" spec="1.1.0" source="pgb" />
     <preference name="StatusBarBackgroundColor" value="#1A237E" />

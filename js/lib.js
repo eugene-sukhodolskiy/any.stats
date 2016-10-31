@@ -883,12 +883,14 @@ function initProfile(){
 function loginScreenVisible(){
     
     $('.login-screen').css('display','block');
+    $('.wrap').css('display','block');
     
 }
 
 function loginScreenHidden(){
     
     $('.login-screen').css('display','none');
+    $('.wrap').css('display','block');
     
 }
 
