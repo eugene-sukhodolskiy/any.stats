@@ -376,12 +376,24 @@ Funcs.do.share = function(param){
     ctx = document.getElementById('main-canvas');
     var base64 = ctx.toDataURL("image/jpeg");
     
-    var name = $('#showStats h1.pagename').html();
+    var name = $('#showStats h1.page-name').html();
 
     setTimeout(function(){
         
-        navigator.share(base64,'Share ' + name,'data:image/jpeg;base64');
+//        navigator.share(base64,'Share ' + name,'data:image/jpeg;base64');
 //        window.plugins.socialsharing.share(null, name, base64, null);
+        
+        window.plugins.SocialShare.share(
+            function(d){console.log(d)},
+            function(err){console.log(err)},
+            {
+                dialogTitle : 'Share '+name,         // Title of the native dialog
+                url : base64,          // Url to be shared
+                text : name, // Text to be shared where possible (not in Facebook)
+                // {{url}} will be replaced by given url
+                mailSubject : name+'.jpg'    // Subject of the email if users select a mail client
+            }
+        );
         
     },200);
     
