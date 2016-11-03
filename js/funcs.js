@@ -380,8 +380,8 @@ Funcs.do.share = function(param){
 
     setTimeout(function(){
         
-//        navigator.share(img,'My title','image/jpeg');
-        window.plugins.socialsharing.share(null, name, base64, null);
+        navigator.share(img,'Share ' + name,'data:image/jpeg;base64');
+//        window.plugins.socialsharing.share(null, name, base64, null);
         
     },200);
     
