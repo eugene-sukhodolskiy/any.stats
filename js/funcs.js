@@ -371,19 +371,19 @@ Funcs.do['_showInput'] = function(p){
 
 }
 
-Funcs.do.share = function(){
+Funcs.do.share = function(param){
 //    
     ctx = document.getElementById('main-canvas');
     var base64 = ctx.toDataURL("image/jpeg");
-//    
-//    var path = 'file:///storage/emulated/0/xhdpi.png';
-    var img = new Image();
-    img.src = base64;
     
+    var name = $('#showStats h1.pagename').html();
+
     setTimeout(function(){
-        navigator.share(img,'My title','image/jpeg');
         
-    },100);
+//        navigator.share(img,'My title','image/jpeg');
+        window.plugins.socialsharing.share(null, name, base64, null);
+        
+    },200);
     
     
     
