@@ -51,6 +51,8 @@ Nav.events.open.allStudy = function(p){
     $('[data-back]').css('display','none');
     $('header button.btn-left-menu').css('display','block');
     
+    $('header button.add').attr('data-page','addnewstudy').attr('data-param','');
+    
     DB.connect.transaction(function(connect){
 
         connect.executeSql("SELECT * FROM study ORDER BY id DESC",[],function(connect,res){
@@ -141,7 +143,7 @@ Nav.events.close.addnewgroup = function(param){
 
 Nav.events.open.study = function(param){
     
-    $('header button.add').attr('data-param',param);
+    $('header button.add').attr('data-param',param).attr('data-page','addnewstudy');
     
     // show .page-name
     
@@ -323,8 +325,6 @@ Nav.events.open.showStats = function(id_study){
 
 Nav.events.close.showStats = function(){
     
-    $('header button.add').attr('data-page','addnewstudy');
-    
     Funcs.do.closeEditName('showStats');
     
     $('#showStats .last-container').html('');
@@ -405,6 +405,8 @@ Nav.events.close.entriesList = function(p){
 }
 
 Nav.events.open.labels = function(p){
+    
+    $('header .add').attr('data-page','addnewgroup');
     
     DB.connect.transaction(function(c){
         
