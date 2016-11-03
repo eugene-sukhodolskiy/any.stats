@@ -36,7 +36,7 @@
     
     <plugin name="com.badrit.backbutton" spec="0.1.0" source="pgb" />
 <!--    <plugin name="nl.madebymark.share" spec="0.1.1" source="pgb" />-->
-    <plugin name="nl.x-services.plugins.socialsharing" spec="4.3.8" source="pgb" />
+    <plugin name="nl.x-services.plugins.socialsharing" source="pgb" />
     
     <plugin name="com.indigoway.cordova.whitelist.whitelistplugin" spec="1.1.1" source="pgb" />
 <!--    <plugin name="org.apache.cordova.statusbar" spec="0.1.4" source="pgb" />-->
