@@ -910,11 +910,12 @@ header .add{
     width: 100%;
     height: 100%;
 /*    background: #1A237E;*/
-    background: url('../imgs/login-background.jpg');
+    background-image: url('../imgs/login-background.jpg');
     background-repeat: no-repeat;
     background-size: 100% 100%;
     z-index: 10000;
     display: none;
+    background-color: white;
     
 }
 

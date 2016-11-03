@@ -892,9 +892,11 @@ function loginScreenHidden(){
     
 }
 
-function navBtnWidth(page){
+function navBtnWidth(page,visible){
     
-    var nbtn = $(page + ' .container .nav-btn:visible');
+    visible = visible || ':visible';
+    
+    var nbtn = $(page + ' .container .nav-btn'+visible);
     
     $(nbtn).removeAttr('style');
     

@@ -95,7 +95,7 @@ Nav.events.open.allStudy = function(p){
             
             addContextMenuEvent('#allStudy');
             
-            navBtnWidth('#allStudy');
+            navBtnWidth('#allStudy',' ');
 
         });
 
@@ -203,7 +203,7 @@ Nav.events.open.study = function(param){
             
             addContextMenuEvent('#study');
             
-            navBtnWidth('#study');
+            navBtnWidth('#study',' ');
 
         });
 

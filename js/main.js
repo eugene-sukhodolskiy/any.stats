@@ -78,7 +78,7 @@ $(document).ready(function(){
     
     
     
-    document.body.onselectstart = function() {return false}
+    document.onselectstart = function() {return false}
     
     DB.open("Test5","0.1",9000000);
     DB.createTables(tables);
