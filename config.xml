@@ -39,7 +39,7 @@
 <!--    <plugin name="com.badrit.backbutton" spec="0.1.0" source="pgb" />-->
 <!--    <plugin name="nl.madebymark.share" spec="0.1.1" source="pgb" />-->
 <!--    <plugin name="nl.x-services.plugins.socialsharing" source="pgb" />-->
-    <plugin name="com.gestionaleauto.socialshare" spec="0.0.3" source="pgb" />
+<!--    <plugin name="com.gestionaleauto.socialshare" spec="0.0.3" source="pgb" />-->
     
     <plugin name="com.indigoway.cordova.whitelist.whitelistplugin" spec="1.1.1" source="pgb" />
 <!--    <plugin name="org.apache.cordova.statusbar" spec="0.1.4" source="pgb" />-->
@@ -57,7 +57,7 @@
         <param name="APP_NAME" value="AnyStats1" />
     </plugin>
 -->
-    <plugin name="com.stevenpartridge.inappbrowser" spec="1.4" source="pgb" />
+<!--    <plugin name="com.stevenpartridge.inappbrowser" spec="1.4" source="pgb" />-->
     
     <platform name="android">
         <preference name="android-manifest/application/@android:hardwareAccelerated" value="true" />
