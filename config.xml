@@ -31,8 +31,10 @@
     <preference name="FadeSplashScreenDuration" value="1"/>
 -->
    
+<!--
     <plugin name="com.phonegap.plugin.statusbar" spec="1.1.0" source="pgb" />
     <preference name="StatusBarBackgroundColor" value="#1A237E" />
+-->
     
     <plugin name="com.badrit.backbutton" spec="0.1.0" source="pgb" />
 <!--    <plugin name="nl.madebymark.share" spec="0.1.1" source="pgb" />-->
